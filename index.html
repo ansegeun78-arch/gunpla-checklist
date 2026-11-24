@@ -689,12 +689,16 @@ function getKitNameByCode(tab, code) {
   return found ? found.name : '';
 }
 
+const PHOTO_CANDIDATE_CACHE = new Map();
+
 function getRepoPhotoCandidates(tab, code) {
   if (!code) return [];
-  const cfg = getGithubConfig();
-  const repoBase = `https://raw.githubusercontent.com/${cfg.repo}/${cfg.branch}`;
-  const folder = tab === 'mg' ? 'images/mg' : 'images/pb';
   const rawName = getKitNameByCode(tab, code);
+  const cacheKey = `${tab}|${code}|${rawName}`;
+  if (PHOTO_CANDIDATE_CACHE.has(cacheKey)) {
+    return PHOTO_CANDIDATE_CACHE.get(cacheKey);
+  }
+  const folder = tab === 'mg' ? 'images/mg' : 'images/pb';
   const safeName = sanitizeTitleForFilename(rawName);
   const names = [];
   if (safeName) {
@@ -705,7 +709,7 @@ function getRepoPhotoCandidates(tab, code) {
   if (!code.startsWith('CUSTOM_')) {
     names.push(code);
   }
-  const exts = ['jpg', 'JPG', 'png', 'PNG', 'webp'];
+  const exts = ['jpg', 'png', 'webp', 'JPG', 'PNG'];
   const list = [];
   for (const n of names) {
     const enc = encodeURIComponent(n);
@@ -713,11 +717,7 @@ function getRepoPhotoCandidates(tab, code) {
       list.push(`${folder}/${enc}.${ext}`);
     }
   }
-  for (const n of names) {
-    const enc = encodeURIComponent(n);
-    list.push(`${repoBase}/${folder}/${enc}.jpg`);
-    list.push(`${repoBase}/${folder}/${enc}.png`);
-  }
+  PHOTO_CANDIDATE_CACHE.set(cacheKey, list);
   return list;
 }
 
@@ -799,12 +799,22 @@ function getPbKits() {
   return [...PB_DEFAULT_KITS, ...pbCustomKits];
 }
 
+const KIT_DEFAULT_MEMO_MAP = { mg: new Map(), pb: new Map() };
+function getDefaultMemo(tab, code) {
+  let m = KIT_DEFAULT_MEMO_MAP[tab];
+  if (!m.size) {
+    const kits = tab === 'mg' ? getMgKits() : getPbKits();
+    for (let i = 0; i < kits.length; i++) {
+      if (kits[i].defaultMemo) m.set(kits[i].code, kits[i].defaultMemo);
+    }
+  }
+  return m.get(code) || '';
+}
+
 function getKitState(tab, code) {
   const store = tab === 'mg' ? mgState : pbState;
   if (!store[code]) {
-    const kits = tab === 'mg' ? getMgKits() : getPbKits();
-    const kitObj = kits.find(item => item.code === code);
-    const initialNote = (kitObj && kitObj.defaultMemo) ? kitObj.defaultMemo : '';
+    const initialNote = getDefaultMemo(tab, code);
     store[code] = { status: 'miss', build: '-', note: initialNote, photo: '' };
   }
   if (store[code].status !== 'own' && store[code].status !== 'miss' && store[code].status !== 'wish' && store[code].status !== 'pass') {
@@ -882,18 +892,71 @@ function setView(view) {
   render();
 }
 
-function toggleOwnMiss(tab, code) {
-  const item = getKitState(tab, code);
-  item.status = (item.status === 'own') ? 'miss' : 'own';
-  if (tab === 'mg') saveMgData(); else savePbData();
-  render();
+function applyStatusToElement(el, status, isRow) {
+  if (!el) return;
+  const st = getKitState(activeTab, el.dataset.code || '');
+  const dimDone = (status === 'own' && st.build === '조립') ? 'build-done-photo' : '';
+  if (isRow) {
+    el.className = `${getRowStatusClass(status)} ${dimDone}`.trim();
+  } else {
+    el.className = `kit-card ${getCardStatusClass(status)} ${dimDone}`.trim();
+  }
+  const btns = el.querySelectorAll('.st-btn');
+  if (btns[0]) {
+    btns[0].className = `st-btn ${status === 'own' ? 'active-own' : (status === 'miss' ? 'active-miss' : '')}`;
+    btns[0].textContent = status === 'own' ? '보유' : '미보유';
+  }
+  if (btns[1]) {
+    btns[1].className = `st-btn ${status === 'wish' ? 'active-wish' : (status === 'pass' ? 'active-pass' : '')}`;
+    btns[1].textContent = status === 'pass' ? '패쓰' : '위시';
+  }
+  const buildSel = el.querySelector('select');
+  if (buildSel) {
+    const canBuild = (status === 'own');
+    buildSel.disabled = !canBuild;
+    if (!canBuild) {
+      buildSel.className = 'build-disabled';
+    } else if (st.build === '-') {
+      buildSel.className = 'is-placeholder';
+    } else if (st.build === '조립') {
+      buildSel.className = 'build-done';
+    } else {
+      buildSel.className = 'build-todo';
+    }
+  }
 }
 
-function toggleWishPass(tab, code) {
+function updateItemStatusFast(tab, code, nextStatus, triggerBtn) {
   const item = getKitState(tab, code);
-  item.status = (item.status === 'wish') ? 'pass' : 'wish';
+  item.status = nextStatus;
   if (tab === 'mg') saveMgData(); else savePbData();
-  render();
+
+  const stFilter = document.getElementById('statusFilter').value;
+  if (stFilter !== 'all' || !triggerBtn) {
+    render();
+    return;
+  }
+
+  const card = triggerBtn.closest('.kit-card');
+  if (card) {
+    applyStatusToElement(card, nextStatus, false);
+  } else {
+    const row = triggerBtn.closest('tr');
+    if (row) applyStatusToElement(row, nextStatus, true);
+  }
+  updateHeaderAndPills();
+}
+
+function toggleOwnMiss(tab, code, btnEl) {
+  const item = getKitState(tab, code);
+  const next = (item.status === 'own') ? 'miss' : 'own';
+  updateItemStatusFast(tab, code, next, btnEl);
+}
+
+function toggleWishPass(tab, code, btnEl) {
+  const item = getKitState(tab, code);
+  const next = (item.status === 'wish') ? 'pass' : 'wish';
+  updateItemStatusFast(tab, code, next, btnEl);
 }
 
 function setBuild(tab, code, val, el) {
@@ -1079,7 +1142,7 @@ function renderCardHtml(tab, k) {
   const fallbacksAttr = candidates.slice(1).join('|');
   const expectedPath = candidates[0] || '';
   return `
-    <div class="kit-card ${cardCls}">
+    <div class="kit-card ${cardCls}" data-code="${k.code}">
       <div class="photo-box"
            
            ondragover="event.preventDefault()"
@@ -1100,8 +1163,8 @@ function renderCardHtml(tab, k) {
         <div class="${nameCls}" title="${k.name}">${titleHtml}</div>
         <div class="kit-meta" title="${k.series}">${k.series}</div>
         <div class="status-group">
-          <button class="st-btn ${st.status==='own'?'active-own':(st.status==='miss'?'active-miss':'')}" onclick="toggleOwnMiss('${tab}','${k.code}')">${st.status==='own'?'보유':'미보유'}</button>
-          <button class="st-btn ${st.status==='wish'?'active-wish':(st.status==='pass'?'active-pass':'')}" onclick="toggleWishPass('${tab}','${k.code}')">${st.status==='pass'?'패쓰':'위시'}</button>
+          <button class="st-btn ${st.status==='own'?'active-own':(st.status==='miss'?'active-miss':'')}" onclick="toggleOwnMiss('${tab}','${k.code}', this)">${st.status==='own'?'보유':'미보유'}</button>
+          <button class="st-btn ${st.status==='wish'?'active-wish':(st.status==='pass'?'active-pass':'')}" onclick="toggleWishPass('${tab}','${k.code}', this)">${st.status==='pass'?'패쓰':'위시'}</button>
         </div>
         <div class="sub-row">
           <select ${st.status!=='own'?'disabled':''} class="${st.status!=='own'?'build-disabled':(st.build==='-'?'is-placeholder':(st.build==='조립'?'build-done':'build-todo'))}" onchange="setBuild('${tab}','${k.code}', this.value, this)">
@@ -1121,7 +1184,7 @@ function renderTableRowHtml(tab, k) {
   const rowCls = `${getRowStatusClass(st.status)} ${(st.status === 'own' && st.build === '조립') ? 'build-done-photo' : ''}`;
   const imgSrc = getEffectivePhoto(tab, k.code, st);
   return `
-    <tr class="${rowCls}">
+    <tr class="${rowCls}" data-code="${k.code}">
       <td>
         <div class="tbl-photo"
              
@@ -1135,8 +1198,8 @@ function renderTableRowHtml(tab, k) {
       <td>${k.defaultMemo || k.date || '-'}</td>
       <td>
         <div class="status-group" style="width:120px;">
-          <button class="st-btn ${st.status==='own'?'active-own':(st.status==='miss'?'active-miss':'')}" onclick="toggleOwnMiss('${tab}','${k.code}')">${st.status==='own'?'보유':'미보유'}</button>
-          <button class="st-btn ${st.status==='wish'?'active-wish':(st.status==='pass'?'active-pass':'')}" onclick="toggleWishPass('${tab}','${k.code}')">${st.status==='pass'?'패쓰':'위시'}</button>
+          <button class="st-btn ${st.status==='own'?'active-own':(st.status==='miss'?'active-miss':'')}" onclick="toggleOwnMiss('${tab}','${k.code}', this)">${st.status==='own'?'보유':'미보유'}</button>
+          <button class="st-btn ${st.status==='wish'?'active-wish':(st.status==='pass'?'active-pass':'')}" onclick="toggleWishPass('${tab}','${k.code}', this)">${st.status==='pass'?'패쓰':'위시'}</button>
         </div>
       </td>
       <td>
