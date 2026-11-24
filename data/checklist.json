@@ -1,9 +1,9 @@
 {
   "type": "gunpla_unified_backup_v1",
-  "updatedAt": "2026-11-24T13:02:07.756Z",
+  "updatedAt": "2026-11-24T13:02:21.892Z",
   "mg": {
     "version": 7,
-    "updatedAt": "2026-11-24T13:02:07.756Z",
+    "updatedAt": "2026-11-24T13:02:21.892Z",
     "state": {
       "R001": {
         "status": "own",
@@ -24,7 +24,7 @@
         "photo": ""
       },
       "R004": {
-        "status": "own",
+        "status": "miss",
         "build": "-",
         "note": "1996 / 2,500엔",
         "photo": ""
@@ -1380,7 +1380,7 @@
   },
   "pb": {
     "version": 7,
-    "updatedAt": "2026-11-24T13:02:07.756Z",
+    "updatedAt": "2026-11-24T13:02:21.892Z",
     "state": {
       "CG001": {
         "status": "miss",
