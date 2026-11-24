@@ -1,9 +1,9 @@
 {
   "type": "gunpla_unified_backup_v1",
-  "updatedAt": "2026-11-24T13:02:21.892Z",
+  "updatedAt": "2026-11-24T15:29:41.430Z",
   "mg": {
     "version": 7,
-    "updatedAt": "2026-11-24T13:02:21.892Z",
+    "updatedAt": "2026-11-24T15:29:41.430Z",
     "state": {
       "R001": {
         "status": "own",
@@ -1380,7 +1380,7 @@
   },
   "pb": {
     "version": 7,
-    "updatedAt": "2026-11-24T13:02:21.892Z",
+    "updatedAt": "2026-11-24T15:29:41.430Z",
     "state": {
       "CG001": {
         "status": "miss",
