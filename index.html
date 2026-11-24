@@ -1,3 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>건프라 체크리스트 통합 메인</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --border: #334155;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;
+    --own-bg: rgba(34, 197, 94, 0.16);
+    --own-border: #22c55e;
+    --own-text: #4ade80;
+    --miss-bg: rgba(239, 68, 68, 0.12);
+    --miss-border: #ef4444;
+    --miss-text: #f87171;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.4;
+  }
+  header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .header-top {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 1.22rem;
   }
   .main-tabs {
     max-width: 1400px;
@@ -18,20 +68,14 @@
     font-size: 0.88rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.15s;
     display: flex;
     align-items: center;
     gap: 6px;
-  }
-  .tab-btn:hover {
-    border-color: #64748b;
-    color: #fff;
   }
   .tab-btn.active {
     background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
     border-color: #38bdf8;
     color: #fff;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
   }
   .tab-pill-cnt {
     font-size: 0.74rem;
@@ -51,11 +95,7 @@
     padding: 5px 10px;
     border-radius: 7px;
     font-size: 0.82rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
   }
-  .stat-pill strong { font-size: 0.95rem; }
   .controls {
     max-width: 1400px;
     margin: 12px auto 0;
@@ -64,7 +104,7 @@
     gap: 8px;
     align-items: center;
   }
-  input[type="text"], select {
+  input[type="text"], input[type="password"], select {
     background: #0f172a;
     border: 1px solid var(--border);
     color: var(--text);
@@ -72,9 +112,6 @@
     border-radius: 7px;
     font-size: 0.85rem;
     outline: none;
-  }
-  input[type="text"]:focus, select:focus {
-    border-color: var(--accent);
   }
   input[type="text"] { flex: 1; min-width: 200px; }
   .btn {
@@ -86,7 +123,6 @@
     font-size: 0.82rem;
     cursor: pointer;
     font-weight: 600;
-    transition: all 0.15s;
   }
   .btn:hover { background: #475569; }
   .btn-primary { background: #2563eb; border-color: #3b82f6; }
@@ -98,27 +134,771 @@
     margin: 20px auto 60px;
     padding: 0 20px;
   }
-
-  /* Home Dashboard */
-  .home-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 18px;
-    margin-bottom: 22px;
+  .series-section { margin-bottom: 36px; }
+  .series-header {
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0.25) 0%, rgba(30, 41, 59, 0.95) 100%);
+    border-left: 4px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 14px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    font-size: 0.96rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
-  .dash-card {
+  .count-badge {
+    font-size: 0.78rem;
+    color: var(--accent);
+    background: rgba(15, 23, 42, 0.75);
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+    gap: 10px;
+  }
+  .kit-card {
     background: var(--card);
-    border: 1.5px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
+    border: 1.6px solid var(--border);
+    border-radius: 9px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    transition: transform 0.15s, border-color 0.15s;
   }
-  .dash-card:hover {
-    border-color: #38bdf8;
-    transform: translateY(-2px);
+  .kit-card.status-own {
+    border: 2.2px solid var(--own-border);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.35);
   }
-  .dash-card-header {
+  .photo-box {
+    width: 100%;
+    height: 175px;
+    padding: 6px;
+    background: #0b1120;
+    border-bottom: 1px solid var(--border);
+    position: relative;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .photo-placeholder {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+  .photo-placeholder .icon { font-size: 1.4rem; display: block; margin-bottom: 4px; }
+  .mini-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(15, 23, 42, 0.9);
+    color: #fff;
+    border: 1px solid #475569;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.68rem;
+    cursor: pointer;
+  }
+  .card-body {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+  }
+  .kit-name {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #fff;
+    min-height: 2.5em;
+    line-height: 1.25;
+    overflow: hidden;
+  }
+  .kit-meta {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .status-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-top: auto;
+  }
+  .st-btn {
+    border: 1px solid var(--border);
+    background: #0f172a;
+    color: var(--text-muted);
+    padding: 4px 2px;
+    border-radius: 5px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .st-btn.active-own { background: var(--own-bg); border-color: var(--own-border); color: var(--own-text); }
+  .st-btn.active-miss { background: var(--miss-bg); border-color: var(--miss-border); color: var(--miss-text); }
+  .sub-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .sub-row select, .sub-row input {
+    width: 100%;
+    padding: 4px 6px;
+    font-size: 0.72rem;
+    border-radius: 5px;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+  th { background: #0f172a; color: var(--text-muted); }
+  tr.row-own { background: rgba(34, 197, 94, 0.1); }
+  .tbl-photo {
+    width: 72px;
+    height: 56px;
+    background: #0b1120;
+    border: 1px dashed #475569;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+  .tbl-photo img { width: 100%; height: 100%; object-fit: contain; }
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.78);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 16px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-box {
+    background: var(--card);
+    border: 1px solid #475569;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 440px;
+    padding: 20px;
+  }
+  .modal-box h2 { margin: 0 0 14px 0; font-size: 1.05rem; }
+  .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+  .form-group label { font-size: 0.8rem; color: var(--text-muted); }
+  .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <h1 id="pageMainTitle">MG 일반판 체크리스트</h1>
+    <div class="stats-bar" id="statsBar"></div>
+  </div>
+
+  <div class="main-tabs">
+    <button class="tab-btn active" id="tabMg" onclick="switchTab('mg')">
+      📦 MG 일반판 <span class="tab-pill-cnt" id="pillMg">0/0</span>
+    </button>
+    <button class="tab-btn" id="tabPb" onclick="switchTab('pb')">
+      ⭐ 프리미엄 반다이 <span class="tab-pill-cnt" id="pillPb">0/0</span>
+    </button>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-view active" id="btnGrid" onclick="setView('grid')">카드형</button>
+    <button class="btn btn-view" id="btnTable" onclick="setView('table')">리스트형</button>
+    <select id="statusFilter" onchange="render()">
+      <option value="all">전체 상태</option>
+      <option value="own">보유만</option>
+      <option value="miss">미보유만</option>
+    </select>
+    <select id="subFilter" onchange="render()">
+      <option value="release">발매 순서</option>
+      <option value="series">작품별</option>
+    </select>
+    <input type="text" id="searchInput" placeholder="모델명, 작품명 검색..." oninput="render()">
+    <button class="btn" style="background:#0f766e;border-color:#14b8a6;" onclick="openAddModal()">+ 추가</button>
+    <button class="btn btn-primary" onclick="exportBackup()">백업 저장</button>
+    <button class="btn" onclick="document.getElementById('importFile').click()">백업 불러오기</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importBackup(event)">
+    <button class="btn" style="background:#1d4ed8;border-color:#60a5fa;" onclick="githubSave()">GitHub 저장</button>
+    <button class="btn" style="background:#0369a1;border-color:#38bdf8;" onclick="githubLoad()">GitHub 불러오기</button>
+    <button class="btn" onclick="openTokenModal()">토큰 설정</button>
+  </div>
+</header>
+
+<main>
+  <div id="contentArea"></div>
+</main>
+
+<div class="modal-backdrop" id="addModal" onclick="if(event.target===this) closeAddModal()">
+  <div class="modal-box">
+    <h2>새 건프라 추가</h2>
+    <div class="form-group">
+      <label>모델명 *</label>
+      <input type="text" id="newKitName" placeholder="예: RX-78-2 건담 Ver.Ka 2.0">
+    </div>
+    <div class="form-group">
+      <label>작품 / 등급</label>
+      <input type="text" id="newKitSeries" placeholder="예: 퍼스트 건담 또는 MG">
+    </div>
+    <div class="form-group">
+      <label>메모 기본값 (발매일 / 가격)</label>
+      <input type="text" id="newKitMemo" placeholder="예: 2026 / 6,500엔">
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeAddModal()">취소</button>
+      <button class="btn btn-primary" onclick="submitNewKit()">추가</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="tokenModal" onclick="if(event.target===this) closeTokenModal()">
+  <div class="modal-box">
+    <h2>GitHub 저장소 설정</h2>
+    <div class="form-group">
+      <label>Fine-grained Token (github_pat_...)</label>
+      <input type="password" id="ghTokenInput" placeholder="github_pat_...">
+    </div>
+    <div class="form-group">
+      <label>저장소 (owner/repo)</label>
+      <input type="text" id="ghRepoInput">
+    </div>
+    <div class="form-group">
+      <label>데이터 파일 경로</label>
+      <input type="text" id="ghPathInput">
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeTokenModal()">취소</button>
+      <button class="btn btn-primary" onclick="saveTokenConfig()">저장</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="hiddenPhotoInput" accept="image/*" style="display:none">
+
+<script>
+const MG_DEFAULT_KITS = [
+  { code: "R001", name: "건담 RX-78", series: "퍼스트 건담", defaultMemo: "1995 / 2,500엔" },
+  { code: "R002", name: "자쿠 II (샤아 전용)", series: "퍼스트 건담", defaultMemo: "1995 / 2,500엔" },
+  { code: "R003", name: "자쿠 II (양산형)", series: "퍼스트 건담", defaultMemo: "1995 / 2,500엔" },
+  { code: "R005", name: "Z 건담", series: "Z & ZZ 건담", defaultMemo: "1996 / 3,500엔" },
+  { code: "R029", name: "사자비", series: "역습의 샤아", defaultMemo: "2000 / 8,000엔" },
+  { code: "R034", name: "뉴 건담", series: "역습의 샤아", defaultMemo: "2000 / 5,000엔" },
+  { code: "R163", name: "뉴 건담 Ver.Ka", series: "역습의 샤아", defaultMemo: "2012 / 7,000엔" },
+  { code: "R175", name: "사자비 Ver.Ka", series: "역습의 샤아", defaultMemo: "2013 / 9,000엔" }
+];
+
+const PB_DEFAULT_KITS = [
+  { code: "CG001", name: "자쿠 II 중력전선 이미지 컬러 Ver.", series: "MG", category: "MG : 우주세기", defaultMemo: "2009 / 3,500엔" },
+  { code: "CG014", name: "프로토타입 건담", series: "MG", category: "MG : 우주세기", defaultMemo: "2013 / 4,200엔" },
+  { code: "CG231", name: "건담 아스트레이 블루프레임", series: "PG", category: "PG", defaultMemo: "PG" },
+  { code: "CG250", name: "이프리트 슈나이드", series: "RE/100", category: "RE/100", defaultMemo: "2017 / 3,500엔" }
+];
+
+const STORAGE_KEY = "gunpla_checklist_v2_data";
+const GH_CFG_KEY = "gunpla_github_cfg_v2";
+const DEFAULT_REPO = "ansegeun78-arch/gunpla-checklist";
+const DEFAULT_PATH = "data/checklist.json";
+const DEFAULT_BRANCH = "main";
+
+let stateData = {
+  mg: { items: {}, custom: [] },
+  pb: { items: {}, custom: [] }
+};
+let activeTab = "mg";
+let currentView = "grid";
+let pendingPhoto = null;
+
+function loadLocal() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed.mg && parsed.pb) stateData = parsed;
+    }
+  } catch (e) {
+    console.error("로컬 로드 오류:", e);
+  }
+}
+
+function saveLocal() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(stateData));
+  } catch (e) {
+    console.error("로컬 저장 오류:", e);
+  }
+}
+
+function getKits(tab) {
+  const base = tab === "mg" ? MG_DEFAULT_KITS : PB_DEFAULT_KITS;
+  const custom = stateData[tab].custom || [];
+  return [...base, ...custom];
+}
+
+function getItemState(tab, kit) {
+  const store = stateData[tab].items;
+  if (!store[kit.code]) {
+    store[kit.code] = {
+      status: "miss",
+      build: "-",
+      note: kit.defaultMemo || "",
+      photo: ""
+    };
+  }
+  return store[kit.code];
+}
+
+function getPhotoSrc(tab, code, st) {
+  if (st.photo) return st.photo;
+  if (!code || code.startsWith("CUSTOM_")) return "";
+  return tab === "mg" ? `images/mg/${code}.jpg` : `images/pb/${code}.jpg`;
+}
+
+function getStats(tab) {
+  const kits = getKits(tab);
+  let own = 0;
+  kits.forEach(k => {
+    if (getItemState(tab, k).status === "own") own++;
+  });
+  const total = kits.length;
+  const pct = total ? ((own / total) * 100).toFixed(1) : "0.0";
+  return { total, own, miss: total - own, pct };
+}
+
+function updateStats() {
+  const mg = getStats("mg");
+  const pb = getStats("pb");
+  document.getElementById("pillMg").textContent = `${mg.own}/${mg.total}`;
+  document.getElementById("pillPb").textContent = `${pb.own}/${pb.total}`;
+  const cur = activeTab === "mg" ? mg : pb;
+  document.getElementById("statsBar").innerHTML = `
+    <div class="stat-pill">전체 <strong>${cur.total}</strong></div>
+    <div class="stat-pill" style="color:#4ade80;border-color:#22c55e;">보유 <strong>${cur.own}</strong></div>
+    <div class="stat-pill" style="color:#f87171;border-color:#ef4444;">미보유 <strong>${cur.miss}</strong></div>
+    <div class="stat-pill" style="color:#38bdf8;border-color:#38bdf8;">달성률 <strong>${cur.pct}%</strong></div>
+  `;
+}
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.getElementById("tabMg").classList.toggle("active", tab === "mg");
+  document.getElementById("tabPb").classList.toggle("active", tab === "pb");
+  document.getElementById("pageMainTitle").textContent =
+    tab === "mg" ? "MG 일반판 체크리스트" : "프리미엄 반다이 체크리스트";
+  const sub = document.getElementById("subFilter");
+  sub.innerHTML = tab === "mg"
+    ? `<option value="release">발매 순서</option><option value="series">작품별</option>`
+    : `<option value="all">전체 등급</option><option value="MG">MG</option><option value="PG">PG</option><option value="RE/100">RE/100</option>`;
+  render();
+}
+
+function setView(v) {
+  currentView = v;
+  document.getElementById("btnGrid").classList.toggle("active", v === "grid");
+  document.getElementById("btnTable").classList.toggle("active", v === "table");
+  render();
+}
+
+function setStatus(tab, code, status) {
+  const kit = getKits(tab).find(x => x.code === code);
+  if (!kit) return;
+  getItemState(tab, kit).status = status;
+  saveLocal();
+  render();
+}
+
+function setBuild(tab, code, val) {
+  const kit = getKits(tab).find(x => x.code === code);
+  if (!kit) return;
+  getItemState(tab, kit).build = val;
+  saveLocal();
+}
+
+function setNote(tab, code, val) {
+  const kit = getKits(tab).find(x => x.code === code);
+  if (!kit) return;
+  getItemState(tab, kit).note = val;
+  saveLocal();
+}
+
+function pickPhoto(tab, code) {
+  pendingPhoto = { tab, code };
+  const input = document.getElementById("hiddenPhotoInput");
+  input.value = "";
+  input.click();
+}
+
+document.getElementById("hiddenPhotoInput").addEventListener("change", function(e) {
+  const file = e.target.files[0];
+  if (!file || !pendingPhoto) return;
+  const reader = new FileReader();
+  reader.onload = function(evt) {
+    const img = new Image();
+    img.onload = function() {
+      const max = 320;
+      let w = img.width, h = img.height;
+      if (w > max || h > max) {
+        if (w > h) { h = Math.round(h * max / w); w = max; }
+        else { w = Math.round(w * max / h); h = max; }
+      }
+      const canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+      canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+      const kit = getKits(pendingPhoto.tab).find(x => x.code === pendingPhoto.code);
+      if (kit) {
+        getItemState(pendingPhoto.tab, kit).photo = canvas.toDataURL("image/jpeg", 0.8);
+        saveLocal();
+        render();
+      }
+    };
+    img.src = evt.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+function clearPhoto(e, tab, code) {
+  e.stopPropagation();
+  const kit = getKits(tab).find(x => x.code === code);
+  if (!kit) return;
+  getItemState(tab, kit).photo = "";
+  saveLocal();
+  render();
+}
+
+function openAddModal() {
+  document.getElementById("newKitName").value = "";
+  document.getElementById("newKitSeries").value = activeTab === "mg" ? "기타" : "MG";
+  document.getElementById("newKitMemo").value = "";
+  document.getElementById("addModal").classList.add("open");
+}
+
+function closeAddModal() {
+  document.getElementById("addModal").classList.remove("open");
+}
+
+function submitNewKit() {
+  const name = document.getElementById("newKitName").value.trim();
+  if (!name) { alert("모델명을 입력해 주세요."); return; }
+  const series = document.getElementById("newKitSeries").value.trim() || (activeTab === "mg" ? "기타" : "MG");
+  const defaultMemo = document.getElementById("newKitMemo").value.trim();
+  const code = "CUSTOM_" + Date.now();
+  stateData[activeTab].custom.push({
+    code,
+    name,
+    series,
+    category: activeTab === "pb" ? series : undefined,
+    defaultMemo
+  });
+  saveLocal();
+  closeAddModal();
+  render();
+}
+
+function escapeAttr(str) {
+  return String(str || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+}
+
+function renderCard(tab, kit) {
+  const st = getItemState(tab, kit);
+  const src = getPhotoSrc(tab, kit.code, st);
+  return `
+    <div class="kit-card ${st.status === "own" ? "status-own" : ""}">
+      <div class="photo-box" onclick="pickPhoto('${tab}', '${kit.code}')">
+        ${src
+          ? `<img src="${src}" alt="${escapeAttr(kit.name)}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+             <div class="photo-placeholder" style="display:none;"><span class="icon">📷</span>사진 추가</div>
+             ${st.photo ? `<button class="mini-btn" onclick="clearPhoto(event, '${tab}', '${kit.code}')">삭제</button>` : ""}`
+          : `<div class="photo-placeholder"><span class="icon">📷</span>사진 추가</div>`
+        }
+      </div>
+      <div class="card-body">
+        <div class="kit-name">${escapeAttr(kit.name)}</div>
+        <div class="kit-meta">${escapeAttr(kit.series)}</div>
+        <div class="status-group">
+          <button class="st-btn ${st.status === "own" ? "active-own" : ""}" onclick="setStatus('${tab}','${kit.code}','own')">보유</button>
+          <button class="st-btn ${st.status === "miss" ? "active-miss" : ""}" onclick="setStatus('${tab}','${kit.code}','miss')">미보유</button>
+        </div>
+        <div class="sub-row">
+          <select onchange="setBuild('${tab}','${kit.code}',this.value)">
+            <option value="-" ${st.build === "-" ? "selected" : ""}>조립상태</option>
+            <option value="조립" ${st.build === "조립" ? "selected" : ""}>조립</option>
+            <option value="미조립" ${st.build === "미조립" ? "selected" : ""}>미조립</option>
+          </select>
+          <input type="text" placeholder="메모" value="${escapeAttr(st.note)}" onchange="setNote('${tab}','${kit.code}',this.value)">
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderTable(kits, tab) {
+  const rows = kits.map(kit => {
+    const st = getItemState(tab, kit);
+    const src = getPhotoSrc(tab, kit.code, st);
+    return `
+      <tr class="${st.status === "own" ? "row-own" : ""}">
+        <td>
+          <div class="tbl-photo" onclick="pickPhoto('${tab}', '${kit.code}')">
+            ${src ? `<img src="${src}" onerror="this.style.display='none'; this.parentNode.textContent='+ 사진';">` : "+ 사진"}
+          </div>
+        </td>
+        <td><strong>${escapeAttr(kit.name)}</strong></td>
+        <td>${escapeAttr(kit.series)}</td>
+        <td>
+          <button class="st-btn ${st.status === "own" ? "active-own" : ""}" onclick="setStatus('${tab}','${kit.code}','own')">보유</button>
+          <button class="st-btn ${st.status === "miss" ? "active-miss" : ""}" onclick="setStatus('${tab}','${kit.code}','miss')">미보유</button>
+        </td>
+        <td>
+          <select onchange="setBuild('${tab}','${kit.code}',this.value)">
+            <option value="-" ${st.build === "-" ? "selected" : ""}>조립상태</option>
+            <option value="조립" ${st.build === "조립" ? "selected" : ""}>조립</option>
+            <option value="미조립" ${st.build === "미조립" ? "selected" : ""}>미조립</option>
+          </select>
+        </td>
+        <td><input type="text" value="${escapeAttr(st.note)}" onchange="setNote('${tab}','${kit.code}',this.value)"></td>
+      </tr>
+    `;
+  }).join("");
+
+  return `
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>사진</th><th>모델명</th><th>작품/등급</th><th>상태</th><th>조립</th><th>메모</th></tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+function render() {
+  updateStats();
+  const q = document.getElementById("searchInput").value.trim().toLowerCase();
+  const stFilter = document.getElementById("statusFilter").value;
+  const subFilter = document.getElementById("subFilter").value;
+
+  const list = getKits(activeTab).filter(kit => {
+    const st = getItemState(activeTab, kit);
+    if (stFilter !== "all" && st.status !== stFilter) return false;
+    if (activeTab === "pb" && subFilter !== "all" && kit.series !== subFilter) return false;
+    if (q) {
+      const hay = `${kit.name} ${kit.series} ${st.note}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  const area = document.getElementById("contentArea");
+  if (activeTab === "mg" && subFilter === "series") {
+    const groups = {};
+    list.forEach(k => {
+      const g = k.series || "기타";
+      if (!groups[g]) groups[g] = [];
+      groups[g].push(k);
+    });
+    area.innerHTML = Object.entries(groups).map(([gName, items]) => `
+      <div class="series-section">
+        <div class="series-header"><span>▶ ${escapeAttr(gName)}</span><span class="count-badge">${items.length}개</span></div>
+        ${currentView === "grid"
+          ? `<div class="grid-container">${items.map(k => renderCard("mg", k)).join("")}</div>`
+          : renderTable(items, "mg")}
+      </div>
+    `).join("");
+  } else {
+    area.innerHTML = currentView === "grid"
+      ? `<div class="grid-container">${list.map(k => renderCard(activeTab, k)).join("")}</div>`
+      : renderTable(list, activeTab);
+  }
+}
+
+function exportBackup() {
+  const blob = new Blob([JSON.stringify(stateData, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "건프라_체크리스트_백업.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function importBackup(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(evt) {
+    try {
+      const parsed = JSON.parse(evt.target.result);
+      if (parsed.mg && parsed.pb) {
+        stateData = parsed;
+      } else if (parsed.state) {
+        // 기존 v1 백업 호환
+        stateData.mg.items = { ...stateData.mg.items, ...parsed.state };
+      }
+      saveLocal();
+      render();
+      alert("백업을 불러왔습니다.");
+    } catch (err) {
+      alert("JSON 파일 형식이 올바르지 않습니다.");
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = "";
+}
+
+function getGhConfig() {
+  try {
+    const raw = localStorage.getItem(GH_CFG_KEY);
+    const cfg = raw ? JSON.parse(raw) : {};
+    return {
+      token: (cfg.token || "").trim(),
+      repo: (cfg.repo || DEFAULT_REPO).trim(),
+      path: (cfg.path || DEFAULT_PATH).trim(),
+      branch: (cfg.branch || DEFAULT_BRANCH).trim()
+    };
+  } catch (e) {
+    return { token: "", repo: DEFAULT_REPO, path: DEFAULT_PATH, branch: DEFAULT_BRANCH };
+  }
+}
+
+function openTokenModal() {
+  const cfg = getGhConfig();
+  document.getElementById("ghTokenInput").value = cfg.token;
+  document.getElementById("ghRepoInput").value = cfg.repo;
+  document.getElementById("ghPathInput").value = cfg.path;
+  document.getElementById("tokenModal").classList.add("open");
+}
+
+function closeTokenModal() {
+  document.getElementById("tokenModal").classList.remove("open");
+}
+
+function saveTokenConfig() {
+  const token = document.getElementById("ghTokenInput").value.trim();
+  const repo = document.getElementById("ghRepoInput").value.trim() || DEFAULT_REPO;
+  const path = document.getElementById("ghPathInput").value.trim() || DEFAULT_PATH;
+  localStorage.setItem(GH_CFG_KEY, JSON.stringify({ token, repo, path, branch: DEFAULT_BRANCH }));
+  closeTokenModal();
+  alert("설정이 저장되었습니다.");
+}
+
+function toBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let bin = "";
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+
+function fromBase64(b64) {
+  const bin = atob(b64.replace(/\n/g, ""));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+async function githubSave() {
+  const cfg = getGhConfig();
+  if (!cfg.token) { openTokenModal(); return; }
+  const url = `https://api.github.com/repos/${cfg.repo}/contents/${cfg.path}`;
+  try {
+    let sha;
+    const getRes = await fetch(`${url}?ref=${encodeURIComponent(cfg.branch)}`, {
+      headers: {
+        "Authorization": `Bearer ${cfg.token}`,
+        "Accept": "application/vnd.github+json"
+      }
+    });
+    if (getRes.ok) {
+      const info = await getRes.json();
+      sha = info.sha;
+    }
+
+    const putRes = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Authorization": `Bearer ${cfg.token}`,
+        "Accept": "application/vnd.github+json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Update gunpla checklist",
+        content: toBase64(JSON.stringify(stateData, null, 2)),
+        branch: cfg.branch,
+        ...(sha ? { sha } : {})
+      })
+    });
+
+    if (!putRes.ok) {
+      const msg = await putRes.text();
+      throw new Error(`저장 실패 (${putRes.status}): ${msg}`);
+    }
+    alert(`GitHub (${cfg.path})에 저장되었습니다.`);
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+async function githubLoad() {
+  const cfg = getGhConfig();
+  if (!cfg.token) { openTokenModal(); return; }
+  const url = `https://api.github.com/repos/${cfg.repo}/contents/${cfg.path}?ref=${encodeURIComponent(cfg.branch)}`;
+  try {
+    const res = await fetch(url, {
+      headers: {
+        "Authorization": `Bearer ${cfg.token}`,
+        "Accept": "application/vnd.github+json"
+      }
+    });
+    if (!res.ok) {
+      const msg = await res.text();
+      throw new Error(`불러오기 실패 (${res.status}): ${msg}`);
+    }
+    const info = await res.json();
+    const text = fromBase64(info.content || "").trim();
+    if (!text || text === "{}") {
+      alert("저장된 체크리스트 데이터가 아직 없습니다.");
+      return;
+    }
+    const parsed = JSON.parse(text);
+    if (parsed.mg && parsed.pb) {
+      stateData = parsed;
+      saveLocal();
+      render();
+      alert("GitHub에서 데이터를 불러왔습니다.");
+    } else {
+      alert("JSON 구조가 맞지 않습니다.");
+    }
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+loadLocal();
+render();
+</script>
+</body>
+</html>
