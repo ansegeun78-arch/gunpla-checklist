@@ -1,0 +1,104 @@
+import os
+
+# Find the latest full HTML file (index_2.html or index.html)
+possible_paths = ['index_2.html', 'index.html', 'index-test-v18.html']
+found_path = None
+for p in possible_paths:
+    if os.path.exists(p):
+        found_path = p
+        break
+
+if not found_path:
+    for root, dirs, files in os.walk('.'):
+        for f in files:
+            if f.endswith('.html'):
+                found_path = os.path.join(root, f)
+                break
+
+print("Using:", found_path)
+with open(found_path, 'r', encoding='utf-8') as f:
+    content = f.read()
+
+old_photo_fn = """function getRepoPhotoCandidates(tab, code) {
+  if (!code || code.startsWith('CUSTOM_')) return [];
+  const cfg = getGithubConfig();
+  const repoBase = `https://raw.githubusercontent.com/${cfg.repo}/${cfg.branch}`;
+  if (tab === 'mg') {
+    const match = /^R(\\d+)$/i.exec(code.trim());
+    const num2 = match ? String(parseInt(match[1], 10)).padStart(2, '0') : code;
+    const num3 = match ? String(parseInt(match[1], 10)).padStart(3, '0') : code;
+    const names = [`MG${num2}`, `mg${num2}`, `MG${num3}`, `R${num3}`];
+    const exts = ['jpg', 'JPG', 'png', 'PNG', 'webp'];
+    const list = [];
+    for (const n of names) {
+      for (const ext of exts) {
+        list.push(`images/mg/${n}.${ext}`);
+      }
+    }
+    for (const n of [`MG${num2}`, `mg${num2}`, `R${num3}`]) {
+      list.push(`${repoBase}/images/mg/${n}.jpg`);
+      list.push(`${repoBase}/images/mg/${n}.png`);
+    }
+    return list;
+  }
+  return [
+    `images/pb/${code}.jpg`,
+    `images/pb/${code}.JPG`,
+    `images/pb/${code}.png`,
+    `images/pb/${code}.webp`,
+    `${repoBase}/images/pb/${code}.jpg`
+  ];
+}"""
+
+new_photo_fn = """function sanitizeTitleForFilename(name) {
+  if (!name) return '';
+  return name
+    .replace(/[\\\\/:*?"<>|]/g, '_')
+    .trim();
+}
+
+function getKitNameByCode(tab, code) {
+  const kits = tab === 'mg' ? getMgKits() : getPbKits();
+  const found = kits.find(item => item.code === code);
+  return found ? found.name : '';
+}
+
+function getRepoPhotoCandidates(tab, code) {
+  if (!code) return [];
+  const cfg = getGithubConfig();
+  const repoBase = `https://raw.githubusercontent.com/${cfg.repo}/${cfg.branch}`;
+  const folder = tab === 'mg' ? 'images/mg' : 'images/pb';
+  const rawName = getKitNameByCode(tab, code);
+  const safeName = sanitizeTitleForFilename(rawName);
+  const names = [];
+  if (safeName) {
+    names.push(safeName);
+    const collapsed = safeName.replace(/\\s+/g, ' ');
+    if (collapsed !== safeName) names.push(collapsed);
+  }
+  if (!code.startsWith('CUSTOM_')) {
+    names.push(code);
+  }
+  const exts = ['jpg', 'JPG', 'png', 'PNG', 'webp'];
+  const list = [];
+  for (const n of names) {
+    const enc = encodeURIComponent(n);
+    for (const ext of exts) {
+      list.push(`${folder}/${enc}.${ext}`);
+    }
+  }
+  for (const n of names) {
+    const enc = encodeURIComponent(n);
+    list.push(`${repoBase}/${folder}/${enc}.jpg`);
+    list.push(`${repoBase}/${folder}/${enc}.png`);
+  }
+  return list;
+}"""
+
+assert old_photo_fn in content, "old_photo_fn not found"
+updated = content.replace(old_photo_fn, new_photo_fn, 1)
+
+out_path = 'index-v3.html'
+with open(out_path, 'w', encoding='utf-8') as f:
+    f.write(updated)
+print("Saved to:", out_path, "length:", len(updated))
