@@ -233,8 +233,10 @@
   }
   .photo-box:hover { background: #131c31; }
   .photo-box img {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
     border-radius: 3px;
   }
@@ -504,8 +506,10 @@
     text-align: center;
   }
   .tbl-photo img {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
   }
 
@@ -592,10 +596,10 @@
     <button class="btn btn-view" id="btnTable" onclick="setView('table')">리스트형 보기</button>
     <select id="statusFilter" onchange="render()">
       <option value="all">전체 상태 보기</option>
-      <option value="own">✅ 보유 품목만</option>
-      <option value="miss">❌ 미보유 품목만</option>
-      <option value="wish">💙 위시 품목만</option>
-      <option value="pass">⏭️ 패쓰 품목만</option>
+      <option value="own">✅ 보유 품목</option>
+      <option value="miss">❌ 미보유 품목</option>
+      <option value="wish">💙 위시 품목</option>
+      <option value="pass">⏭️ 패쓰 품목</option>
     </select>
     <select id="subFilter" onchange="render()">
       <option value="release">발매 순서</option>
@@ -1230,6 +1234,59 @@ function renderTableRowHtml(tab, k) {
   `;
 }
 
+function renderMgGroupedByMissStatus(tab, list, isTable) {
+  const groups = [
+    { key: 'miss', label: '미보유' },
+    { key: 'wish', label: '위시' },
+    { key: 'pass', label: '패쓰' }
+  ];
+  let html = '';
+  for (const g of groups) {
+    const items = list.filter(item => getKitState(tab, item.code).status === g.key);
+    if (items.length > 0) {
+      if (isTable) {
+        html += `
+          <div class="series-section">
+            <div class="series-header">
+              <span>▶ ${g.label}</span>
+              <span class="count-badge">${items.length}</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>제품 사진</th>
+                    <th>모델명</th>
+                    <th>${tab === 'mg' ? '등장 작품' : '등급'}</th>
+                    <th>발매일 / 가격</th>
+                    <th>보유 여부</th>
+                    <th>조립 상태</th>
+                    <th>메모</th>
+                  </tr>
+                </thead>
+                <tbody>${items.map(k => renderTableRowHtml(tab, k)).join('')}</tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      } else {
+        html += `
+          <div class="series-section">
+            <div class="series-header">
+              <span>▶ ${g.label}</span>
+              <span class="count-badge">${items.length}</span>
+            </div>
+            <div class="grid-container">
+              ${items.map(k => renderCardHtml(tab, k)).join('')}
+            </div>
+          </div>
+        `;
+      }
+    }
+  }
+  return html;
+}
+
 function renderMgList() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const stFilter = document.getElementById('statusFilter').value;
@@ -1237,13 +1294,23 @@ function renderMgList() {
 
   const filtered = getMgKits().filter(k => {
     const st = getKitState('mg', k.code);
-    if (stFilter !== 'all' && st.status !== stFilter) return false;
+    if (stFilter !== 'all') {
+      if (stFilter === 'miss') {
+        if (st.status !== 'miss' && st.status !== 'wish' && st.status !== 'pass') return false;
+      } else if (st.status !== stFilter) {
+        return false;
+      }
+    }
     if (q) {
       const hay = `${k.name} ${k.series} ${st.note}`.toLowerCase();
       if (!hay.includes(q)) return false;
     }
     return true;
   });
+
+  if (stFilter === 'miss') {
+    return renderMgGroupedByMissStatus('mg', filtered, currentView === 'table');
+  }
 
   if (currentView === 'grid') {
     if (sortMode === 'series') {
@@ -1376,7 +1443,13 @@ function renderPbList() {
 
   const filtered = getPbKits().filter(k => {
     const st = getKitState('pb', k.code);
-    if (stFilter !== 'all' && st.status !== stFilter) return false;
+    if (stFilter !== 'all') {
+      if (stFilter === 'miss') {
+        if (st.status !== 'miss' && st.status !== 'wish' && st.status !== 'pass') return false;
+      } else if (st.status !== stFilter) {
+        return false;
+      }
+    }
     if (gradeFilter !== 'all' && k.series !== gradeFilter) return false;
     if (q) {
       const hay = `${k.name} ${k.series} ${k.category || ''} ${st.note}`.toLowerCase();
@@ -1384,6 +1457,10 @@ function renderPbList() {
     }
     return true;
   });
+
+  if (stFilter === 'miss') {
+    return renderMgGroupedByMissStatus('pb', filtered, currentView === 'table');
+  }
 
   const map = new Map();
   PB_CATEGORY_ORDER.forEach(c => map.set(c, []));
