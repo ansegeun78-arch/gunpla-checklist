@@ -1,9 +1,9 @@
 {
   "type": "gunpla_unified_backup_v1",
-  "updatedAt": "2026-11-25T06:23:58.630Z",
+  "updatedAt": "2026-11-25T08:44:46.840Z",
   "mg": {
-    "version": 7,
-    "updatedAt": "2026-11-25T06:23:58.631Z",
+    "version": 8,
+    "updatedAt": "2026-11-25T08:44:46.840Z",
     "state": {
       "R001": {
         "status": "pass",
@@ -1379,8 +1379,8 @@
     "deletedCodes": []
   },
   "pb": {
-    "version": 7,
-    "updatedAt": "2026-11-25T06:23:58.631Z",
+    "version": 8,
+    "updatedAt": "2026-11-25T08:44:46.840Z",
     "state": {
       "CG001": {
         "status": "wish",
@@ -2994,6 +2994,469 @@
         "status": "wish",
         "build": "-",
         "note": "2025 / 3,200엔",
+        "photo": ""
+      }
+    },
+    "customKits": []
+  },
+  "extra": {
+    "version": 8,
+    "updatedAt": "2026-11-25T08:44:46.840Z",
+    "state": {
+      "PG001": {
+        "status": "miss",
+        "build": "-",
+        "note": "1998 / 12,000엔",
+        "photo": ""
+      },
+      "PG002": {
+        "status": "miss",
+        "build": "-",
+        "note": "1999 / 12,000엔",
+        "photo": ""
+      },
+      "PG003": {
+        "status": "miss",
+        "build": "-",
+        "note": "1999 / 12,000엔",
+        "photo": ""
+      },
+      "PG004": {
+        "status": "miss",
+        "build": "-",
+        "note": "2000 / 20,000엔",
+        "photo": ""
+      },
+      "PG005": {
+        "status": "miss",
+        "build": "-",
+        "note": "2000 / 15,000엔",
+        "photo": ""
+      },
+      "PG006": {
+        "status": "miss",
+        "build": "-",
+        "note": "2001 / 15,000엔",
+        "photo": ""
+      },
+      "PG007": {
+        "status": "miss",
+        "build": "-",
+        "note": "2002 / 15,000엔",
+        "photo": ""
+      },
+      "PG008": {
+        "status": "miss",
+        "build": "-",
+        "note": "2003 / 20,000엔",
+        "photo": ""
+      },
+      "PG009": {
+        "status": "miss",
+        "build": "-",
+        "note": "2004 / 14,000엔",
+        "photo": ""
+      },
+      "PG010": {
+        "status": "miss",
+        "build": "-",
+        "note": "2005 / 5,000엔",
+        "photo": ""
+      },
+      "PG011": {
+        "status": "miss",
+        "build": "-",
+        "note": "2005 / 19,000엔",
+        "photo": ""
+      },
+      "PG012": {
+        "status": "miss",
+        "build": "-",
+        "note": "2009 / 18,000엔",
+        "photo": ""
+      },
+      "PG013": {
+        "status": "miss",
+        "build": "-",
+        "note": "2009 / 3,500엔",
+        "photo": ""
+      },
+      "PG014": {
+        "status": "miss",
+        "build": "-",
+        "note": "2009 / 25,000엔",
+        "photo": ""
+      },
+      "PG015": {
+        "status": "miss",
+        "build": "-",
+        "note": "2009 / 3,800엔",
+        "photo": ""
+      },
+      "PG016": {
+        "status": "miss",
+        "build": "-",
+        "note": "2010 / 25,000엔",
+        "photo": ""
+      },
+      "PG017": {
+        "status": "miss",
+        "build": "-",
+        "note": "2010 / 3,800엔",
+        "photo": ""
+      },
+      "PG018": {
+        "status": "miss",
+        "build": "-",
+        "note": "2014 / 20,000엔",
+        "photo": ""
+      },
+      "PG019": {
+        "status": "miss",
+        "build": "-",
+        "note": "2014 / 12,000엔",
+        "photo": ""
+      },
+      "PG020": {
+        "status": "miss",
+        "build": "-",
+        "note": "2015 / 22,000엔",
+        "photo": ""
+      },
+      "PG021": {
+        "status": "miss",
+        "build": "-",
+        "note": "2017 / 32,000엔",
+        "photo": ""
+      },
+      "PG022": {
+        "status": "miss",
+        "build": "-",
+        "note": "2018 / 23,000엔",
+        "photo": ""
+      },
+      "PG023": {
+        "status": "miss",
+        "build": "-",
+        "note": "2020 / 25,000엔",
+        "photo": ""
+      },
+      "PG024": {
+        "status": "miss",
+        "build": "-",
+        "note": "2020 / 25,000엔",
+        "photo": ""
+      },
+      "PG025": {
+        "status": "miss",
+        "build": "-",
+        "note": "2026 / 60,000엔",
+        "photo": ""
+      },
+      "PG026": {
+        "status": "miss",
+        "build": "-",
+        "note": "2026 / 14,000엔",
+        "photo": ""
+      },
+      "PG027": {
+        "status": "miss",
+        "build": "-",
+        "note": "1999 / 2,000엔",
+        "photo": ""
+      },
+      "PG028": {
+        "status": "miss",
+        "build": "-",
+        "note": "1999 / 3,500엔",
+        "photo": ""
+      },
+      "PG029": {
+        "status": "miss",
+        "build": "-",
+        "note": "1999 / 2,000엔",
+        "photo": ""
+      },
+      "PG030": {
+        "status": "miss",
+        "build": "-",
+        "note": "1999 / 3,500엔",
+        "photo": ""
+      },
+      "RE001": {
+        "status": "own",
+        "build": "-",
+        "note": "2014 / 8,000엔",
+        "photo": ""
+      },
+      "RE002": {
+        "status": "miss",
+        "build": "-",
+        "note": "2015 / 3,500엔",
+        "photo": ""
+      },
+      "RE003": {
+        "status": "own",
+        "build": "-",
+        "note": "2015 / 3,500엔",
+        "photo": ""
+      },
+      "RE004": {
+        "status": "own",
+        "build": "-",
+        "note": "2015 / 3,500엔",
+        "photo": ""
+      },
+      "RE005": {
+        "status": "own",
+        "build": "-",
+        "note": "2016 / 3,500엔",
+        "photo": ""
+      },
+      "RE006": {
+        "status": "own",
+        "build": "-",
+        "note": "2016 / 3,500엔",
+        "photo": ""
+      },
+      "RE007": {
+        "status": "own",
+        "build": "-",
+        "note": "2017 / 4,500엔",
+        "photo": ""
+      },
+      "RE008": {
+        "status": "own",
+        "build": "-",
+        "note": "2018 / 4,000엔",
+        "photo": ""
+      },
+      "RE009": {
+        "status": "own",
+        "build": "-",
+        "note": "2018 / 3,200엔",
+        "photo": ""
+      },
+      "RE010": {
+        "status": "own",
+        "build": "-",
+        "note": "2018 / 4,500엔",
+        "photo": ""
+      },
+      "RE011": {
+        "status": "miss",
+        "build": "-",
+        "note": "2018 / 3,500엔",
+        "photo": ""
+      },
+      "RE012": {
+        "status": "miss",
+        "build": "-",
+        "note": "2019 / 3,700엔",
+        "photo": ""
+      },
+      "RE013": {
+        "status": "own",
+        "build": "-",
+        "note": "2019 / 3,500엔",
+        "photo": ""
+      },
+      "FM001": {
+        "status": "own",
+        "build": "-",
+        "note": "2021 / 5,000엔",
+        "photo": ""
+      },
+      "FM002": {
+        "status": "own",
+        "build": "-",
+        "note": "2022 / 5,000엔",
+        "photo": ""
+      },
+      "FM003": {
+        "status": "own",
+        "build": "-",
+        "note": "2023 / 3,800엔",
+        "photo": ""
+      },
+      "FM004": {
+        "status": "own",
+        "build": "-",
+        "note": "2023 / 5,800엔",
+        "photo": ""
+      },
+      "FM005": {
+        "status": "miss",
+        "build": "-",
+        "note": "2027 / 5,800엔",
+        "photo": ""
+      },
+      "PBFM001": {
+        "status": "own",
+        "build": "-",
+        "note": "2022 / 5,000엔",
+        "photo": ""
+      },
+      "PBFM002": {
+        "status": "own",
+        "build": "-",
+        "note": "2024 / 4,200엔",
+        "photo": ""
+      },
+      "PBFM003": {
+        "status": "own",
+        "build": "-",
+        "note": "2024 / 5,500엔",
+        "photo": ""
+      },
+      "PBFM004": {
+        "status": "own",
+        "build": "-",
+        "note": "2024 / 6,200엔",
+        "photo": ""
+      },
+      "SRW001": {
+        "status": "own",
+        "build": "-",
+        "note": "2021 / 4,000엔",
+        "photo": ""
+      },
+      "SRW002": {
+        "status": "own",
+        "build": "-",
+        "note": "2021 / 4,000엔",
+        "photo": ""
+      },
+      "SRW003": {
+        "status": "own",
+        "build": "-",
+        "note": "2022 / 4,000엔",
+        "photo": ""
+      },
+      "SRW004": {
+        "status": "own",
+        "build": "-",
+        "note": "2023 / 5,200엔",
+        "photo": ""
+      },
+      "SRW005": {
+        "status": "own",
+        "build": "-",
+        "note": "2023 / 4,500엔",
+        "photo": ""
+      },
+      "SRW006": {
+        "status": "own",
+        "build": "-",
+        "note": "2024 / 4,500엔",
+        "photo": ""
+      },
+      "SRW007": {
+        "status": "own",
+        "build": "-",
+        "note": "2024 / 4,500엔",
+        "photo": ""
+      },
+      "SRW008": {
+        "status": "own",
+        "build": "-",
+        "note": "2024 / 5,500엔",
+        "photo": ""
+      },
+      "SRW009": {
+        "status": "own",
+        "build": "-",
+        "note": "2025 / 4,500엔",
+        "photo": ""
+      },
+      "SRW010": {
+        "status": "own",
+        "build": "-",
+        "note": "2025 / 7,000엔",
+        "photo": ""
+      },
+      "PBSRW001": {
+        "status": "own",
+        "build": "-",
+        "note": "2022 / 6,800엔",
+        "photo": ""
+      },
+      "PBSRW002": {
+        "status": "own",
+        "build": "-",
+        "note": "2023 / 4,300엔",
+        "photo": ""
+      },
+      "PBSRW003": {
+        "status": "own",
+        "build": "-",
+        "note": "2023 / 4,700엔",
+        "photo": ""
+      },
+      "PBSRW004": {
+        "status": "own",
+        "build": "-",
+        "note": "2024 / 7,000엔",
+        "photo": ""
+      },
+      "PBSRW005": {
+        "status": "miss",
+        "build": "-",
+        "note": "2024 / 4,300엔",
+        "photo": ""
+      },
+      "PBSRW006": {
+        "status": "own",
+        "build": "-",
+        "note": "2024 / 11,000엔",
+        "photo": ""
+      },
+      "PBSRW007": {
+        "status": "own",
+        "build": "-",
+        "note": "2025 / 5,500엔",
+        "photo": ""
+      },
+      "HIRM001": {
+        "status": "wish",
+        "build": "-",
+        "note": "2016 / 16,000엔",
+        "photo": ""
+      },
+      "HIRM002": {
+        "status": "own",
+        "build": "-",
+        "note": "2017 / 12,000엔",
+        "photo": ""
+      },
+      "HIRM003": {
+        "status": "own",
+        "build": "-",
+        "note": "2018 / 17,000엔",
+        "photo": ""
+      },
+      "HIRM004": {
+        "status": "own",
+        "build": "-",
+        "note": "2018 / 13,000엔",
+        "photo": ""
+      },
+      "HIRM005": {
+        "status": "wish",
+        "build": "-",
+        "note": "2019 / 16,000엔",
+        "photo": ""
+      },
+      "HIRM006": {
+        "status": "own",
+        "build": "-",
+        "note": "2019 / 13,000엔",
+        "photo": ""
+      },
+      "HIRM007": {
+        "status": "own",
+        "build": "-",
+        "note": "2022 / 16,000엔",
         "photo": ""
       }
     },
