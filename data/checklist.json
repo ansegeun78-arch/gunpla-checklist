@@ -1,9 +1,9 @@
 {
   "type": "gunpla_unified_backup_v1",
-  "updatedAt": "2026-11-24T23:22:43.371Z",
+  "updatedAt": "2026-11-25T03:42:50.166Z",
   "mg": {
     "version": 7,
-    "updatedAt": "2026-11-24T23:22:43.371Z",
+    "updatedAt": "2026-11-25T03:42:50.167Z",
     "state": {
       "R001": {
         "status": "pass",
@@ -582,37 +582,37 @@
         "photo": ""
       },
       "R097": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2007 / 3,500엔",
         "photo": ""
       },
       "R098": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2007 / 3,500엔",
         "photo": ""
       },
       "R099": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2007 / 4,500엔",
         "photo": ""
       },
       "R100": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2007 / 3,800엔",
         "photo": ""
       },
       "R101": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2007 / 4,800엔",
         "photo": ""
       },
       "R102": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2007 / 5,000엔",
         "photo": ""
@@ -630,745 +630,745 @@
         "photo": ""
       },
       "R105": {
-        "status": "miss",
+        "status": "wish",
         "build": "-",
         "note": "2008 / 4,500엔",
         "photo": ""
       },
       "R106": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2008 / 3,800엔",
         "photo": ""
       },
       "R107": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2008 / 4,500엔",
         "photo": ""
       },
       "R108": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2008 / 5,000엔",
         "photo": ""
       },
       "R109": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2008 / 4,500엔",
         "photo": ""
       },
       "R110": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2008 / 5,000엔",
         "photo": ""
       },
       "R111": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2008 / 4,200엔",
         "photo": ""
       },
       "R112": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2008 / 4,500엔",
         "photo": ""
       },
       "R113": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2008 / 4,500엔",
         "photo": ""
       },
       "R114": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2008 / 5,000엔",
         "photo": ""
       },
       "R115": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2008 / 4,500엔",
         "photo": ""
       },
       "R116": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2008 / 7,000엔",
         "photo": ""
       },
       "R117": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 5,600엔",
         "photo": ""
       },
       "R118": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 3,500엔",
         "photo": ""
       },
       "R119": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 4,500엔",
         "photo": ""
       },
       "R120": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 3,800엔",
         "photo": ""
       },
       "R121": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 9,800엔",
         "photo": ""
       },
       "R122": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 3,500엔",
         "photo": ""
       },
       "R123": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 3,800엔",
         "photo": ""
       },
       "R124": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 4,800엔",
         "photo": ""
       },
       "R125": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 4,800엔",
         "photo": ""
       },
       "R126": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 4,000엔",
         "photo": ""
       },
       "R127": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 3,800엔",
         "photo": ""
       },
       "R128": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 4,200엔",
         "photo": ""
       },
       "R129": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 3,600엔",
         "photo": ""
       },
       "R130": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 5,000엔",
         "photo": ""
       },
       "R131": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 5,000엔",
         "photo": ""
       },
       "R132": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 4,000엔",
         "photo": ""
       },
       "R133": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 6,000엔",
         "photo": ""
       },
       "R134": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 5,000엔",
         "photo": ""
       },
       "R135": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 2,200엔",
         "photo": ""
       },
       "R136": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 5,800엔",
         "photo": ""
       },
       "R137": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 12,000엔",
         "photo": ""
       },
       "R138": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 3,800엔",
         "photo": ""
       },
       "R139": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 4,800엔",
         "photo": ""
       },
       "R140": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 4,500엔",
         "photo": ""
       },
       "R141": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2011 / 5,000엔",
         "photo": ""
       },
       "R142": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2011 / 4,500엔",
         "photo": ""
       },
       "R143": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2011 / 3,800엔",
         "photo": ""
       },
       "R144": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2011 / 3,500엔",
         "photo": ""
       },
       "R145": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2011 / 6,500엔",
         "photo": ""
       },
       "R146": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2011 / 4,800엔",
         "photo": ""
       },
       "R147": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2011 / 4,500엔",
         "photo": ""
       },
       "R148": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2011 / 5,500엔",
         "photo": ""
       },
       "R149": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2011 / 3,800엔",
         "photo": ""
       },
       "R150": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2011 / 8,000엔",
         "photo": ""
       },
       "R151": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2012 / 3,800엔",
         "photo": ""
       },
       "R152": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2012 / 4,200엔",
         "photo": ""
       },
       "R153": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2012 / 3,500엔",
         "photo": ""
       },
       "R154": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2012 / 3,800엔",
         "photo": ""
       },
       "R155": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2012 / 5,500엔",
         "photo": ""
       },
       "R156": {
-        "status": "miss",
+        "status": "wish",
         "build": "-",
         "note": "2012 / 3,500엔",
         "photo": ""
       },
       "R157": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2012 / 4,000엔",
         "photo": ""
       },
       "R158": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2012 / 4,000엔",
         "photo": ""
       },
       "R159": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2012 / 4,200엔",
         "photo": ""
       },
       "R160": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2012 / 4,000엔",
         "photo": ""
       },
       "R161": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2012 / 4,800엔",
         "photo": ""
       },
       "R162": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2012 / 4,200엔",
         "photo": ""
       },
       "R163": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2012 / 7,000엔",
         "photo": ""
       },
       "R164": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2013 / 3,800엔",
         "photo": ""
       },
       "R165": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2013 / 7,000엔",
         "photo": ""
       },
       "R166": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2013 / 6,500엔",
         "photo": ""
       },
       "R167": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2013 / 7,500엔",
         "photo": ""
       },
       "R168": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2013 / 4,000엔",
         "photo": ""
       },
       "R169": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2013 / 4,200엔",
         "photo": ""
       },
       "R170": {
-        "status": "miss",
+        "status": "wish",
         "build": "-",
         "note": "2013 / 4,200엔",
         "photo": ""
       },
       "R171": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2013 / 4,800엔",
         "photo": ""
       },
       "R172": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2013 / 4,500엔",
         "photo": ""
       },
       "R173": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2013 / 4,200엔",
         "photo": ""
       },
       "R174": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2013 / 4,800엔",
         "photo": ""
       },
       "R175": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2013 / 9,000엔",
         "photo": ""
       },
       "R176": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2014 / 4,200엔",
         "photo": ""
       },
       "R177": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2014 / 3,800엔",
         "photo": ""
       },
       "R178": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2014 / 12,000엔",
         "photo": ""
       },
       "R179": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2014 / 5,000엔",
         "photo": ""
       },
       "R180": {
-        "status": "miss",
+        "status": "wish",
         "build": "-",
         "note": "2014 / 5,000엔",
         "photo": ""
       },
       "R181": {
-        "status": "miss",
+        "status": "wish",
         "build": "-",
         "note": "2014 / 1,600엔",
         "photo": ""
       },
       "R182": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2014 / 6,000엔",
         "photo": ""
       },
       "R183": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2014 / 7,000엔",
         "photo": ""
       },
       "R184": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2014 / 4,800엔",
         "photo": ""
       },
       "R185": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2015 / 5,000엔",
         "photo": ""
       },
       "R186": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2015 / 4,500엔",
         "photo": ""
       },
       "R187": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2015 / 6,800엔",
         "photo": ""
       },
       "R188": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2015 / 4,800엔",
         "photo": ""
       },
       "R189": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2015 / 4,800엔",
         "photo": ""
       },
       "R190": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2015 / 4,500엔",
         "photo": ""
       },
       "R191": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2015 / 4,500엔",
         "photo": ""
       },
       "R192": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2016 / 4,500엔",
         "photo": ""
       },
       "R193": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2016 / 7,000엔",
         "photo": ""
       },
       "R194": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2016 / 9,000엔",
         "photo": ""
       },
       "R195": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2017 / 3,800엔",
         "photo": ""
       },
       "R196": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2017 / 5,000엔",
         "photo": ""
       },
       "R197": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2017 / 4,800엔",
         "photo": ""
       },
       "R198": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2017 / 6,000엔",
         "photo": ""
       },
       "R199": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2017 / 4,000엔",
         "photo": ""
       },
       "R200": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2017 / 3,500엔",
         "photo": ""
       },
       "R201": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2014 / 5,000엔",
         "photo": ""
       },
       "R202": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2018 / 20,000엔",
         "photo": ""
       },
       "R203": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2018 / 4,000엔",
         "photo": ""
       },
       "R204": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2018 / 4,000엔",
         "photo": ""
       },
       "R205": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2018 / 5,500엔",
         "photo": ""
       },
       "R206": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2019 / 7,500엔",
         "photo": ""
       },
       "R207": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2019 / 4,500엔",
         "photo": ""
       },
       "R208": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2019 / 5,500엔",
         "photo": ""
       },
       "R209": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2019 / 12,000엔",
         "photo": ""
       },
       "R210": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2019 / 5,800엔",
         "photo": ""
       },
       "R211": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2019 / 4,300엔",
         "photo": ""
       },
       "R212": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2019 / 4,500엔",
         "photo": ""
       },
       "R213": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2020 / 11,000엔",
         "photo": ""
       },
       "R214": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2020 / 23,000엔",
         "photo": ""
       },
       "R215": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2020 / 5,000엔",
         "photo": ""
       },
       "R216": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2020 / 5,500엔",
         "photo": ""
       },
       "R217": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2021 / 4,300엔",
         "photo": ""
       },
       "R218": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2021 / 5,000엔",
         "photo": ""
       },
       "R219": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2021 / 8,000엔",
         "photo": ""
       },
       "R220": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2022 / 5,000엔",
         "photo": ""
       },
       "R221": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2022 / 5,000엔",
         "photo": ""
       },
       "R222": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2022 / 14,000엔",
         "photo": ""
       },
       "R223": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2023 / 6,500엔",
         "photo": ""
       },
       "R224": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2024 / 7,000엔",
         "photo": ""
       },
       "R225": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2024 / 8,000엔",
         "photo": ""
       },
       "R226": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2025 / 6,000엔",
         "photo": ""
       },
       "R227": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2025 / 6,500엔",
         "photo": ""
       },
       "R228": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2026 / 11,400엔",
         "photo": ""
@@ -1380,7 +1380,7 @@
   },
   "pb": {
     "version": 7,
-    "updatedAt": "2026-11-24T23:22:43.371Z",
+    "updatedAt": "2026-11-25T03:42:50.167Z",
     "state": {
       "CG001": {
         "status": "miss",
