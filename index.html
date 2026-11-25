@@ -167,7 +167,7 @@
     border-left: 4px solid var(--accent);
     border-bottom: 1px solid var(--border);
     padding: 8px 14px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     border-radius: 6px;
     font-size: 0.96rem;
     font-weight: 800;
@@ -184,6 +184,144 @@
     padding: 2px 8px;
     border-radius: 999px;
     border: 1px solid rgba(56, 189, 248, 0.3);
+  }
+
+
+  /* Distinct color themes per lineup header box in Etc tab */
+  .series-header.theme-re100 {
+    background: linear-gradient(90deg, rgba(14, 165, 233, 0.30) 0%, rgba(30, 41, 59, 0.96) 100%);
+    border-left-color: #38bdf8;
+  }
+  .series-header.theme-fm {
+    background: linear-gradient(90deg, rgba(16, 185, 129, 0.28) 0%, rgba(30, 41, 59, 0.96) 100%);
+    border-left-color: #34d399;
+  }
+  .series-header.theme-srw {
+    background: linear-gradient(90deg, rgba(244, 63, 94, 0.28) 0%, rgba(30, 41, 59, 0.96) 100%);
+    border-left-color: #fb7185;
+  }
+  .series-header.theme-hirm {
+    background: linear-gradient(90deg, rgba(168, 85, 247, 0.28) 0%, rgba(30, 41, 59, 0.96) 100%);
+    border-left-color: #c084fc;
+  }
+
+  /* Lineup group & sub-tier spacing */
+  .lineup-block {
+    margin-bottom: 64px;
+  }
+  .lineup-block:last-child {
+    margin-bottom: 24px;
+  }
+
+  /* Style 1: Thin horizontal line + small centered/left label */
+  .tier-line-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0 10px;
+    color: #94a3b8;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .tier-line-divider::before,
+  .tier-line-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(148,163,184,0.15), rgba(148,163,184,0.45), rgba(148,163,184,0.15));
+  }
+  .tier-line-divider.is-pb {
+    color: #fbbf24;
+  }
+  .tier-line-divider.is-pb::before,
+  .tier-line-divider.is-pb::after {
+    background: linear-gradient(90deg, rgba(251,191,36,0.12), rgba(251,191,36,0.45), rgba(251,191,36,0.12));
+  }
+  .tier-line-divider .tier-cnt {
+    font-size: 0.72rem;
+    opacity: 0.8;
+    font-weight: 600;
+  }
+
+  /* Style 2: Subtle slim sub-bar for Regular & P-Bandai */
+  .tier-sub-bar {
+    margin: 14px 0 8px;
+    padding: 5px 11px;
+    background: rgba(15, 23, 42, 0.55);
+    border-left: 3px solid #64748b;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.7);
+    border-radius: 0 5px 5px 0;
+    color: #cbd5e1;
+    font-size: 0.81rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .tier-sub-bar.is-pb {
+    margin-top: 20px;
+    border-left-color: #f59e0b;
+    color: #fcd34d;
+    background: rgba(245, 158, 11, 0.07);
+  }
+  .tier-sub-bar .tier-cnt {
+    font-size: 0.73rem;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  /* Style 3: Unified Lineup Container Box */
+  .lineup-container-box {
+    background: rgba(15, 23, 42, 0.42);
+    border: 1px solid rgba(51, 65, 85, 0.85);
+    border-radius: 12px;
+    padding: 14px 14px 18px;
+    margin-bottom: 58px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  }
+  .lineup-container-box .series-header {
+    margin-bottom: 12px;
+  }
+  .tier-inline-label {
+    margin: 16px 0 8px;
+    padding: 4px 2px;
+    border-bottom: 1px dashed rgba(148, 163, 184, 0.35);
+    color: #cbd5e1;
+    font-size: 0.80rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .tier-inline-label.is-pb {
+    margin-top: 22px;
+    border-bottom-color: rgba(251, 191, 36, 0.35);
+    color: #fcd34d;
+  }
+  .tier-inline-label .tier-cnt {
+    font-size: 0.72rem;
+    color: #94a3b8;
+  }
+
+  /* Subtle sub-header inside PG Regular for Custom Set */
+  .sub-divider-header {
+    margin: 18px 0 8px;
+    padding: 5px 10px;
+    border-top: 1px dashed rgba(148, 163, 184, 0.35);
+    border-left: 2px solid #64748b;
+    color: #94a3b8;
+    font-size: 0.80rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(15, 23, 42, 0.35);
+    border-radius: 0 5px 5px 0;
+  }
+  .sub-divider-header .sub-cnt {
+    font-size: 0.72rem;
+    color: #64748b;
   }
 
   .grid-container {
@@ -214,7 +352,6 @@
     border-color: #64748b;
     transform: translateY(-2px);
   }
-
 
   .photo-box {
     width: 100%;
@@ -428,7 +565,6 @@
     color: #94a3b8;
   }
 
-
   .sub-row {
     display: flex;
     flex-direction: column;
@@ -549,7 +685,7 @@
     color: var(--text-muted);
     font-weight: 600;
   }
-  .form-group input {
+  .form-group input, .form-group select {
     width: 100%;
     padding: 8px 10px;
     font-size: 0.88rem;
@@ -582,12 +718,20 @@
 
   <div class="main-tabs">
     <button class="tab-btn active" id="tabMg" onclick="switchTab('mg')">
-      MG 일반판 체크리스트
+      MG 일반판
       <span class="tab-pill-cnt" id="pillMg">0/0</span>
     </button>
-    <button class="tab-btn" id="tabPb" onclick="switchTab('pb')">
-      프리미엄 반다이 체크리스트
-      <span class="tab-pill-cnt" id="pillPb">0/0</span>
+    <button class="tab-btn" id="tabPbmg" onclick="switchTab('pbmg')">
+      프반 MG
+      <span class="tab-pill-cnt" id="pillPbmg">0/0</span>
+    </button>
+    <button class="tab-btn" id="tabPg" onclick="switchTab('pg')">
+      PG
+      <span class="tab-pill-cnt" id="pillPg">0/0</span>
+    </button>
+    <button class="tab-btn" id="tabEtc" onclick="switchTab('etc')">
+      기타
+      <span class="tab-pill-cnt" id="pillEtc">0/0</span>
     </button>
   </div>
 
@@ -625,7 +769,7 @@
       <input type="text" id="newKitName" placeholder="예: RX-78-2 건담 Ver.Ka 2.0">
     </div>
     <div class="form-group">
-      <label id="newKitSeriesLabel">등장 작품</label>
+      <label id="newKitSeriesLabel">등장 작품 / 구분</label>
       <input type="text" id="newKitSeries" list="seriesDatalist" placeholder="예: 퍼스트 건담">
       <datalist id="seriesDatalist"></datalist>
     </div>
@@ -644,7 +788,9 @@
 
 <script>
 const MG_DEFAULT_KITS = [{"code": "R001", "name": "건담 RX-78", "series": "퍼스트 건담", "date": "", "defaultMemo": "1995 / 2,500엔"}, {"code": "R002", "name": "자쿠 II(샤아전용)", "series": "퍼스트 건담", "date": "", "defaultMemo": "1995 / 2,500엔"}, {"code": "R003", "name": "자쿠 II(양산형)", "series": "퍼스트 건담", "date": "", "defaultMemo": "1995 / 2,500엔"}, {"code": "R004", "name": "건담 G3", "series": "MSV", "date": "", "defaultMemo": "1996 / 2,500엔"}, {"code": "R005", "name": "Z 건담", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "1996 / 3,500엔"}, {"code": "R006", "name": "자쿠 II(신 마츠나가 전용)", "series": "MSV", "date": "", "defaultMemo": "1996 / 2,800엔"}, {"code": "R007", "name": "자쿠 II(죠니 라이덴 전용)", "series": "MSV", "date": "", "defaultMemo": "1996 / 3,000엔"}, {"code": "R008", "name": "겔구그(샤아전용)", "series": "퍼스트 건담", "date": "", "defaultMemo": "1996 / 3,000엔"}, {"code": "R009", "name": "겔구그 캐논", "series": "MSV", "date": "", "defaultMemo": "1997 / 3,500엔"}, {"code": "R010", "name": "건담 GP01제피랜더스", "series": "0083 : 스타더스트 메모리", "date": "", "defaultMemo": "1997 / 3,000엔"}, {"code": "R011", "name": "겔구그(양산형)", "series": "퍼스트 건담", "date": "", "defaultMemo": "1997 / 3,000엔"}, {"code": "R012", "name": "건담 GP01FB풀버니언", "series": "0083 : 스타더스트 메모리", "date": "", "defaultMemo": "1997 / 3,000엔"}, {"code": "R013", "name": "건담 GP02사이사리스", "series": "0083 : 스타더스트 메모리", "date": "", "defaultMemo": "1998 / 4,000엔"}, {"code": "R014", "name": "건담 Mk. II(에우고 버전)", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "1998 / 3,000엔"}, {"code": "R015", "name": "건담 Mk. II(티탄즈 버전)", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "1998 / 3,000엔"}, {"code": "R016", "name": "수퍼 건담", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "1998 / 4,200엔"}, {"code": "R017", "name": "짐", "series": "퍼스트 건담", "date": "", "defaultMemo": "1999 / 2,500엔"}, {"code": "R018", "name": "자쿠 I(양산형)", "series": "퍼스트 건담", "date": "", "defaultMemo": "1999 / 2,500엔"}, {"code": "R019", "name": "자쿠 I(검은 삼연성)", "series": "MSV", "date": "", "defaultMemo": "1999 / 2,500엔"}, {"code": "R020", "name": "자쿠 II(검은삼연성)", "series": "MSV", "date": "", "defaultMemo": "1999 / 3,000엔"}, {"code": "R021", "name": "돔", "series": "퍼스트 건담", "date": "", "defaultMemo": "1999 / 4,000엔"}, {"code": "R022", "name": "건담 NT-1알렉스", "series": "0080 : 주머니 속의 전쟁", "date": "", "defaultMemo": "1999 / 3,000엔"}, {"code": "R023", "name": "릭돔", "series": "퍼스트 건담", "date": "", "defaultMemo": "1999 / 4,000엔"}, {"code": "R024", "name": "짐 커스텀", "series": "0083 : 스타더스트 메모리", "date": "", "defaultMemo": "1999 / 3,000엔"}, {"code": "R025", "name": "짐 쿠엘", "series": "0083 : 스타더스트 메모리", "date": "", "defaultMemo": "1999 / 3,000엔"}, {"code": "R026", "name": "ZZ 건담", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "1999 / 4,000엔"}, {"code": "R027", "name": "육전형 건담", "series": "제 08 MS소대", "date": "", "defaultMemo": "2000 / 3,000엔"}, {"code": "R028", "name": "건담 RX-78 v1.5", "series": "퍼스트 건담", "date": "", "defaultMemo": "2000 / 3,000엔"}, {"code": "R029", "name": "사자비", "series": "역습의 샤아", "date": "", "defaultMemo": "2000 / 8,000엔"}, {"code": "R030", "name": "풀 아머 ZZ 건담", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2026 / 11,400엔"}, {"code": "R031", "name": "자쿠 I(람바랄 전용)", "series": "MSV", "date": "", "defaultMemo": "2000 / 2,800엔"}, {"code": "R032", "name": "구프", "series": "퍼스트 건담", "date": "", "defaultMemo": "2000 / 2,800엔"}, {"code": "R033", "name": "건담 Ez8", "series": "제 08 MS소대", "date": "", "defaultMemo": "2000 / 3,000엔"}, {"code": "R034", "name": "뉴 건담", "series": "역습의 샤아", "date": "", "defaultMemo": "2000 / 5,000엔"}, {"code": "R035", "name": "캠퍼", "series": "0080 : 주머니 속의 전쟁", "date": "", "defaultMemo": "2001 / 4,000엔"}, {"code": "R036", "name": "구프 커스텀", "series": "제 08 MS소대", "date": "", "defaultMemo": "2001 / 3,000엔"}, {"code": "R037", "name": "백식", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2001 / 4,500엔"}, {"code": "R038", "name": "건담 GP03스테이맨", "series": "0083 : 스타더스트 메모리", "date": "", "defaultMemo": "2001 / 3,500엔"}, {"code": "R039", "name": "리가지", "series": "역습의 샤아", "date": "", "defaultMemo": "2001 / 4,000엔"}, {"code": "R040", "name": "육전형 짐", "series": "제 08 MS소대", "date": "", "defaultMemo": "2001 / 3,000엔"}, {"code": "R041", "name": "큐베레이", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2001 / 4,000엔"}, {"code": "R042", "name": "FAZZ(센티넬 버전)", "series": "건담 센티넬", "date": "", "defaultMemo": "2001 / 6,000엔"}, {"code": "R043", "name": "제타플러스 A1(아므로 전용)", "series": "건담 센티넬", "date": "", "defaultMemo": "2001 / 3,000엔"}, {"code": "R044", "name": "갓 건담", "series": "기동무투전 G건담", "date": "", "defaultMemo": "2001 / 2,500엔"}, {"code": "R045", "name": "건캐논", "series": "퍼스트 건담", "date": "", "defaultMemo": "2001 / 3,000엔"}, {"code": "R046", "name": "제타플러스 C1", "series": "건담 센티넬", "date": "", "defaultMemo": "2002 / 3,000엔"}, {"code": "R047", "name": "마스터 건담", "series": "기동무투전 G건담", "date": "", "defaultMemo": "2002 / 2,800엔"}, {"code": "R048", "name": "자쿠 II F2(지온군 사양)", "series": "0083 : 스타더스트 메모리", "date": "", "defaultMemo": "2002 / 3,000엔"}, {"code": "R049", "name": "샤이닝 건담", "series": "기동무투전 G건담", "date": "", "defaultMemo": "2002 / 2,500엔"}, {"code": "R050", "name": "짐카이(지상형)", "series": "0083 : 스타더스트 메모리", "date": "", "defaultMemo": "2002 / 2,500엔"}, {"code": "R051", "name": "지옹", "series": "퍼스트 건담", "date": "", "defaultMemo": "2002 / 6,000엔"}, {"code": "R052", "name": "건담 RX-78(캐스발 전용)", "series": "MSV", "date": "", "defaultMemo": "2002 / 3,000엔"}, {"code": "R053", "name": "건담 슈피겔", "series": "기동무투전 G건담", "date": "", "defaultMemo": "2002 / 2,500엔"}, {"code": "R054", "name": "자쿠 II F2(연방군 사양)", "series": "0083 : 스타더스트 메모리", "date": "", "defaultMemo": "2002 / 3,000엔"}, {"code": "R055", "name": "S 건담", "series": "건담 센티넬", "date": "", "defaultMemo": "2002 / 6,000엔"}, {"code": "R056", "name": "짐카이(우주형)", "series": "0083 : 스타더스트 메모리", "date": "", "defaultMemo": "2002 / 2,500엔"}, {"code": "R057", "name": "건담 RX-78Ver. Ka", "series": "기타", "date": "", "defaultMemo": "2002 / 3,200엔"}, {"code": "R058", "name": "릭돔(샤아전용)", "series": "MSV", "date": "", "defaultMemo": "2002 / 4,500엔"}, {"code": "R059", "name": "겔구그(가토 전용)", "series": "MSV", "date": "", "defaultMemo": "2003 / 3,500엔"}, {"code": "R060", "name": "Ex-S 건담", "series": "건담 센티넬", "date": "", "defaultMemo": "2003 / 8,000엔"}, {"code": "R061", "name": "즈고크", "series": "퍼스트 건담", "date": "", "defaultMemo": "2003 / 3,000엔"}, {"code": "R062", "name": "고그", "series": "퍼스트 건담", "date": "", "defaultMemo": "2003 / 3,800엔"}, {"code": "R063", "name": "건담 4호기", "series": "기타", "date": "", "defaultMemo": "2003 / 3,000엔"}, {"code": "R064", "name": "건담 5호기", "series": "기타", "date": "", "defaultMemo": "2003 / 2,800엔"}, {"code": "R065", "name": "에일스트라이크 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2003 / 3,800엔"}, {"code": "R066", "name": "즈고크(샤아전용)", "series": "퍼스트 건담", "date": "", "defaultMemo": "2003 / 3,000엔"}, {"code": "R067", "name": "퍼펙트 건담", "series": "MSV", "date": "", "defaultMemo": "2003 / 4,000엔"}, {"code": "R068", "name": "큐베레이 Mk-II(플투 전용)", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2004 / 4,000엔"}, {"code": "R069", "name": "윙 건담 Ver.Ka", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2004 / 3,500엔"}, {"code": "R070", "name": "릭디아스", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2004 / 3,800엔"}, {"code": "R071", "name": "퍼펙트 지옹", "series": "MSV", "date": "", "defaultMemo": "2004 / 10,000엔"}, {"code": "R072", "name": "프리덤 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2004 / 3,800엔"}, {"code": "R073", "name": "하이잭(티탄즈 버전)", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2004 / 3,800엔"}, {"code": "R074", "name": "스트라이크 루즈", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2004 / 4,000엔"}, {"code": "R075", "name": "윙 건담 제로 커스텀", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2004 / 3,800엔"}, {"code": "R076", "name": "볼 Ver. Ka", "series": "퍼스트 건담", "date": "", "defaultMemo": "2004 / 2,000엔"}, {"code": "R077", "name": "릭디아스(크와트로 전용)", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2005 / 3,800엔"}, {"code": "R078", "name": "RX-78-2 건담(1년전쟁 버전)", "series": "기타", "date": "", "defaultMemo": "2005 / 3,200엔"}, {"code": "R079", "name": "볼(08소대 버전)", "series": "제 08 MS소대", "date": "", "defaultMemo": "2005 / 2,400엔"}, {"code": "R080", "name": "앗가이", "series": "퍼스트 건담", "date": "", "defaultMemo": "2005 / 4,000엔"}, {"code": "R081", "name": "백식 + 밸류트시스템", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2005 / 4,000엔"}, {"code": "R082", "name": "건담 Mk. II v2.0(에우고 버전)", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2005 / 4,000엔"}, {"code": "R083", "name": "Z 건담 v2.0", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2005 / 5,000엔"}, {"code": "R084", "name": "네모", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2006 / 2,800엔"}, {"code": "R085", "name": "건담 Mk. II v2.0(티탄즈 버전)", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2006 / 3,500엔"}, {"code": "R086", "name": "걍", "series": "퍼스트 건담", "date": "", "defaultMemo": "2006 / 3,600엔"}, {"code": "R087", "name": "건담 F91", "series": "건담 F91 / 크로스본", "date": "", "defaultMemo": "2006 / 3,200엔"}, {"code": "R088", "name": "볼 : 샤크마우스(MS 이글루 버전)", "series": "기타", "date": "", "defaultMemo": "2006 / 2,200엔"}, {"code": "R089", "name": "크로스본 건담 X1", "series": "건담 F91 / 크로스본", "date": "", "defaultMemo": "2006 / 3,500엔"}, {"code": "R090", "name": "스트라이크 건담+ I.W.S.P.", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2006 / 4,200엔"}, {"code": "R091", "name": "건담 F91(해리슨 전용기)", "series": "건담 F91 / 크로스본", "date": "", "defaultMemo": "2006 / 3,200엔"}, {"code": "R092", "name": "짐 스나이퍼", "series": "제 08 MS소대", "date": "", "defaultMemo": "2006 / 3,500엔"}, {"code": "R093", "name": "스트라이크 프리덤건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2006 / 4,800엔"}, {"code": "R094", "name": "크로스본 건담 X1풀크로스", "series": "건담 F91 / 크로스본", "date": "", "defaultMemo": "2007 / 4,500엔"}, {"code": "R095", "name": "하이뉴 건담", "series": "기타", "date": "", "defaultMemo": "2007 / 7,000엔"}, {"code": "R096", "name": "스트라이크 느와르건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2007 / 4,500엔"}, {"code": "R097", "name": "자쿠 II J형 ver2.0", "series": "퍼스트 건담", "date": "", "defaultMemo": "2007 / 3,500엔"}, {"code": "R098", "name": "자쿠 II ~샤아용 ver2.0", "series": "퍼스트 건담", "date": "", "defaultMemo": "2007 / 3,500엔"}, {"code": "R099", "name": "겔구그 ~샤아용 ver2.0", "series": "퍼스트 건담", "date": "", "defaultMemo": "2007 / 4,500엔"}, {"code": "R100", "name": "∀ 건담", "series": "턴 A 건담", "date": "", "defaultMemo": "2007 / 3,800엔"}, {"code": "R101", "name": "데스티니 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2007 / 4,800엔"}, {"code": "R102", "name": "유니콘 건담 Ver.Ka", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2007 / 5,000엔"}, {"code": "R103", "name": "자쿠 II 고기동형 v2.0~ 검은삼연성", "series": "MSV", "date": "", "defaultMemo": "2008 / 4,500엔"}, {"code": "R104", "name": "스트라이크E + IWSP루카스 전용기", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2008 / 4,500엔"}, {"code": "R105", "name": "자쿠 마인레이어", "series": "MSV", "date": "", "defaultMemo": "2008 / 4,500엔"}, {"code": "R106", "name": "자쿠 II F v2.0", "series": "퍼스트 건담", "date": "", "defaultMemo": "2008 / 3,800엔"}, {"code": "R107", "name": "겔구그 ~양산형 v2.0", "series": "퍼스트 건담", "date": "", "defaultMemo": "2008 / 4,500엔"}, {"code": "R108", "name": "소드/런쳐스트라이크 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2008 / 5,000엔"}, {"code": "R109", "name": "포스 임펄스 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2008 / 4,500엔"}, {"code": "R110", "name": "진 무사건담", "series": "기타", "date": "", "defaultMemo": "2008 / 5,000엔"}, {"code": "R111", "name": "건담 RX-78 v2.0", "series": "퍼스트 건담", "date": "", "defaultMemo": "2008 / 4,200엔"}, {"code": "R112", "name": "자쿠 캐논", "series": "MSV", "date": "", "defaultMemo": "2008 / 4,500엔"}, {"code": "R113", "name": "자쿠 II 고기동형 v2.0~ 죠니라이덴 전용기", "series": "MSV", "date": "", "defaultMemo": "2008 / 4,500엔"}, {"code": "R114", "name": "인피니트저스티스 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2008 / 5,000엔"}, {"code": "R115", "name": "자쿠 II 고기동형 v2.0~ 신마츠나가 전용기", "series": "MSV", "date": "", "defaultMemo": "2008 / 4,500엔"}, {"code": "R116", "name": "시난주", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2008 / 7,000엔"}, {"code": "R117", "name": "지 파이터", "series": "퍼스트 건담", "date": "", "defaultMemo": "2009 / 5,600엔"}, {"code": "R118", "name": "짐 v2.0", "series": "퍼스트 건담", "date": "", "defaultMemo": "2009 / 3,500엔"}, {"code": "R119", "name": "소드임펄스 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2009 / 4,500엔"}, {"code": "R120", "name": "구프 v2.0", "series": "퍼스트 건담", "date": "", "defaultMemo": "2009 / 3,800엔"}, {"code": "R121", "name": "지아머 : 리얼타입컬러", "series": "MSV", "date": "", "defaultMemo": "2009 / 9,800엔"}, {"code": "R122", "name": "자쿠 II v2.0화이트 오거", "series": "MSV", "date": "", "defaultMemo": "2009 / 3,500엔"}, {"code": "R123", "name": "건담 엑시아", "series": "건담 더블오", "date": "", "defaultMemo": "2009 / 3,800엔"}, {"code": "R124", "name": "건탱크", "series": "퍼스트 건담", "date": "", "defaultMemo": "2009 / 4,800엔"}, {"code": "R125", "name": "건담 아스트레이블루프레임 2nd R", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2009 / 4,800엔"}, {"code": "R126", "name": "큐베레이 Mk-II(엘피플 전용기)", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2009 / 4,000엔"}, {"code": "R127", "name": "V 건담 Ver. Ka", "series": "V 건담", "date": "", "defaultMemo": "2009 / 3,800엔"}, {"code": "R128", "name": "건담 G3 v2.0", "series": "MSV", "date": "", "defaultMemo": "2009 / 4,200엔"}, {"code": "R129", "name": "징크스", "series": "건담 더블오", "date": "", "defaultMemo": "2010 / 3,600엔"}, {"code": "R130", "name": "건담 아스트레이레드프레임", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2010 / 5,000엔"}, {"code": "R131", "name": "유니콘 건담영상판", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2010 / 5,000엔"}, {"code": "R132", "name": "윙 건담", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2010 / 4,000엔"}, {"code": "R133", "name": "무사건담 Mk-II", "series": "기타", "date": "", "defaultMemo": "2010 / 6,000엔"}, {"code": "R134", "name": "풀아머 건담", "series": "MSV", "date": "", "defaultMemo": "2010 / 5,000엔"}, {"code": "R135", "name": "코어 부스터 Ver.Ka", "series": "V 건담", "date": "", "defaultMemo": "2010 / 2,200엔"}, {"code": "R136", "name": "V-대시 건담 Ver.Ka", "series": "V 건담", "date": "", "defaultMemo": "2010 / 5,800엔"}, {"code": "R137", "name": "디 오", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2010 / 12,000엔"}, {"code": "R138", "name": "건담 데스사이즈", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2010 / 3,800엔"}, {"code": "R139", "name": "리젤", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2010 / 4,800엔"}, {"code": "R140", "name": "더블오 쿠안타", "series": "건담 더블오", "date": "", "defaultMemo": "2010 / 4,500엔"}, {"code": "R141", "name": "리젤 대장기", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2011 / 5,000엔"}, {"code": "R142", "name": "건담 데스사이즈 헬", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2011 / 4,500엔"}, {"code": "R143", "name": "쉔롱 건담", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2011 / 3,800엔"}, {"code": "R144", "name": "윙건담: 엔드리스왈츠", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2011 / 3,500엔"}, {"code": "R145", "name": "더블오라이저", "series": "건담 더블오", "date": "", "defaultMemo": "2011 / 6,500엔"}, {"code": "R146", "name": "건담 에피온", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2011 / 4,800엔"}, {"code": "R147", "name": "델타 플러스", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2011 / 4,500엔"}, {"code": "R148", "name": "더블오 건담세븐소드/G", "series": "건담 더블오", "date": "", "defaultMemo": "2011 / 5,500엔"}, {"code": "R149", "name": "건담 샌드록", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2011 / 3,800엔"}, {"code": "R150", "name": "풀아머 유니콘 건담", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2011 / 8,000엔"}, {"code": "R151", "name": "건담 헤비암즈", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2012 / 3,800엔"}, {"code": "R152", "name": "듀엘 건담어썰트 슈라우드", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2012 / 4,200엔"}, {"code": "R153", "name": "건담 에이지-1노멀", "series": "건담 에이지", "date": "", "defaultMemo": "2012 / 3,500엔"}, {"code": "R154", "name": "건담 에이지-1타이터스", "series": "건담 에이지", "date": "", "defaultMemo": "2012 / 3,800엔"}, {"code": "R155", "name": "유니콘 건담 02 밴시", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2012 / 5,500엔"}, {"code": "R156", "name": "건담 에이지-1스팔로", "series": "건담 에이지", "date": "", "defaultMemo": "2012 / 3,500엔"}, {"code": "R157", "name": "마라사이", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2012 / 4,000엔"}, {"code": "R158", "name": "블리츠 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2012 / 4,000엔"}, {"code": "R159", "name": "건담 에이지-2노멀", "series": "건담 에이지", "date": "", "defaultMemo": "2012 / 4,200엔"}, {"code": "R160", "name": "버스터 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2012 / 4,000엔"}, {"code": "R161", "name": "이지스 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2012 / 4,800엔"}, {"code": "R162", "name": "건담 에이지-2다크 하운드", "series": "건담 에이지", "date": "", "defaultMemo": "2012 / 4,200엔"}, {"code": "R163", "name": "뉴건담 Ver. Ka", "series": "역습의 샤아", "date": "", "defaultMemo": "2012 / 7,000엔"}, {"code": "R164", "name": "톨기스", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2013 / 3,800엔"}, {"code": "R165", "name": "시난주 스타인 Ver.Ka", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2013 / 7,000엔"}, {"code": "R166", "name": "리젤 C타입[디펜서 a+b 유닛]", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2013 / 6,500엔"}, {"code": "R167", "name": "시난주아니메 버전", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2013 / 7,500엔"}, {"code": "R168", "name": "제스타", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2013 / 4,000엔"}, {"code": "R169", "name": "에일 스트라이크 건담Ver. RM", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2013 / 4,200엔"}, {"code": "R170", "name": "건담 에이지-2더블 바렛", "series": "건담 에이지", "date": "", "defaultMemo": "2013 / 4,200엔"}, {"code": "R171", "name": "기라 도가", "series": "역습의 샤아", "date": "", "defaultMemo": "2013 / 4,800엔"}, {"code": "R172", "name": "RX-78 Ver.3.0", "series": "퍼스트 건담", "date": "", "defaultMemo": "2013 / 4,500엔"}, {"code": "R173", "name": "스트라이크 루즈+ 오오토리", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2013 / 4,200엔"}, {"code": "R174", "name": "윙건담 프로토 제로", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2013 / 4,800엔"}, {"code": "R175", "name": "사자비 Ver. Ka", "series": "역습의 샤아", "date": "", "defaultMemo": "2013 / 9,000엔"}, {"code": "R176", "name": "빌드 스트라이크 건담풀 패키지", "series": "건담 빌드 시리즈", "date": "", "defaultMemo": "2014 / 4,200엔"}, {"code": "R177", "name": "건담 엑스", "series": "건담 X", "date": "", "defaultMemo": "2014 / 3,800엔"}, {"code": "R178", "name": "유니콘 건담 3호기페넥스", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2014 / 12,000엔"}, {"code": "R179", "name": "전국 아스트레이 건담", "series": "건담 빌드 시리즈", "date": "", "defaultMemo": "2014 / 5,000엔"}, {"code": "R180", "name": "빌드 건담 Mk-II", "series": "건담 빌드 시리즈", "date": "", "defaultMemo": "2014 / 5,000엔"}, {"code": "R181", "name": "유니버스 부스터", "series": "건담 빌드 시리즈", "date": "", "defaultMemo": "2014 / 1,600엔"}, {"code": "R182", "name": "턴 엑스", "series": "턴 A 건담", "date": "", "defaultMemo": "2014 / 6,000엔"}, {"code": "R183", "name": "하이뉴 건담Ver. Ka.", "series": "기타", "date": "", "defaultMemo": "2014 / 7,000엔"}, {"code": "R184", "name": "건담 아스트레이블루프레임 D", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2014 / 4,800엔"}, {"code": "R185", "name": "건담 엑시아 다크매터", "series": "건담 빌드 시리즈", "date": "", "defaultMemo": "2015 / 5,000엔"}, {"code": "R186", "name": "건담 더블엑스", "series": "건담 X", "date": "", "defaultMemo": "2015 / 4,500엔"}, {"code": "R187", "name": "백식 Ver.2.0", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2015 / 6,800엔"}, {"code": "R188", "name": "건담 페니체 리나시타", "series": "건담 빌드 시리즈", "date": "", "defaultMemo": "2015 / 4,800엔"}, {"code": "R189", "name": "건담 어메이징레드 워리어", "series": "건담 빌드 시리즈", "date": "", "defaultMemo": "2015 / 4,800엔"}, {"code": "R190", "name": "건담 디 오리진", "series": "기타", "date": "", "defaultMemo": "2015 / 4,500엔"}, {"code": "R191", "name": "V2 건담", "series": "V 건담", "date": "", "defaultMemo": "2015 / 4,500엔"}, {"code": "R192", "name": "프리덤 건담 2.0", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2016 / 4,500엔"}, {"code": "R193", "name": "풀아머 건담 [썬더볼트]Ver.Ka", "series": "기타", "date": "", "defaultMemo": "2016 / 7,000엔"}, {"code": "R194", "name": "사이코 자쿠 [썬더볼트]Ver.Ka", "series": "기타", "date": "", "defaultMemo": "2016 / 9,000엔"}, {"code": "R195", "name": "짐 스나이퍼 II", "series": "0080 : 주머니 속의 전쟁", "date": "", "defaultMemo": "2017 / 3,800엔"}, {"code": "R196", "name": "프로비던스 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2017 / 5,000엔"}, {"code": "R197", "name": "저스티스 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2017 / 4,800엔"}, {"code": "R198", "name": "ZZ 건담 Ver. Ka", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2017 / 6,000엔"}, {"code": "R199", "name": "짐 스나이퍼 커스텀", "series": "MSV", "date": "", "defaultMemo": "2017 / 4,000엔"}, {"code": "R200", "name": "짐 커맨드 콜로니형", "series": "0080 : 주머니 속의 전쟁", "date": "", "defaultMemo": "2017 / 3,500엔"}, {"code": "R201", "name": "유니콘 건담 02 밴시Ver.Ka", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2014 / 5,000엔"}, {"code": "R202", "name": "딥 스트라이커", "series": "건담 센티넬", "date": "", "defaultMemo": "2018 / 20,000엔"}, {"code": "R203", "name": "건담 F91 Ver.2.0", "series": "건담 F91 / 크로스본", "date": "", "defaultMemo": "2018 / 4,000엔"}, {"code": "R204", "name": "제간", "series": "역습의 샤아", "date": "", "defaultMemo": "2018 / 4,000엔"}, {"code": "R205", "name": "더블오 쿠안타풀 세이버", "series": "건담 더블오", "date": "", "defaultMemo": "2018 / 5,500엔"}, {"code": "R206", "name": "시난주 스타인[내러티브 버전]", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2019 / 7,500엔"}, {"code": "R207", "name": "건담 듀나메스", "series": "건담 더블오", "date": "", "defaultMemo": "2019 / 4,500엔"}, {"code": "R208", "name": "건담 에이지 II매그넘", "series": "건담 빌드 시리즈", "date": "", "defaultMemo": "2019 / 5,500엔"}, {"code": "R209", "name": "Ex-S / S 건담", "series": "건담 센티넬", "date": "", "defaultMemo": "2019 / 12,000엔"}, {"code": "R210", "name": "건담 NT-1 Ver.2.0", "series": "0080 : 주머니 속의 전쟁", "date": "", "defaultMemo": "2019 / 5,800엔"}, {"code": "R211", "name": "건너 자쿠 워리어루나마리아 호크전용기", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2019 / 4,300엔"}, {"code": "R212", "name": "건담 발바토스", "series": "철혈의 오펀스", "date": "", "defaultMemo": "2019 / 4,500엔"}, {"code": "R213", "name": "FAZZ Ver.Ka", "series": "건담 센티넬", "date": "", "defaultMemo": "2020 / 11,000엔"}, {"code": "R214", "name": "유니콘 건담 Ver.Ka. (MGEX)", "series": "MGEX", "date": "", "defaultMemo": "2020 / 23,000엔"}, {"code": "R215", "name": "건담 큐리오스", "series": "건담 더블오", "date": "", "defaultMemo": "2020 / 5,000엔"}, {"code": "R216", "name": "윙건담 제로 EWVer.Ka", "series": "신기동전기 건담 윙 / EW", "date": "", "defaultMemo": "2020 / 5,500엔"}, {"code": "R217", "name": "모빌 진", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2021 / 4,300엔"}, {"code": "R218", "name": "이클립스 건담", "series": "건담 시드 / 아스트레이", "date": "", "defaultMemo": "2021 / 5,000엔"}, {"code": "R219", "name": "건담 버체", "series": "건담 더블오", "date": "", "defaultMemo": "2021 / 8,000엔"}, {"code": "R220", "name": "돔 (리뉴얼)", "series": "퍼스트 건담", "date": "", "defaultMemo": "2022 / 5,000엔"}, {"code": "R221", "name": "릭돔 (리뉴얼)", "series": "퍼스트 건담", "date": "", "defaultMemo": "2022 / 5,000엔"}, {"code": "R222", "name": "스트라이크 프리덤 건담 (MGEX)", "series": "MGEX", "date": "", "defaultMemo": "2022 / 14,000엔"}, {"code": "R223", "name": "제타 건담 Ver.Ka", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2023 / 6,500엔"}, {"code": "R224", "name": "내러티브 건담 C팩Ver.Ka", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2024 / 7,000엔"}, {"code": "R225", "name": "시난주 스타인[내러티브 버전]Ver.Ka", "series": "유니콘 / 내러티브", "date": "", "defaultMemo": "2024 / 8,000엔"}, {"code": "R226", "name": "건담 비다르", "series": "철혈의 오펀스", "date": "", "defaultMemo": "2025 / 6,000엔"}, {"code": "R227", "name": "건담 발바토스 루프스", "series": "철혈의 오펀스", "date": "", "defaultMemo": "2025 / 6,500엔"}, {"code": "R228", "name": "풀아머 ZZ 건담", "series": "Z & ZZ 건담", "date": "", "defaultMemo": "2026 / 11,400엔"}];
-const PB_DEFAULT_KITS = [{"code": "CG001", "name": "자쿠 II 중력전선 이미지 컬러 Ver.", "displayHtml": "자쿠 II 중력전선<br>이미지 컬러 Ver.", "series": "MG", "date": "", "defaultMemo": "2009 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG002", "name": "구프커스텀 중력전선 이미지 컬러 Ver.", "displayHtml": "구프커스텀 중력전선<br>이미지 컬러 Ver.", "series": "MG", "date": "", "defaultMemo": "2009 / 3,000엔", "category": "MG : 우주세기"}, {"code": "CG003", "name": "돔 중력전선 이미지 컬러 Ver.", "displayHtml": "돔 중력전선<br>이미지 컬러 Ver.", "series": "MG", "date": "", "defaultMemo": "2009 / 4,000엔", "category": "MG : 우주세기"}, {"code": "CG004", "name": "건담 Ver.2.0 리얼타입컬러", "displayHtml": "건담 Ver.2.0<br>리얼타입컬러", "series": "MG", "date": "", "defaultMemo": "2010 / 4,200엔", "category": "MG : 우주세기"}, {"code": "CG005", "name": "샤아전용 자쿠 II Ver.2.0 리얼타입컬러", "displayHtml": "샤아전용 자쿠 II Ver.2.0<br>리얼타입컬러", "series": "MG", "date": "", "defaultMemo": "2010 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG006", "name": "벨류트팩", "displayHtml": "벨류트팩", "series": "MG", "date": "", "defaultMemo": "2010 / 1,400엔", "category": "MG : 우주세기"}, {"code": "CG007", "name": "검은삼연성 자쿠 Ver.2.0", "displayHtml": "검은삼연성<br>자쿠 Ver.2.0", "series": "MG", "date": "", "defaultMemo": "2011 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG008", "name": "더블 핀판넬 확장유닛", "displayHtml": "더블 핀판넬 확장유닛", "series": "MG", "date": "", "defaultMemo": "2012 / 2,000엔", "category": "MG : 우주세기"}, {"code": "CG009", "name": "유마 라이트닝 전용 자쿠 II", "displayHtml": "유마 라이트닝 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2013 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG010", "name": "죠니 라이덴기 전용 자쿠 II", "displayHtml": "죠니 라이덴기 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2013 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG011", "name": "아나벨 가토 전용 자쿠 II", "displayHtml": "아나벨 가토 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2013 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG012", "name": "건담 Ver. 3.0용 확장세트", "displayHtml": "건담 Ver. 3.0용<br>확장세트", "series": "MG", "date": "", "defaultMemo": "2013 / 1,500엔", "category": "MG : 우주세기"}, {"code": "CG013", "name": "기라도가 (레즌 슈나이더 전용기)", "displayHtml": "기라도가<br>(레즌 슈나이더 전용기)", "series": "MG", "date": "", "defaultMemo": "2013 / 4,800엔", "category": "MG : 우주세기"}, {"code": "CG014", "name": "프로토타입 건담", "displayHtml": "프로토타입 건담", "series": "MG", "date": "", "defaultMemo": "2013 / 4,200엔", "category": "MG : 우주세기"}, {"code": "CG015", "name": "풀아머 건담 블루 컬러 Ver.", "displayHtml": "풀아머 건담<br>블루 컬러 Ver.", "series": "MG", "date": "", "defaultMemo": "2014 / 5,000엔", "category": "MG : 우주세기"}, {"code": "CG016", "name": "도즐 자비 전용 자쿠 II", "displayHtml": "도즐 자비 전용 자쿠 II", "series": "MG", "date": "", "defaultMemo": "2014 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG017", "name": "겔구그 캐논 (MSV 컬러)", "displayHtml": "겔구그 캐논<br>(MSV 컬러)", "series": "MG", "date": "", "defaultMemo": "2014 / 4,800엔", "category": "MG : 우주세기"}, {"code": "CG018", "name": "S건담 부스터 유닛 장비형", "displayHtml": "S건담<br>부스터 유닛 장비형", "series": "MG", "date": "", "defaultMemo": "2014 / 9,800엔", "category": "MG : 우주세기"}, {"code": "CG019", "name": "마쿠베 전용 구프", "displayHtml": "마쿠베 전용 구프", "series": "MG", "date": "", "defaultMemo": "2014 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG020", "name": "하이뉴 건담 Ver.Ka용 HWS 확장 세트", "displayHtml": "하이뉴 건담 Ver.Ka용<br>HWS 확장 세트", "series": "MG", "date": "", "defaultMemo": "2014 / 2,800엔", "category": "MG : 우주세기"}, {"code": "CG021", "name": "가르마 자비 전용 자쿠 II", "displayHtml": "가르마 자비 전용 자쿠 II", "series": "MG", "date": "", "defaultMemo": "2014 / 3,800엔", "category": "MG : 우주세기"}, {"code": "CG022", "name": "제타건담 3호기 B형 [그레이 제타]", "displayHtml": "제타건담 3호기 B형<br>[그레이 제타]", "series": "MG", "date": "", "defaultMemo": "2014 / 6,500엔", "category": "MG : 우주세기"}, {"code": "CG023", "name": "도즐자비 전용 릭돔", "displayHtml": "도즐자비 전용 릭돔", "series": "MG", "date": "", "defaultMemo": "2015 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG024", "name": "제타건담 3호기 P2형 [레드 제타]", "displayHtml": "제타건담 3호기 P2형<br>[레드 제타]", "series": "MG", "date": "", "defaultMemo": "2015 / 6,500엔", "category": "MG : 우주세기"}, {"code": "CG025", "name": "개비 하자드 전용 자쿠 II", "displayHtml": "개비 하자드 전용 자쿠 II", "series": "MG", "date": "", "defaultMemo": "2015 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG026", "name": "턴에이건담 (월광접 Ver.)", "displayHtml": "턴에이건담<br>(월광접 Ver.)", "series": "MG", "date": "", "defaultMemo": "2015 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG027", "name": "턴에이건담용 확장 이펙트유닛 \"월광접\"", "displayHtml": "턴에이건담용<br>확장 이펙트유닛<br>\"월광접\"", "series": "MG", "date": "", "defaultMemo": "2015 / 1,800엔", "category": "MG : 우주세기"}, {"code": "CG028", "name": "메가 바주카 런쳐", "displayHtml": "메가 바주카 런쳐", "series": "MG", "date": "", "defaultMemo": "2015 / 3,800엔", "category": "MG : 우주세기"}, {"code": "CG029", "name": "사자비 Ver.Ka & RE/100 나이팅게일용 확장 판넬 이펙트 세트", "displayHtml": "사자비 Ver.Ka &amp;<br>RE/100 나이팅게일용<br>확장 판넬 이펙트 세트", "series": "MG", "date": "", "defaultMemo": "2015 / 2,000엔", "category": "MG : 우주세기"}, {"code": "CG030", "name": "짐 캐논", "displayHtml": "짐 캐논", "series": "MG", "date": "", "defaultMemo": "2015 / 4,000엔", "category": "MG : 우주세기"}, {"code": "CG031", "name": "헤비건담", "displayHtml": "헤비건담", "series": "MG", "date": "", "defaultMemo": "2015 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG032", "name": "양산형 백식 카이", "displayHtml": "양산형 백식 카이", "series": "MG", "date": "", "defaultMemo": "2015 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG033", "name": "V2 건담 Ver.Ka용 확장 이펙트유닛 \"빛의 날개\"", "displayHtml": "V2 건담 Ver.Ka용 확장<br>이펙트유닛 \"빛의 날개\"", "series": "MG", "date": "", "defaultMemo": "2016 / 2,000엔", "category": "MG : 우주세기"}, {"code": "CG034", "name": "에릭 맨스필드 전용 자쿠 II", "displayHtml": "에릭 맨스필드 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2016 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG035", "name": "파워드 짐", "displayHtml": "파워드 짐", "series": "MG", "date": "", "defaultMemo": "2016 / 3,000엔", "category": "MG : 우주세기"}, {"code": "CG036", "name": "백식 카이", "displayHtml": "백식 카이", "series": "MG", "date": "", "defaultMemo": "2016 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG037", "name": "웨폰&아머 행거 FOR 풀아머 건담 Ver.Ka (건담 썬더볼트)", "displayHtml": "웨폰&amp;아머 행거 FOR<br>풀아머 건담 Ver.Ka<br>(건담 썬더볼트)", "series": "MG", "date": "", "defaultMemo": "2016 / 2,600엔", "category": "MG : 우주세기"}, {"code": "CG038", "name": "로버트 길리엄 전용 자쿠 II", "displayHtml": "로버트 길리엄 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2016 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG039", "name": "뉴건담 HWS Ver.Ka", "displayHtml": "뉴건담 HWS Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2016 / 8,600엔", "category": "MG : 우주세기"}, {"code": "CG040", "name": "뉴건담 Ver.Ka용 HWS 확장세트", "displayHtml": "뉴건담 Ver.Ka용<br>HWS 확장세트", "series": "MG", "date": "", "defaultMemo": "2016 / 2,800엔", "category": "MG : 우주세기"}, {"code": "CG041", "name": "짐 II", "displayHtml": "짐 II", "series": "MG", "date": "", "defaultMemo": "2017 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG042", "name": "프로토타입 구프", "displayHtml": "프로토타입 구프", "series": "MG", "date": "", "defaultMemo": "2017 / 4,800엔", "category": "MG : 우주세기"}, {"code": "CG043", "name": "짐 스나이퍼 II (화이트딩고 부대 사양)", "displayHtml": "짐 스나이퍼 II<br>(화이트딩고 부대 사양)", "series": "MG", "date": "", "defaultMemo": "2017 / 3,800엔", "category": "MG : 우주세기"}, {"code": "CG044", "name": "짐 캐논 (북미전선사양)", "displayHtml": "짐 캐논 (북미전선사양)", "series": "MG", "date": "", "defaultMemo": "2017 / 4,000엔", "category": "MG : 우주세기"}, {"code": "CG045", "name": "신 마츠나가 전용 자쿠 II (커스텀 타입)", "displayHtml": "신 마츠나가 전용<br>자쿠 II (커스텀 타입)", "series": "MG", "date": "", "defaultMemo": "2017 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG046", "name": "마사야 나카가와 전용 자쿠 II", "displayHtml": "마사야 나카가와 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2017 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG047", "name": "풀아머 건담 (건담 썬더볼트판) 최종결전 Ver.", "displayHtml": "풀아머 건담<br>(건담 썬더볼트판)<br>최종결전 Ver.", "series": "MG", "date": "", "defaultMemo": "2017 / 7,000엔", "category": "MG : 우주세기"}, {"code": "CG048", "name": "캬스발 전용 건담 Ver.3.0", "displayHtml": "캬스발 전용 건담<br>Ver.3.0", "series": "MG", "date": "", "defaultMemo": "2017 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG049", "name": "고기동형 자쿠 '사이코 자쿠' (건담 썬더볼트판) 최종결전 Ver.", "displayHtml": "고기동형 자쿠 '사이코<br>자쿠' (건담 썬더볼트판)<br>최종결전 Ver.", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 우주세기"}, {"code": "CG050", "name": "브레니프 오그스 전용 자쿠 II", "displayHtml": "브레니프 오그스 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2017 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG051", "name": "짐 커맨드 (우주전 타입)", "displayHtml": "짐 커맨드 (우주전 타입)", "series": "MG", "date": "", "defaultMemo": "2018 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG052", "name": "강화형 ZZ건담 Ver.Ka", "displayHtml": "강화형 ZZ건담 Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2017 / 8,000엔", "category": "MG : 우주세기"}, {"code": "CG053", "name": "ZZ건담 Ver.Ka용 강화형 확장파츠", "displayHtml": "ZZ건담 Ver.Ka용<br>강화형 확장파츠", "series": "MG", "date": "", "defaultMemo": "2017 / 2,000엔", "category": "MG : 우주세기"}, {"code": "CG054", "name": "유마 라이트닝 전용 고기동형 겔구그", "displayHtml": "유마 라이트닝 전용<br>고기동형 겔구그", "series": "MG", "date": "", "defaultMemo": "2018 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG055", "name": "짐 스나이퍼 커스텀 (테네스 A 융기)", "displayHtml": "짐 스나이퍼 커스텀<br>(테네스 A 융기)", "series": "MG", "date": "", "defaultMemo": "2018 / 4,000엔", "category": "MG : 우주세기"}, {"code": "CG056", "name": "짐 도미넌스", "displayHtml": "짐 도미넌스", "series": "MG", "date": "", "defaultMemo": "2018 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG057", "name": "자쿠 캐논 (이안 그레덴 전용기)", "displayHtml": "자쿠 캐논<br>(이안 그레덴 전용기)", "series": "MG", "date": "", "defaultMemo": "2018 / 5,000엔", "category": "MG : 우주세기"}, {"code": "CG058", "name": "아나벨 가토전용 겔구그 Ver.2.0", "displayHtml": "아나벨 가토전용<br>겔구그 Ver.2.0", "series": "MG", "date": "", "defaultMemo": "2018 / 5,000엔", "category": "MG : 우주세기"}, {"code": "CG059", "name": "짐 캐논 (화이트 딩고 부대 사양)", "displayHtml": "짐 캐논<br>(화이트 딩고 부대 사양)", "series": "MG", "date": "", "defaultMemo": "2018 / 4,000엔", "category": "MG : 우주세기"}, {"code": "CG060", "name": "짐 (화이트 딩고 부대 사양)", "displayHtml": "짐<br>(화이트 딩고 부대 사양)", "series": "MG", "date": "", "defaultMemo": "2019 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG061", "name": "자쿠 II F2형 (노이엔 비터기)", "displayHtml": "자쿠 II F2형<br>(노이엔 비터기)", "series": "MG", "date": "", "defaultMemo": "2019 / 3,600엔", "category": "MG : 우주세기"}, {"code": "CG062", "name": "자쿠 II F2형 (킴벌라이트 기지사양)", "displayHtml": "자쿠 II F2형<br>(킴벌라이트 기지사양)", "series": "MG", "date": "", "defaultMemo": "2019 / 3,600엔", "category": "MG : 우주세기"}, {"code": "CG063", "name": "V2 어설트 버스터 건담 Ver.Ka", "displayHtml": "V2 어설트 버스터 건담<br>Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2018 / 7,000엔", "category": "MG : 우주세기"}, {"code": "CG064", "name": "V2건담 Ver.Ka용 어설트 버스터 확장파츠", "displayHtml": "V2건담 Ver.Ka용<br>어설트 버스터 확장파츠", "series": "MG", "date": "", "defaultMemo": "2018 / 2,500엔", "category": "MG : 우주세기"}, {"code": "CG065", "name": "짐 캐논 [레드헤드] (자브로 방위대사양)", "displayHtml": "짐 캐논 [레드헤드]<br>(자브로 방위대사양)", "series": "MG", "date": "", "defaultMemo": "2019 / 4,000엔", "category": "MG : 우주세기"}, {"code": "CG066", "name": "드왓지", "displayHtml": "드왓지", "series": "MG", "date": "", "defaultMemo": "2019 / 5,000엔", "category": "MG : 우주세기"}, {"code": "CG067", "name": "리가지 커스텀", "displayHtml": "리가지 커스텀", "series": "MG", "date": "", "defaultMemo": "2019 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG068", "name": "짐 스나이퍼 II (리드 울프기)", "displayHtml": "짐 스나이퍼 II<br>(리드 울프기)", "series": "MG", "date": "", "defaultMemo": "2019 / 3,800엔", "category": "MG : 우주세기"}, {"code": "CG069", "name": "짐 (한랭지사양)", "displayHtml": "짐 (한랭지사양)", "series": "MG", "date": "", "defaultMemo": "2019 / 3,800엔", "category": "MG : 우주세기"}, {"code": "CG070", "name": "턴에이 건담/턴엑스 [나노 스킨 이미지]", "displayHtml": "턴에이 건담/턴엑스<br>[나노 스킨 이미지]", "series": "MG", "date": "", "defaultMemo": "2019 / 11,500엔", "category": "MG : 우주세기"}, {"code": "CG071", "name": "짐 도미넌스 (필립 휴즈 탑승기)", "displayHtml": "짐 도미넌스<br>(필립 휴즈 탑승기)", "series": "MG", "date": "", "defaultMemo": "2019 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG072", "name": "드왓지 커스텀", "displayHtml": "드왓지 커스텀", "series": "MG", "date": "", "defaultMemo": "2020 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG073", "name": "짐 II (에우고컬러 Ver.)", "displayHtml": "짐 II (에우고컬러 Ver.)", "series": "MG", "date": "", "defaultMemo": "2020 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG074", "name": "건담 Mk-V", "displayHtml": "건담 Mk-V", "series": "MG", "date": "", "defaultMemo": "2021 / 8,000엔", "category": "MG : 우주세기"}, {"code": "CG075", "name": "조니 라이덴 전용 겔구그", "displayHtml": "조니 라이덴 전용<br>겔구그", "series": "MG", "date": "", "defaultMemo": "2021 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG076", "name": "Ex-S 건담/S 건담 (태스크포스 알파 Ver.)", "displayHtml": "Ex-S 건담/S 건담<br>(태스크포스 알파 Ver.)", "series": "MG", "date": "", "defaultMemo": "2021 / 12,000엔", "category": "MG : 우주세기"}, {"code": "CG077", "name": "건담 Mk-V (연방군 컬러)", "displayHtml": "건담 Mk-V (연방군 컬러)", "series": "MG", "date": "", "defaultMemo": "2024 / 8,000엔", "category": "MG : 우주세기"}, {"code": "CG078", "name": "소설판 유니콘건담 2호기 밴시 Ver.Ka 최종결전사양", "displayHtml": "소설판 유니콘건담<br>2호기 밴시 Ver.Ka<br>최종결전사양", "series": "MG", "date": "", "defaultMemo": "2012 / 5,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG079", "name": "네모 유니콘컬러 Ver.", "displayHtml": "네모<br>유니콘컬러 Ver.", "series": "MG", "date": "", "defaultMemo": "2012 / 2,800엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG080", "name": "네모 유니콘 데저트 컬러 Ver.", "displayHtml": "네모<br>유니콘 데저트 컬러 Ver.", "series": "MG", "date": "", "defaultMemo": "2013 / 3,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG081", "name": "마라사이 (유니콘 컬러 Ver.)", "displayHtml": "마라사이<br>(유니콘 컬러 Ver.)", "series": "MG", "date": "", "defaultMemo": "2013 / 4,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG082", "name": "자쿠 캐논 (유니콘컬러 Ver.)", "displayHtml": "자쿠 캐논<br>(유니콘컬러 Ver.)", "series": "MG", "date": "", "defaultMemo": "2013 / 4,500엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG083", "name": "즈고크 (유니콘컬러 Ver.)", "displayHtml": "즈고크<br>(유니콘컬러 Ver.)", "series": "MG", "date": "", "defaultMemo": "2013 / 3,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG084", "name": "유니콘건담 2호기 밴시노른", "displayHtml": "유니콘건담 2호기<br>밴시노른", "series": "MG", "date": "", "defaultMemo": "2015 / 22,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG085", "name": "풀아머 유니콘건담 (레드컬러 Ver.)", "displayHtml": "풀아머 유니콘건담<br>(레드컬러 Ver.)", "series": "MG", "date": "", "defaultMemo": "2014 / 8,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG086", "name": "유니콘건담 2호기 밴시 노른 최종결전 Ver.", "displayHtml": "유니콘건담 2호기<br>밴시 노른<br>최종결전 Ver.", "series": "MG", "date": "", "defaultMemo": "2014 / 6,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG087", "name": "기라도가 (풀 프론탈 전용기)", "displayHtml": "기라도가<br>(풀 프론탈 전용기)", "series": "MG", "date": "", "defaultMemo": "2014 / 4,800엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG088", "name": "제스타 캐논", "displayHtml": "제스타 캐논", "series": "MG", "date": "", "defaultMemo": "2014 / 5,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG089", "name": "제타플러스 (유니콘 Ver.)", "displayHtml": "제타플러스<br>(유니콘 Ver.)", "series": "MG", "date": "", "defaultMemo": "2015 / 3,200엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG090", "name": "기라 도가 (유니콘Ver.)", "displayHtml": "기라 도가<br>(유니콘Ver.)", "series": "MG", "date": "", "defaultMemo": "2016 / 4,800엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG091", "name": "짐 II (유니콘 Ver.)", "displayHtml": "짐 II (유니콘 Ver.)", "series": "MG", "date": "", "defaultMemo": "2017 / 3,500엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG092", "name": "유니콘 건담 3호기 페넥스 (내러티브 Ver.)", "displayHtml": "유니콘 건담 3호기<br>페넥스 (내러티브 Ver.)", "series": "MG", "date": "", "defaultMemo": "2021 / 48,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG093", "name": "짐 II 세미 스트라이커", "displayHtml": "짐 II 세미 스트라이커", "series": "MG", "date": "", "defaultMemo": "2019 / 4,200엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG094", "name": "제간 D타입", "displayHtml": "제간 D타입", "series": "MG", "date": "", "defaultMemo": "2019 / 4,200엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG095", "name": "제스타 (셰자르부대 사양 B&C반 장비)", "displayHtml": "제스타 (셰자르부대<br>사양 B&amp;C반 장비)", "series": "MG", "date": "", "defaultMemo": "2019 / 4,800엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG096", "name": "리가지 (유니콘 Ver.)", "displayHtml": "리가지 (유니콘 Ver.)", "series": "MG", "date": "", "defaultMemo": "2020 / 4,200엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG097", "name": "제간 D형 (선행배치기)", "displayHtml": "제간 D형 (선행배치기)", "series": "MG", "date": "", "defaultMemo": "2020 / 4,200엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG098", "name": "MGEX 유니콘 건담 Ver.Ka [프리미엄 '유니콘모드' 박스]", "displayHtml": "MGEX 유니콘 건담<br>Ver.Ka [프리미엄<br>'유니콘모드' 박스]", "series": "MG", "date": "", "defaultMemo": "2020 / 23,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG099", "name": "스타크 제간", "displayHtml": "스타크 제간", "series": "MG", "date": "", "defaultMemo": "2023 / 6,800엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG100", "name": "내러티브 건담 B팩 Ver.Ka", "displayHtml": "내러티브 건담 B팩<br>Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2024 / 9,500엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG101", "name": "내러티브 건담 C팩 Ver.Ka 전용 B팩 확장 세트", "displayHtml": "내러티브 건담 C팩<br>Ver.Ka 전용<br>B팩 확장 세트", "series": "MG", "date": "", "defaultMemo": "2024 / 2,600엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG102", "name": "건담 TR-1 [헤이즐 카이]", "displayHtml": "건담 TR-1<br>[헤이즐 카이]", "series": "MG", "date": "", "defaultMemo": "2017 / 4,500엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG103", "name": "건담 TR-1 [헤이즐 카이] (실전배치컬러)", "displayHtml": "건담 TR-1<br>[헤이즐 카이]<br>(실전배치컬러)", "series": "MG", "date": "", "defaultMemo": "2018 / 4,500엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG104", "name": "건담 TR-1 [어드밴스드 헤이즐]", "displayHtml": "건담 TR-1<br>[어드밴스드 헤이즐]", "series": "MG", "date": "", "defaultMemo": "2018 / 5,500엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG105", "name": "G파츠 [흐루두두]", "displayHtml": "G파츠 [흐루두두]", "series": "MG", "date": "", "defaultMemo": "2018 / 2,200엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG106", "name": "G파츠 [흐루두두] (실전배치 컬러)", "displayHtml": "G파츠 [흐루두두]<br>(실전배치 컬러)", "series": "MG", "date": "", "defaultMemo": "2018 / 2,200엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG107", "name": "건담 TR-1 [헤이즐 카이]용 실드 부스터 확장세트", "displayHtml": "건담 TR-1<br>[헤이즐 카이]용<br>실드 부스터 확장세트", "series": "MG", "date": "", "defaultMemo": "2018 / 1,500엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG108", "name": "건담 TR-1 [헤이즐 2호기] 얼리타입 /헤이즐 예비기/짐쿠엘", "displayHtml": "건담 TR-1<br>[헤이즐 2호기] 얼리타입<br>/헤이즐 예비기/짐쿠엘", "series": "MG", "date": "", "defaultMemo": "2018 / 4,500엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG109", "name": "건담 TR-1 [헤이즐 우슬라]", "displayHtml": "건담 TR-1<br>[헤이즐 우슬라]", "series": "MG", "date": "", "defaultMemo": "2019 / 8,000엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG110", "name": "긴급탈출포드 [프림로즈] 확장세트", "displayHtml": "긴급탈출포드<br>[프림로즈] 확장세트", "series": "MG", "date": "", "defaultMemo": "2019 / 2,500엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG111", "name": "크로스본 건담 X2 Ver.Ka", "displayHtml": "크로스본 건담 X2<br>Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2013 / 4,400엔", "category": "MG : 크로스본 건담"}, {"code": "CG112", "name": "크로스본 건담 X3 Ver.Ka", "displayHtml": "크로스본 건담 X3<br>Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2014 / 4,400엔", "category": "MG : 크로스본 건담"}, {"code": "CG113", "name": "크로스본 건담 X2 카이 Ver.Ka", "displayHtml": "크로스본 건담 X2 카이<br>Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2017 / 4,500엔", "category": "MG : 크로스본 건담"}, {"code": "CG114", "name": "크로스본 건담 X0 Ver.Ka", "displayHtml": "크로스본 건담 X0<br>Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2018 / 4,400엔", "category": "MG : 크로스본 건담"}, {"code": "CG115", "name": "크로스본 건담 X1 (패치워크) Ver.Ka", "displayHtml": "크로스본 건담 X1<br>(패치워크) Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2019 / 4,500엔", "category": "MG : 크로스본 건담"}, {"code": "CG116", "name": "건담 F91 Ver.2.0 백캐논 장착형 & 트윈 베스버 장착형", "displayHtml": "건담 F91 Ver.2.0<br>백캐논 장착형 &amp;<br>트윈 베스버 장착형", "series": "MG", "date": "", "defaultMemo": "2018 / 5,800엔", "category": "MG : 건담 F90/F91"}, {"code": "CG117", "name": "건담 F91 Ver.2.0 (잔상 이미지 컬러)", "displayHtml": "건담 F91 Ver.2.0<br>(잔상 이미지 컬러)", "series": "MG", "date": "", "defaultMemo": "2018 / 4,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG118", "name": "건담 F90", "displayHtml": "건담 F90", "series": "MG", "date": "", "defaultMemo": "2019 / 4,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG119", "name": "건담 F90용 미션팩 E타입 & S타입", "displayHtml": "건담 F90용 미션팩<br>E타입 &amp; S타입", "series": "MG", "date": "", "defaultMemo": "2019 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG120", "name": "건담 F91 Ver.2.0 (해리슨 마딘 전용기)", "displayHtml": "건담 F91 Ver.2.0<br>(해리슨 마딘 전용기)", "series": "MG", "date": "", "defaultMemo": "2019 / 4,200엔", "category": "MG : 건담 F90/F91"}, {"code": "CG121", "name": "건담 F90용 미션팩 F타입 & M타입", "displayHtml": "건담 F90용 미션팩<br>F타입 &amp; M타입", "series": "MG", "date": "", "defaultMemo": "2019 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG122", "name": "건담 F90용 미션팩 B타입 & K타입", "displayHtml": "건담 F90용 미션팩<br>B타입 &amp; K타입", "series": "MG", "date": "", "defaultMemo": "2020 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG123", "name": "건담 F90 II I타입", "displayHtml": "건담 F90 II I타입", "series": "MG", "date": "", "defaultMemo": "2020 / 6,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG124", "name": "건담 F90용 미션팩 O타입 & U타입", "displayHtml": "건담 F90용 미션팩<br>O타입 &amp; U타입", "series": "MG", "date": "", "defaultMemo": "2020 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG125", "name": "건담 F90용 미션팩 D타입 & G타입", "displayHtml": "건담 F90용 미션팩<br>D타입 &amp; G타입", "series": "MG", "date": "", "defaultMemo": "2020 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG126", "name": "F90 2호기", "displayHtml": "F90 2호기", "series": "MG", "date": "", "defaultMemo": "2020 / 4,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG127", "name": "건담 F90용 미션팩 I타입 (목성결전사양)", "displayHtml": "건담 F90용 미션팩 I타입<br>(목성결전사양)", "series": "MG", "date": "", "defaultMemo": "2021 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG128", "name": "건담 F90용 미션팩 R타입 & V타입", "displayHtml": "건담 F90용 미션팩<br>R타입 &amp; V타입", "series": "MG", "date": "", "defaultMemo": "2021 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG129", "name": "건담 F91 Ver.2.0 [티타늄 피니시]", "displayHtml": "건담 F91 Ver.2.0<br>[티타늄 피니시]", "series": "MG", "date": "", "defaultMemo": "2021 / 8,800엔", "category": "MG : 건담 F90/F91"}, {"code": "CG130", "name": "건담 F90용 미션팩 W타입", "displayHtml": "건담 F90용 미션팩<br>W타입", "series": "MG", "date": "", "defaultMemo": "2021 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG131", "name": "건담 F90 화성 독립 지온군 사양", "displayHtml": "건담 F90<br>화성 독립 지온군 사양", "series": "MG", "date": "", "defaultMemo": "2021 / 4,500엔", "category": "MG : 건담 F90/F91"}, {"code": "CG132", "name": "건담 F90용 미션팩 H 타입", "displayHtml": "건담 F90용 미션팩<br>H 타입", "series": "MG", "date": "", "defaultMemo": "2022 / 1,800엔", "category": "MG : 건담 F90/F91"}, {"code": "CG133", "name": "건담 F90용 미션팩 C타입 & T타입", "displayHtml": "건담 F90용 미션팩<br>C타입 &amp; T타입", "series": "MG", "date": "", "defaultMemo": "2022 / 2,400엔", "category": "MG : 건담 F90/F91"}, {"code": "CG134", "name": "건담 F90용 미션팩 전용 행거 2개 세트", "displayHtml": "건담 F90용 미션팩<br>전용 행거 2개 세트", "series": "MG", "date": "", "defaultMemo": "2022 / 1,800엔", "category": "MG : 건담 F90/F91"}, {"code": "CG135", "name": "건담 F90용 미션팩 P타입", "displayHtml": "건담 F90용 미션팩<br>P타입", "series": "MG", "date": "", "defaultMemo": "2022 / 2,200엔", "category": "MG : 건담 F90/F91"}, {"code": "CG136", "name": "건담 F90용 미션팩 J 타입 & Q 타입", "displayHtml": "건담 F90용 미션팩<br>J 타입 &amp; Q 타입", "series": "MG", "date": "", "defaultMemo": "2023 / 2,200엔", "category": "MG : 건담 F90/F91"}, {"code": "CG137", "name": "건담 F90용 미션팩 A 타입 & L 타입", "displayHtml": "건담 F90용 미션팩<br>A 타입 &amp; L 타입", "series": "MG", "date": "", "defaultMemo": "2024 / 2,500엔", "category": "MG : 건담 F90/F91"}, {"code": "CG138", "name": "건담 F90 N 타입", "displayHtml": "건담 F90 N 타입", "series": "MG", "date": "", "defaultMemo": "2024 / 4,500엔", "category": "MG : 건담 F90/F91"}, {"code": "CG139", "name": "F90 III 클러스터 건담", "displayHtml": "F90 III 클러스터 건담", "series": "MG", "date": "", "defaultMemo": "2024 / 6,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG140", "name": "F80 건레이드", "displayHtml": "F80 건레이드", "series": "MG", "date": "", "defaultMemo": "2025 / 4,800엔", "category": "MG : 건담 F90/F91"}, {"code": "CG141", "name": "F90 III Y 클러스터 건담용 미션팩 X 타입", "displayHtml": "F90 III Y 클러스터<br>건담용 미션팩 X 타입", "series": "MG", "date": "", "defaultMemo": "2025 / 3,200엔", "category": "MG : 건담 F90/F91"}, {"code": "CG142", "name": "톨기스 II", "displayHtml": "톨기스 II", "series": "MG", "date": "", "defaultMemo": "2013 / 3,800엔", "category": "MG : 건담 W"}, {"code": "CG143", "name": "톨기스 III", "displayHtml": "톨기스 III", "series": "MG", "date": "", "defaultMemo": "2015 / 4,500엔", "category": "MG : 건담 W"}, {"code": "CG144", "name": "알트론건담", "displayHtml": "알트론건담", "series": "MG", "date": "", "defaultMemo": "2015 / 4,500엔", "category": "MG : 건담 W"}, {"code": "CG145", "name": "건담 헤비 암즈 카이 EW", "displayHtml": "건담 헤비 암즈 카이 EW", "series": "MG", "date": "", "defaultMemo": "2016 / 4,800엔", "category": "MG : 건담 W"}, {"code": "CG146", "name": "건담 샌드록 카이", "displayHtml": "건담 샌드록 카이", "series": "MG", "date": "", "defaultMemo": "2017 / 4,800엔", "category": "MG : 건담 W"}, {"code": "CG147", "name": "윙건담 제로 EW & 드라이 츠베르크 [스페셜코팅]", "displayHtml": "윙건담 제로 EW<br>&amp; 드라이 츠베르크<br>[스페셜코팅]", "series": "MG", "date": "", "defaultMemo": "2018 / 10,000엔", "category": "MG : 건담 W"}, {"code": "CG148", "name": "셴롱건담 EW (랴오 야 장비)", "displayHtml": "셴롱건담 EW<br>(랴오 야 장비)", "series": "MG", "date": "", "defaultMemo": "2019 / 4,500엔", "category": "MG : 건담 W"}, {"code": "CG149", "name": "건담 헤비암즈 EW (이겔장비)", "displayHtml": "건담 헤비암즈 EW<br>(이겔장비)", "series": "MG", "date": "", "defaultMemo": "2019 / 5,500엔", "category": "MG : 건담 W"}, {"code": "CG150", "name": "건담 데스사이즈 EW (루세트 장비)", "displayHtml": "건담 데스사이즈 EW<br>(루세트 장비)", "series": "MG", "date": "", "defaultMemo": "2020 / 4,500엔", "category": "MG : 건담 W"}, {"code": "CG151", "name": "건담 샌드록 EW (아르마딜로 장비)", "displayHtml": "건담 샌드록 EW<br>(아르마딜로 장비)", "series": "MG", "date": "", "defaultMemo": "2020 / 5,800엔", "category": "MG : 건담 W"}, {"code": "CG152", "name": "건담 W EW시리즈 확장파츠세트 (패자들의 영광)", "displayHtml": "건담 W EW시리즈<br>확장파츠세트<br>(패자들의 영광)", "series": "MG", "date": "", "defaultMemo": "2020 / 3,200엔", "category": "MG : 건담 W"}, {"code": "CG153", "name": "톨기스 F EW", "displayHtml": "톨기스 F EW", "series": "MG", "date": "", "defaultMemo": "2021 / 6,000엔", "category": "MG : 건담 W"}, {"code": "CG154", "name": "건담 에피온 (슈트룸 운트 드랑 유닛)", "displayHtml": "건담 에피온<br>(슈트룸 운트 드랑 유닛)", "series": "MG", "date": "", "defaultMemo": "2022 / 6,800엔", "category": "MG : 건담 W"}, {"code": "CG155", "name": "건담 샌드록 EW (아르마딜로 리자드 장비)", "displayHtml": "건담 샌드록 EW<br>(아르마딜로 리자드<br>장비)", "series": "MG", "date": "", "defaultMemo": "2024 / 6,500엔", "category": "MG : 건담 W"}, {"code": "CG156", "name": "에일스트라이크 건담 Ver.RM용 런쳐스트라이 커/소드스트라이커 팩", "displayHtml": "에일스트라이크 건담<br>Ver.RM용 런쳐스트라이<br>커/소드스트라이커 팩", "series": "MG", "date": "", "defaultMemo": "2013 / 2,200엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG157", "name": "건담 아스트레이 느와르", "displayHtml": "건담 아스트레이 느와르", "series": "MG", "date": "", "defaultMemo": "2013 / 5,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG158", "name": "건담 아스트레이 레드프레임", "displayHtml": "건담 아스트레이<br>레드프레임", "series": "MG", "date": "", "defaultMemo": "2014 / 4,500엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG159", "name": "데스티니 임펄스 건담 R", "displayHtml": "데스티니 임펄스 건담 R", "series": "MG", "date": "", "defaultMemo": "2014 / 5,200엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG160", "name": "건담 아스트레이 블루프레임 D용 드라군 포메이션 베이스", "displayHtml": "건담 아스트레이<br>블루프레임 D용<br>드라군 포메이션 베이스", "series": "MG", "date": "", "defaultMemo": "2014 / 1,800엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG161", "name": "프리덤 건담 Ver.2.0 풀버스트모드 스페셜 코팅 Ver.", "displayHtml": "프리덤 건담 Ver.2.0<br>풀버스트모드<br>스페셜 코팅 Ver.", "series": "MG", "date": "", "defaultMemo": "2016 / 10,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG162", "name": "프리덤 건담 Ver.2.0용 확장 이펙트 세트", "displayHtml": "프리덤 건담 Ver.2.0용<br>확장 이펙트 세트", "series": "MG", "date": "", "defaultMemo": "2016 / 2,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG163", "name": "임펄스 건담 블랑쉬", "displayHtml": "임펄스 건담 블랑쉬", "series": "MG", "date": "", "defaultMemo": "2016 / 5,200엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG164", "name": "퍼펙트 스트라이크 건담 스페셜 코팅 Ver.", "displayHtml": "퍼펙트 스트라이크 건담<br>스페셜 코팅 Ver.", "series": "MG", "date": "", "defaultMemo": "2017 / 12,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG165", "name": "프로비던스건담용 드라군 디스플레이 이펙트", "displayHtml": "프로비던스건담용<br>드라군 디스플레이<br>이펙트", "series": "MG", "date": "", "defaultMemo": "2017 / 2,200엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG166", "name": "저스티스 건담 [스페셜 코팅]", "displayHtml": "저스티스 건담<br>[스페셜 코팅]", "series": "MG", "date": "", "defaultMemo": "2017 / 9,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG167", "name": "프로비던스 건담 [스페셜 코팅]", "displayHtml": "프로비던스 건담<br>[스페셜 코팅]", "series": "MG", "date": "", "defaultMemo": "2017 / 12,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG168", "name": "건담 아스트레이 턴레드", "displayHtml": "건담 아스트레이 턴레드", "series": "MG", "date": "", "defaultMemo": "2018 / 7,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG169", "name": "건담 아스트레이 레드 드래곤", "displayHtml": "건담 아스트레이<br>레드 드래곤", "series": "MG", "date": "", "defaultMemo": "2019 / 7,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG170", "name": "블래스트 임펄스건담", "displayHtml": "블래스트 임펄스건담", "series": "MG", "date": "", "defaultMemo": "2019 / 5,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG171", "name": "슬래쉬 자쿠 팬텀 (이자크 줄 전용기)", "displayHtml": "슬래쉬 자쿠 팬텀<br>(이자크 줄 전용기)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG172", "name": "건담 아스트레이 레드프레임 플라이트유닛", "displayHtml": "건담 아스트레이<br>레드프레임<br>플라이트유닛", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG173", "name": "건담 아스트레이 레드프레임용 플라이트유닛 확장 세트", "displayHtml": "건담 아스트레이<br>레드프레임용<br>플라이트유닛 확장 세트", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG174", "name": "테스타먼트 건담", "displayHtml": "테스타먼트 건담", "series": "MG", "date": "", "defaultMemo": "2020 / 6,250엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG175", "name": "블레이즈 자쿠팬텀 / 블레이즈 자쿠워리어", "displayHtml": "블레이즈 자쿠팬텀 /<br>블레이즈 자쿠워리어", "series": "MG", "date": "", "defaultMemo": "2020 / 4,500엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG176", "name": "블레이즈 자쿠팬텀 (레이 자 바렐 전용기)", "displayHtml": "블레이즈 자쿠팬텀<br>(레이 자 바렐 전용기)", "series": "MG", "date": "", "defaultMemo": "2020 / 4,500엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG177", "name": "라이트닝 스트라이크 건담Ver.RM", "displayHtml": "라이트닝 스트라이크<br>건담Ver.RM", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG178", "name": "에일 스트라이크 건담 Ver.RM 용 라이트닝 스트라이커팩", "displayHtml": "에일 스트라이크 건담<br>Ver.RM 용<br>라이트닝 스트라이커팩", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG179", "name": "이클립스 건담 용 매뉴버 스트라이커", "displayHtml": "이클립스 건담 용<br>매뉴버 스트라이커", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG180", "name": "진 글래디에이터", "displayHtml": "진 글래디에이터", "series": "MG", "date": "", "defaultMemo": "2022 / 4,800엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG181", "name": "이클립스 건담 라이진 장비", "displayHtml": "이클립스 건담<br>라이진 장비", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG182", "name": "이클립스 건담용 라이진 스트라이커 팩", "displayHtml": "이클립스 건담용<br>라이진 스트라이커 팩", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG183", "name": "건담 아스트레이 아웃프레임 D", "displayHtml": "건담 아스트레이<br>아웃프레임 D", "series": "MG", "date": "", "defaultMemo": "2023 / 5,800엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG184", "name": "건너 위저드 / 슬래시 위저드 / 블레이즈 위저드 세트", "displayHtml": "건너 위저드 /<br>슬래시 위저드 /<br>블레이즈 위저드 세트", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG185", "name": "이클립스 건담 2호기", "displayHtml": "이클립스 건담 2호기", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG186", "name": "모빌 진 (미겔 아이만 전용기)", "displayHtml": "모빌 진<br>(미겔 아이만 전용기)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG187", "name": "블레이즈 자쿠 팬텀 (디아카 엘스만 전용기)", "displayHtml": "블레이즈 자쿠 팬텀<br>(디아카 엘스만 전용기)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG188", "name": "건담 아스트레이 미라지 프레임 세컨드 이슈", "displayHtml": "건담 아스트레이<br>미라지 프레임<br>세컨드 이슈", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG189", "name": "MGEX 스트라이크 프리덤 건담 [메카니컬 클리어]", "displayHtml": "MGEX<br>스트라이크 프리덤 건담<br>[메카니컬 클리어]", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG190", "name": "블레이즈 자쿠 팬텀 (하이네 베스텐 플루트 전용기)", "displayHtml": "블레이즈 자쿠 팬텀<br>(하이네 베스텐 플루트 전용기)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG191", "name": "트랜스암 라이저", "displayHtml": "트랜스암 라이저", "series": "MG", "date": "", "defaultMemo": "2017 / 27,500엔", "category": "MG : 건담 OO"}, {"code": "CG192", "name": "건담 엑시아 리페어 II", "displayHtml": "건담 엑시아 리페어 II", "series": "MG", "date": "", "defaultMemo": "2010 / 4,200엔", "category": "MG : 건담 OO"}, {"code": "CG193", "name": "더블오건담 세븐소드/G 인스펙션", "displayHtml": "더블오건담 세븐소드/G<br>인스펙션", "series": "MG", "date": "", "defaultMemo": "2020 / 23,000엔", "category": "MG : 건담 OO"}, {"code": "CG194", "name": "어드밴스드 징크스", "displayHtml": "어드밴스드 징크스", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG195", "name": "더블오 잔라이저", "displayHtml": "더블오 잔라이저", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG196", "name": "어드밴스드 징크스 (데보라기)", "displayHtml": "어드밴스드 징크스<br>(데보라기)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG197", "name": "더블오건담 세븐소드/G (트랜잠모드) [스페셜 코팅]", "displayHtml": "더블오건담 세븐소드/G<br>(트랜잠모드)<br>[스페셜 코팅]", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG198", "name": "더블오 퀀터 (트랜잠모드) [스페셜 코팅]", "displayHtml": "더블오 퀀터<br>(트랜잠모드)<br>[스페셜 코팅]", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG199", "name": "징크스 III (어로우즈 형태)", "displayHtml": "징크스 III<br>(어로우즈 형태)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG200", "name": "건담 아발란체 엑시아 대시", "displayHtml": "건담 아발란체<br>엑시아 대시", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG201", "name": "징크스 III (연방 컬러)", "displayHtml": "징크스 III (연방 컬러)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG202", "name": "더블오 퀀터 풀 세이버 [스페셜코팅]", "displayHtml": "더블오 퀀터 풀 세이버<br>[스페셜코팅]", "series": "MG", "date": "", "defaultMemo": "2019 / 11,000엔", "category": "MG : 건담 OO"}, {"code": "CG203", "name": "건담 듀나메스 (트랜스암모드) [메탈릭 글로스 인젝션]", "displayHtml": "건담 듀나메스<br>(트랜스암모드)<br>[메탈릭 글로스 인젝션]", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG204", "name": "건담 엑시아 리페어 III", "displayHtml": "건담 엑시아 리페어 III", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG205", "name": "건담 아스트레아 F형 (풀웨폰 세트)", "displayHtml": "건담 아스트레아 F형<br>(풀웨폰 세트)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG206", "name": "건담 아스트레아 F형용 아발란치 대시 유닛", "displayHtml": "건담 아스트레아 F형용<br>아발란치 대시 유닛", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG207", "name": "건담 아스트레아 + 프로토 GN 트윈 브로드 블레이드", "displayHtml": "건담 아스트레아<br>+ 프로토 GN<br>트윈 브로드 블레이드", "series": "MG", "date": "", "defaultMemo": "2021 / 6,500엔", "category": "MG : 건담 OO"}, {"code": "CG208", "name": "건담 페니체 리나시타 알바", "displayHtml": "건담 페니체<br>리나시타 알바", "series": "MG", "date": "", "defaultMemo": "2016 / 4,800엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG209", "name": "건담 어메이징 엑시아", "displayHtml": "건담 어메이징 엑시아", "series": "MG", "date": "", "defaultMemo": "2018 / 5,000엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG210", "name": "스타 빌드 스트라이크 건담 Ver. RG 시스템", "displayHtml": "스타 빌드 스트라이크<br>건담 Ver. RG 시스템", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG211", "name": "폴리포드 볼", "displayHtml": "폴리포드 볼", "series": "MG", "date": "", "defaultMemo": "2018 / 3,000엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG212", "name": "건담 스톰브링거", "displayHtml": "건담 스톰브링거", "series": "MG", "date": "", "defaultMemo": "2019 / 5,000엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG213", "name": "큐베레이 담드", "displayHtml": "큐베레이 담드", "series": "MG", "date": "", "defaultMemo": "2018 / 5,000엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG214", "name": "백식 크래쉬", "displayHtml": "백식 크래쉬", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG215", "name": "큐베레이 앙벨리르", "displayHtml": "큐베레이 앙벨리르", "series": "MG", "date": "", "defaultMemo": "2020 / 5,400엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG216", "name": "건담 스톰브링거 F.A. (페이탈 애시) /짐 터뷸런스", "displayHtml": "건담 스톰브링거 F.A.<br>(페이탈 애시)<br>/짐 터뷸런스", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG217", "name": "백식 라이즈 카인", "displayHtml": "백식 라이즈 카인", "series": "MG", "date": "", "defaultMemo": "2019 / 12,000엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG218", "name": "건담 엑스 임펄스", "displayHtml": "건담 엑스 임펄스", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG219", "name": "캠퍼 슈베어", "displayHtml": "캠퍼 슈베어", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG220", "name": "건담 스톰브링거 P.F.", "displayHtml": "건담 스톰브링거 P.F.", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG221", "name": "무사건담 Mk-II 도쿠카와 이에야스 Ver.", "displayHtml": "무사건담 Mk-II<br>도쿠카와 이에야스 Ver.", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG222", "name": "건담 AGE-2 노말 특무대사양", "displayHtml": "건담 AGE-2 노말<br>특무대사양", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG223", "name": "건담 AGE-1 2호기", "displayHtml": "건담 AGE-1 2호기", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG224", "name": "건담 X 3호기", "displayHtml": "건담 X 3호기", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG225", "name": "건담 발바토스용 확장부품세트", "displayHtml": "건담 발바토스용<br>확장부품세트", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG226", "name": "진 무사건담 전국의 진 ~ 흑의대개", "displayHtml": "진 무사건담<br>전국의 진 ~ 흑의대개", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG227", "name": "건담 에이지-1 풀 글랜서 [디자이너스 컬러 버전]", "displayHtml": "건담 에이지-1 풀 글랜서<br>[디자이너스 컬러 버전]", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG228", "name": "건담 에이지-1 풀 글랜서용 확장 부품", "displayHtml": "건담 에이지-1<br>풀 글랜서용 확장 부품", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG229", "name": "양산형 리코 전용 자쿠", "displayHtml": "양산형 리코 전용 자쿠", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG230", "name": "건담 발바토스 루프스용 확장 부품 세트", "displayHtml": "건담 발바토스 루프스용 확장 부품 세트", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG231", "name": "건담 아스트레이 블루프레임", "displayHtml": "건담 아스트레이<br>블루프레임", "series": "PG", "date": "", "defaultMemo": "", "category": "PG"}, {"code": "CG232", "name": "유니콘건담용 FA 확장세트", "displayHtml": "유니콘건담용<br>FA 확장세트", "series": "PG", "date": "", "defaultMemo": "2015 / 6,500엔", "category": "PG"}, {"code": "CG233", "name": "암드아머 VN/BS", "displayHtml": "암드아머 VN/BS", "series": "PG", "date": "", "defaultMemo": "2015 / 4,000엔", "category": "PG"}, {"code": "CG234", "name": "유니콘건담 (최종결전 Ver.)", "displayHtml": "유니콘건담<br>(최종결전 Ver.)", "series": "PG", "date": "", "defaultMemo": "2016 / 24,000엔", "category": "PG"}, {"code": "CG235", "name": "유니콘건담 3호기 페넥스", "displayHtml": "유니콘건담 3호기<br>페넥스", "series": "PG", "date": "", "defaultMemo": "2017 / 40,000엔", "category": "PG"}, {"code": "CG236", "name": "트랜스암 라이저", "displayHtml": "트랜스암 라이저", "series": "PG", "date": "", "defaultMemo": "2017 / 27,500엔", "category": "PG"}, {"code": "CG237", "name": "트랜스암 라이저 클리어 컬러 보디", "displayHtml": "트랜스암 라이저<br>클리어 컬러 보디", "series": "PG", "date": "", "defaultMemo": "2017 / 3,800엔", "category": "PG"}, {"code": "CG238", "name": "유니콘건담 2호기 밴시 노른 (최종결전Ver.)", "displayHtml": "유니콘건담 2호기 밴시<br>노른 (최종결전Ver.)", "series": "PG", "date": "", "defaultMemo": "2018 / 22,000엔", "category": "PG"}, {"code": "CG239", "name": "건담 엑시아 리페어파츠 세트", "displayHtml": "건담 엑시아<br>리페어파츠 세트", "series": "PG", "date": "", "defaultMemo": "2018 / 4,000엔", "category": "PG"}, {"code": "CG240", "name": "건담 아스트레이 레드프레임 카이", "displayHtml": "건담 아스트레이<br>레드프레임 카이", "series": "PG", "date": "", "defaultMemo": "2018 / 23,000엔", "category": "PG"}, {"code": "CG241", "name": "건담 엑시아 클리어 컬러 바디", "displayHtml": "건담 엑시아<br>클리어 컬러 바디", "series": "PG", "date": "", "defaultMemo": "2018 / 3,500엔", "category": "PG"}, {"code": "CG242", "name": "스트라이크건담용 퍼펙트 스트라이크건담 확장파츠", "displayHtml": "스트라이크건담용<br>퍼펙트 스트라이크건담<br>확장파츠", "series": "PG", "date": "", "defaultMemo": "2020 / 8,000엔", "category": "PG"}, {"code": "CG243", "name": "더블오건담 세븐소드/G 인스펙션", "displayHtml": "더블오건담 세븐소드/G<br>인스펙션", "series": "PG", "date": "", "defaultMemo": "2020 / 23,000엔", "category": "PG"}, {"code": "CG244", "name": "유니콘건담 3호기 페넥스 (내러티브 Ver.)", "displayHtml": "유니콘건담 3호기<br>페넥스 (내러티브 Ver.)", "series": "PG", "date": "", "defaultMemo": "2021 / 48,000엔", "category": "PG"}, {"code": "CG245", "name": "유니콘건담 3호기 페넥스용 내러티브 Ver. 확장 세트", "displayHtml": "유니콘건담 3호기<br>페넥스용 내러티브 Ver.<br>확장 세트", "series": "PG", "date": "", "defaultMemo": "2021 / 8,000엔", "category": "PG"}, {"code": "CG246", "name": "언리쉬드 건담 클리어 컬러 바디", "displayHtml": "언리쉬드 건담<br>클리어 컬러 바디", "series": "PG", "date": "", "defaultMemo": "2021 / 4,500엔", "category": "PG"}, {"code": "CG247", "name": "유니콘 건담 퍼펙트빌리티용 디바인 확장세트", "displayHtml": "유니콘 건담<br>퍼펙트빌리티용<br>디바인 확장세트", "series": "PG", "date": "", "defaultMemo": "2022 / 6,500엔", "category": "PG"}, {"code": "CG248", "name": "유니콘 건담 퍼펙티빌리티", "displayHtml": "유니콘 건담<br>퍼펙티빌리티", "series": "PG", "date": "", "defaultMemo": "2022 / 30,000엔", "category": "PG"}, {"code": "CG249", "name": "PG 언리시드 뉴건담용 핀 판넬 & 클리어 바디", "displayHtml": "PG 언리시드 뉴건담용 핀 판넬 &amp; 클리어 바디", "series": "PG", "date": "", "defaultMemo": "", "category": "PG"}, {"code": "CG250", "name": "이프리트 슈나이드", "displayHtml": "이프리트 슈나이드", "series": "RE/100", "date": "", "defaultMemo": "2017 / 3,500엔", "category": "RE/100"}, {"code": "CG251", "name": "리바우", "displayHtml": "리바우", "series": "RE/100", "date": "", "defaultMemo": "2017 / 4,200엔", "category": "RE/100"}, {"code": "CG252", "name": "바우 양산형", "displayHtml": "바우 양산형", "series": "RE/100", "date": "", "defaultMemo": "2017 / 3,500엔", "category": "RE/100"}, {"code": "CG253", "name": "건캐논 디텍터 (Z-MSV Ver.)", "displayHtml": "건캐논 디텍터<br>(Z-MSV Ver.)", "series": "RE/100", "date": "", "defaultMemo": "2018 / 4,000엔", "category": "RE/100"}, {"code": "CG254", "name": "건담 Mk-III 8호기", "displayHtml": "건담 Mk-III 8호기", "series": "RE/100", "date": "", "defaultMemo": "2018 / 3,500엔", "category": "RE/100"}, {"code": "CG255", "name": "89식 베이스 자바", "displayHtml": "89식 베이스 자바", "series": "RE/100", "date": "", "defaultMemo": "2019 / 3,000엔", "category": "RE/100"}, {"code": "CG256", "name": "비기나 기나 (베라 로나 스페셜)", "displayHtml": "비기나 기나<br>(베라 로나 스페셜)", "series": "RE/100", "date": "", "defaultMemo": "2019 / 4,200엔", "category": "RE/100"}, {"code": "CG257", "name": "야크트도가 (퀘스 전용기)", "displayHtml": "야크트도가<br>(퀘스 전용기)", "series": "RE/100", "date": "", "defaultMemo": "2019 / 4,500엔", "category": "RE/100"}, {"code": "CG258", "name": "건 블래스터", "displayHtml": "건 블래스터", "series": "RE/100", "date": "", "defaultMemo": "2019 / 3,500엔", "category": "RE/100"}, {"code": "CG259", "name": "89식 베이스 자바 (유니콘Ver.)", "displayHtml": "89식 베이스 자바<br>(유니콘Ver.)", "series": "RE/100", "date": "", "defaultMemo": "2020 / 3,000엔", "category": "RE/100"}, {"code": "CG260", "name": "건이지 육전형", "displayHtml": "건이지 육전형", "series": "RE/100", "date": "", "defaultMemo": "2019 / 3,500엔", "category": "RE/100"}, {"code": "CG261", "name": "비기나 제라", "displayHtml": "비기나 제라", "series": "RE/100", "date": "", "defaultMemo": "2019 / 4,000엔", "category": "RE/100"}, {"code": "CG262", "name": "건이지 프로토타입 (롤아웃컬러)", "displayHtml": "건이지 프로토타입<br>(롤아웃컬러)", "series": "RE/100", "date": "", "defaultMemo": "2020 / 3,500엔", "category": "RE/100"}, {"code": "CG263", "name": "샷코", "displayHtml": "샷코", "series": "RE/100", "date": "", "defaultMemo": "2020 / 3,800엔", "category": "RE/100"}, {"code": "CG264", "name": "건이지 육전형 (블루버드 부대 사양)", "displayHtml": "건이지 육전형<br>(블루버드 부대 사양)", "series": "RE/100", "date": "", "defaultMemo": "2021 / 3,500엔", "category": "RE/100"}, {"code": "CG265", "name": "비기나 기나 II (목성결전사양)", "displayHtml": "비기나 기나 II<br>(목성결전사양)", "series": "RE/100", "date": "", "defaultMemo": "2021 / 4,200엔", "category": "RE/100"}, {"code": "CG266", "name": "비기나 기나 [엑스트라 피니시]", "displayHtml": "비기나 기나<br>[엑스트라 피니시]", "series": "RE/100", "date": "", "defaultMemo": "2018 / 6,400엔", "category": "RE/100"}, {"code": "CG267", "name": "건담 린트브룸", "displayHtml": "건담 린트브룸", "series": "RE/100", "date": "", "defaultMemo": "2022 / 5,000엔", "category": "RE/100"}, {"code": "CG268", "name": "데난 게", "displayHtml": "데난 게", "series": "RE/100", "date": "", "defaultMemo": "2025 / 3,000엔", "category": "RE/100"}, {"code": "CG269", "name": "데난 존", "displayHtml": "데난 존", "series": "RE/100", "date": "", "defaultMemo": "2025 / 3,200엔", "category": "RE/100"}];
+const PBMG_DEFAULT_KITS = [{"code": "CG001", "name": "자쿠 II 중력전선 이미지 컬러 Ver.", "displayHtml": "자쿠 II 중력전선<br>이미지 컬러 Ver.", "series": "MG", "date": "", "defaultMemo": "2009 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG002", "name": "구프커스텀 중력전선 이미지 컬러 Ver.", "displayHtml": "구프커스텀 중력전선<br>이미지 컬러 Ver.", "series": "MG", "date": "", "defaultMemo": "2009 / 3,000엔", "category": "MG : 우주세기"}, {"code": "CG003", "name": "돔 중력전선 이미지 컬러 Ver.", "displayHtml": "돔 중력전선<br>이미지 컬러 Ver.", "series": "MG", "date": "", "defaultMemo": "2009 / 4,000엔", "category": "MG : 우주세기"}, {"code": "CG004", "name": "건담 Ver.2.0 리얼타입컬러", "displayHtml": "건담 Ver.2.0<br>리얼타입컬러", "series": "MG", "date": "", "defaultMemo": "2010 / 4,200엔", "category": "MG : 우주세기"}, {"code": "CG005", "name": "샤아전용 자쿠 II Ver.2.0 리얼타입컬러", "displayHtml": "샤아전용 자쿠 II Ver.2.0<br>리얼타입컬러", "series": "MG", "date": "", "defaultMemo": "2010 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG006", "name": "벨류트팩", "displayHtml": "벨류트팩", "series": "MG", "date": "", "defaultMemo": "2010 / 1,400엔", "category": "MG : 우주세기"}, {"code": "CG007", "name": "검은삼연성 자쿠 Ver.2.0", "displayHtml": "검은삼연성<br>자쿠 Ver.2.0", "series": "MG", "date": "", "defaultMemo": "2011 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG008", "name": "더블 핀판넬 확장유닛", "displayHtml": "더블 핀판넬 확장유닛", "series": "MG", "date": "", "defaultMemo": "2012 / 2,000엔", "category": "MG : 우주세기"}, {"code": "CG009", "name": "유마 라이트닝 전용 자쿠 II", "displayHtml": "유마 라이트닝 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2013 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG010", "name": "죠니 라이덴기 전용 자쿠 II", "displayHtml": "죠니 라이덴기 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2013 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG011", "name": "아나벨 가토 전용 자쿠 II", "displayHtml": "아나벨 가토 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2013 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG012", "name": "건담 Ver. 3.0용 확장세트", "displayHtml": "건담 Ver. 3.0용<br>확장세트", "series": "MG", "date": "", "defaultMemo": "2013 / 1,500엔", "category": "MG : 우주세기"}, {"code": "CG013", "name": "기라도가 (레즌 슈나이더 전용기)", "displayHtml": "기라도가<br>(레즌 슈나이더 전용기)", "series": "MG", "date": "", "defaultMemo": "2013 / 4,800엔", "category": "MG : 우주세기"}, {"code": "CG014", "name": "프로토타입 건담", "displayHtml": "프로토타입 건담", "series": "MG", "date": "", "defaultMemo": "2013 / 4,200엔", "category": "MG : 우주세기"}, {"code": "CG015", "name": "풀아머 건담 블루 컬러 Ver.", "displayHtml": "풀아머 건담<br>블루 컬러 Ver.", "series": "MG", "date": "", "defaultMemo": "2014 / 5,000엔", "category": "MG : 우주세기"}, {"code": "CG016", "name": "도즐 자비 전용 자쿠 II", "displayHtml": "도즐 자비 전용 자쿠 II", "series": "MG", "date": "", "defaultMemo": "2014 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG017", "name": "겔구그 캐논 (MSV 컬러)", "displayHtml": "겔구그 캐논<br>(MSV 컬러)", "series": "MG", "date": "", "defaultMemo": "2014 / 4,800엔", "category": "MG : 우주세기"}, {"code": "CG018", "name": "S건담 부스터 유닛 장비형", "displayHtml": "S건담<br>부스터 유닛 장비형", "series": "MG", "date": "", "defaultMemo": "2014 / 9,800엔", "category": "MG : 우주세기"}, {"code": "CG019", "name": "마쿠베 전용 구프", "displayHtml": "마쿠베 전용 구프", "series": "MG", "date": "", "defaultMemo": "2014 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG020", "name": "하이뉴 건담 Ver.Ka용 HWS 확장 세트", "displayHtml": "하이뉴 건담 Ver.Ka용<br>HWS 확장 세트", "series": "MG", "date": "", "defaultMemo": "2014 / 2,800엔", "category": "MG : 우주세기"}, {"code": "CG021", "name": "가르마 자비 전용 자쿠 II", "displayHtml": "가르마 자비 전용 자쿠 II", "series": "MG", "date": "", "defaultMemo": "2014 / 3,800엔", "category": "MG : 우주세기"}, {"code": "CG022", "name": "제타건담 3호기 B형 [그레이 제타]", "displayHtml": "제타건담 3호기 B형<br>[그레이 제타]", "series": "MG", "date": "", "defaultMemo": "2014 / 6,500엔", "category": "MG : 우주세기"}, {"code": "CG023", "name": "도즐자비 전용 릭돔", "displayHtml": "도즐자비 전용 릭돔", "series": "MG", "date": "", "defaultMemo": "2015 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG024", "name": "제타건담 3호기 P2형 [레드 제타]", "displayHtml": "제타건담 3호기 P2형<br>[레드 제타]", "series": "MG", "date": "", "defaultMemo": "2015 / 6,500엔", "category": "MG : 우주세기"}, {"code": "CG025", "name": "개비 하자드 전용 자쿠 II", "displayHtml": "개비 하자드 전용 자쿠 II", "series": "MG", "date": "", "defaultMemo": "2015 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG026", "name": "턴에이건담 (월광접 Ver.)", "displayHtml": "턴에이건담<br>(월광접 Ver.)", "series": "MG", "date": "", "defaultMemo": "2015 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG027", "name": "턴에이건담용 확장 이펙트유닛 \"월광접\"", "displayHtml": "턴에이건담용<br>확장 이펙트유닛<br>\"월광접\"", "series": "MG", "date": "", "defaultMemo": "2015 / 1,800엔", "category": "MG : 우주세기"}, {"code": "CG028", "name": "메가 바주카 런쳐", "displayHtml": "메가 바주카 런쳐", "series": "MG", "date": "", "defaultMemo": "2015 / 3,800엔", "category": "MG : 우주세기"}, {"code": "CG029", "name": "사자비 Ver.Ka & RE/100 나이팅게일용 확장 판넬 이펙트 세트", "displayHtml": "사자비 Ver.Ka &amp;<br>RE/100 나이팅게일용<br>확장 판넬 이펙트 세트", "series": "MG", "date": "", "defaultMemo": "2015 / 2,000엔", "category": "MG : 우주세기"}, {"code": "CG030", "name": "짐 캐논", "displayHtml": "짐 캐논", "series": "MG", "date": "", "defaultMemo": "2015 / 4,000엔", "category": "MG : 우주세기"}, {"code": "CG031", "name": "헤비건담", "displayHtml": "헤비건담", "series": "MG", "date": "", "defaultMemo": "2015 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG032", "name": "양산형 백식 카이", "displayHtml": "양산형 백식 카이", "series": "MG", "date": "", "defaultMemo": "2015 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG033", "name": "V2 건담 Ver.Ka용 확장 이펙트유닛 \"빛의 날개\"", "displayHtml": "V2 건담 Ver.Ka용 확장<br>이펙트유닛 \"빛의 날개\"", "series": "MG", "date": "", "defaultMemo": "2016 / 2,000엔", "category": "MG : 우주세기"}, {"code": "CG034", "name": "에릭 맨스필드 전용 자쿠 II", "displayHtml": "에릭 맨스필드 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2016 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG035", "name": "파워드 짐", "displayHtml": "파워드 짐", "series": "MG", "date": "", "defaultMemo": "2016 / 3,000엔", "category": "MG : 우주세기"}, {"code": "CG036", "name": "백식 카이", "displayHtml": "백식 카이", "series": "MG", "date": "", "defaultMemo": "2016 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG037", "name": "웨폰&아머 행거 FOR 풀아머 건담 Ver.Ka (건담 썬더볼트)", "displayHtml": "웨폰&amp;아머 행거 FOR<br>풀아머 건담 Ver.Ka<br>(건담 썬더볼트)", "series": "MG", "date": "", "defaultMemo": "2016 / 2,600엔", "category": "MG : 우주세기"}, {"code": "CG038", "name": "로버트 길리엄 전용 자쿠 II", "displayHtml": "로버트 길리엄 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2016 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG039", "name": "뉴건담 HWS Ver.Ka", "displayHtml": "뉴건담 HWS Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2016 / 8,600엔", "category": "MG : 우주세기"}, {"code": "CG040", "name": "뉴건담 Ver.Ka용 HWS 확장세트", "displayHtml": "뉴건담 Ver.Ka용<br>HWS 확장세트", "series": "MG", "date": "", "defaultMemo": "2016 / 2,800엔", "category": "MG : 우주세기"}, {"code": "CG041", "name": "짐 II", "displayHtml": "짐 II", "series": "MG", "date": "", "defaultMemo": "2017 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG042", "name": "프로토타입 구프", "displayHtml": "프로토타입 구프", "series": "MG", "date": "", "defaultMemo": "2017 / 4,800엔", "category": "MG : 우주세기"}, {"code": "CG043", "name": "짐 스나이퍼 II (화이트딩고 부대 사양)", "displayHtml": "짐 스나이퍼 II<br>(화이트딩고 부대 사양)", "series": "MG", "date": "", "defaultMemo": "2017 / 3,800엔", "category": "MG : 우주세기"}, {"code": "CG044", "name": "짐 캐논 (북미전선사양)", "displayHtml": "짐 캐논 (북미전선사양)", "series": "MG", "date": "", "defaultMemo": "2017 / 4,000엔", "category": "MG : 우주세기"}, {"code": "CG045", "name": "신 마츠나가 전용 자쿠 II (커스텀 타입)", "displayHtml": "신 마츠나가 전용<br>자쿠 II (커스텀 타입)", "series": "MG", "date": "", "defaultMemo": "2017 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG046", "name": "마사야 나카가와 전용 자쿠 II", "displayHtml": "마사야 나카가와 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2017 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG047", "name": "풀아머 건담 (건담 썬더볼트판) 최종결전 Ver.", "displayHtml": "풀아머 건담<br>(건담 썬더볼트판)<br>최종결전 Ver.", "series": "MG", "date": "", "defaultMemo": "2017 / 7,000엔", "category": "MG : 우주세기"}, {"code": "CG048", "name": "캬스발 전용 건담 Ver.3.0", "displayHtml": "캬스발 전용 건담<br>Ver.3.0", "series": "MG", "date": "", "defaultMemo": "2017 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG049", "name": "고기동형 자쿠 '사이코 자쿠' (건담 썬더볼트판) 최종결전 Ver.", "displayHtml": "고기동형 자쿠 '사이코<br>자쿠' (건담 썬더볼트판)<br>최종결전 Ver.", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 우주세기"}, {"code": "CG050", "name": "브레니프 오그스 전용 자쿠 II", "displayHtml": "브레니프 오그스 전용<br>자쿠 II", "series": "MG", "date": "", "defaultMemo": "2017 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG051", "name": "짐 커맨드 (우주전 타입)", "displayHtml": "짐 커맨드 (우주전 타입)", "series": "MG", "date": "", "defaultMemo": "2018 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG052", "name": "강화형 ZZ건담 Ver.Ka", "displayHtml": "강화형 ZZ건담 Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2017 / 8,000엔", "category": "MG : 우주세기"}, {"code": "CG053", "name": "ZZ건담 Ver.Ka용 강화형 확장파츠", "displayHtml": "ZZ건담 Ver.Ka용<br>강화형 확장파츠", "series": "MG", "date": "", "defaultMemo": "2017 / 2,000엔", "category": "MG : 우주세기"}, {"code": "CG054", "name": "유마 라이트닝 전용 고기동형 겔구그", "displayHtml": "유마 라이트닝 전용<br>고기동형 겔구그", "series": "MG", "date": "", "defaultMemo": "2018 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG055", "name": "짐 스나이퍼 커스텀 (테네스 A 융기)", "displayHtml": "짐 스나이퍼 커스텀<br>(테네스 A 융기)", "series": "MG", "date": "", "defaultMemo": "2018 / 4,000엔", "category": "MG : 우주세기"}, {"code": "CG056", "name": "짐 도미넌스", "displayHtml": "짐 도미넌스", "series": "MG", "date": "", "defaultMemo": "2018 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG057", "name": "자쿠 캐논 (이안 그레덴 전용기)", "displayHtml": "자쿠 캐논<br>(이안 그레덴 전용기)", "series": "MG", "date": "", "defaultMemo": "2018 / 5,000엔", "category": "MG : 우주세기"}, {"code": "CG058", "name": "아나벨 가토전용 겔구그 Ver.2.0", "displayHtml": "아나벨 가토전용<br>겔구그 Ver.2.0", "series": "MG", "date": "", "defaultMemo": "2018 / 5,000엔", "category": "MG : 우주세기"}, {"code": "CG059", "name": "짐 캐논 (화이트 딩고 부대 사양)", "displayHtml": "짐 캐논<br>(화이트 딩고 부대 사양)", "series": "MG", "date": "", "defaultMemo": "2018 / 4,000엔", "category": "MG : 우주세기"}, {"code": "CG060", "name": "짐 (화이트 딩고 부대 사양)", "displayHtml": "짐<br>(화이트 딩고 부대 사양)", "series": "MG", "date": "", "defaultMemo": "2019 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG061", "name": "자쿠 II F2형 (노이엔 비터기)", "displayHtml": "자쿠 II F2형<br>(노이엔 비터기)", "series": "MG", "date": "", "defaultMemo": "2019 / 3,600엔", "category": "MG : 우주세기"}, {"code": "CG062", "name": "자쿠 II F2형 (킴벌라이트 기지사양)", "displayHtml": "자쿠 II F2형<br>(킴벌라이트 기지사양)", "series": "MG", "date": "", "defaultMemo": "2019 / 3,600엔", "category": "MG : 우주세기"}, {"code": "CG063", "name": "V2 어설트 버스터 건담 Ver.Ka", "displayHtml": "V2 어설트 버스터 건담<br>Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2018 / 7,000엔", "category": "MG : 우주세기"}, {"code": "CG064", "name": "V2건담 Ver.Ka용 어설트 버스터 확장파츠", "displayHtml": "V2건담 Ver.Ka용<br>어설트 버스터 확장파츠", "series": "MG", "date": "", "defaultMemo": "2018 / 2,500엔", "category": "MG : 우주세기"}, {"code": "CG065", "name": "짐 캐논 [레드헤드] (자브로 방위대사양)", "displayHtml": "짐 캐논 [레드헤드]<br>(자브로 방위대사양)", "series": "MG", "date": "", "defaultMemo": "2019 / 4,000엔", "category": "MG : 우주세기"}, {"code": "CG066", "name": "드왓지", "displayHtml": "드왓지", "series": "MG", "date": "", "defaultMemo": "2019 / 5,000엔", "category": "MG : 우주세기"}, {"code": "CG067", "name": "리가지 커스텀", "displayHtml": "리가지 커스텀", "series": "MG", "date": "", "defaultMemo": "2019 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG068", "name": "짐 스나이퍼 II (리드 울프기)", "displayHtml": "짐 스나이퍼 II<br>(리드 울프기)", "series": "MG", "date": "", "defaultMemo": "2019 / 3,800엔", "category": "MG : 우주세기"}, {"code": "CG069", "name": "짐 (한랭지사양)", "displayHtml": "짐 (한랭지사양)", "series": "MG", "date": "", "defaultMemo": "2019 / 3,800엔", "category": "MG : 우주세기"}, {"code": "CG070", "name": "턴에이 건담/턴엑스 [나노 스킨 이미지]", "displayHtml": "턴에이 건담/턴엑스<br>[나노 스킨 이미지]", "series": "MG", "date": "", "defaultMemo": "2019 / 11,500엔", "category": "MG : 우주세기"}, {"code": "CG071", "name": "짐 도미넌스 (필립 휴즈 탑승기)", "displayHtml": "짐 도미넌스<br>(필립 휴즈 탑승기)", "series": "MG", "date": "", "defaultMemo": "2019 / 4,500엔", "category": "MG : 우주세기"}, {"code": "CG072", "name": "드왓지 커스텀", "displayHtml": "드왓지 커스텀", "series": "MG", "date": "", "defaultMemo": "2020 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG073", "name": "짐 II (에우고컬러 Ver.)", "displayHtml": "짐 II (에우고컬러 Ver.)", "series": "MG", "date": "", "defaultMemo": "2020 / 3,500엔", "category": "MG : 우주세기"}, {"code": "CG074", "name": "건담 Mk-V", "displayHtml": "건담 Mk-V", "series": "MG", "date": "", "defaultMemo": "2021 / 8,000엔", "category": "MG : 우주세기"}, {"code": "CG075", "name": "조니 라이덴 전용 겔구그", "displayHtml": "조니 라이덴 전용<br>겔구그", "series": "MG", "date": "", "defaultMemo": "2021 / 5,500엔", "category": "MG : 우주세기"}, {"code": "CG076", "name": "Ex-S 건담/S 건담 (태스크포스 알파 Ver.)", "displayHtml": "Ex-S 건담/S 건담<br>(태스크포스 알파 Ver.)", "series": "MG", "date": "", "defaultMemo": "2021 / 12,000엔", "category": "MG : 우주세기"}, {"code": "CG077", "name": "건담 Mk-V (연방군 컬러)", "displayHtml": "건담 Mk-V (연방군 컬러)", "series": "MG", "date": "", "defaultMemo": "2024 / 8,000엔", "category": "MG : 우주세기"}, {"code": "CG078", "name": "소설판 유니콘건담 2호기 밴시 Ver.Ka 최종결전사양", "displayHtml": "소설판 유니콘건담<br>2호기 밴시 Ver.Ka<br>최종결전사양", "series": "MG", "date": "", "defaultMemo": "2012 / 5,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG079", "name": "네모 유니콘컬러 Ver.", "displayHtml": "네모<br>유니콘컬러 Ver.", "series": "MG", "date": "", "defaultMemo": "2012 / 2,800엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG080", "name": "네모 유니콘 데저트 컬러 Ver.", "displayHtml": "네모<br>유니콘 데저트 컬러 Ver.", "series": "MG", "date": "", "defaultMemo": "2013 / 3,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG081", "name": "마라사이 (유니콘 컬러 Ver.)", "displayHtml": "마라사이<br>(유니콘 컬러 Ver.)", "series": "MG", "date": "", "defaultMemo": "2013 / 4,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG082", "name": "자쿠 캐논 (유니콘컬러 Ver.)", "displayHtml": "자쿠 캐논<br>(유니콘컬러 Ver.)", "series": "MG", "date": "", "defaultMemo": "2013 / 4,500엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG083", "name": "즈고크 (유니콘컬러 Ver.)", "displayHtml": "즈고크<br>(유니콘컬러 Ver.)", "series": "MG", "date": "", "defaultMemo": "2013 / 3,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG084", "name": "유니콘건담 2호기 밴시노른", "displayHtml": "유니콘건담 2호기<br>밴시노른", "series": "MG", "date": "", "defaultMemo": "2015 / 22,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG085", "name": "풀아머 유니콘건담 (레드컬러 Ver.)", "displayHtml": "풀아머 유니콘건담<br>(레드컬러 Ver.)", "series": "MG", "date": "", "defaultMemo": "2014 / 8,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG086", "name": "유니콘건담 2호기 밴시 노른 최종결전 Ver.", "displayHtml": "유니콘건담 2호기<br>밴시 노른<br>최종결전 Ver.", "series": "MG", "date": "", "defaultMemo": "2014 / 6,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG087", "name": "기라도가 (풀 프론탈 전용기)", "displayHtml": "기라도가<br>(풀 프론탈 전용기)", "series": "MG", "date": "", "defaultMemo": "2014 / 4,800엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG088", "name": "제스타 캐논", "displayHtml": "제스타 캐논", "series": "MG", "date": "", "defaultMemo": "2014 / 5,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG089", "name": "제타플러스 (유니콘 Ver.)", "displayHtml": "제타플러스<br>(유니콘 Ver.)", "series": "MG", "date": "", "defaultMemo": "2015 / 3,200엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG090", "name": "기라 도가 (유니콘Ver.)", "displayHtml": "기라 도가<br>(유니콘Ver.)", "series": "MG", "date": "", "defaultMemo": "2016 / 4,800엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG091", "name": "짐 II (유니콘 Ver.)", "displayHtml": "짐 II (유니콘 Ver.)", "series": "MG", "date": "", "defaultMemo": "2017 / 3,500엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG092", "name": "유니콘 건담 3호기 페넥스 (내러티브 Ver.)", "displayHtml": "유니콘 건담 3호기<br>페넥스 (내러티브 Ver.)", "series": "MG", "date": "", "defaultMemo": "2021 / 48,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG093", "name": "짐 II 세미 스트라이커", "displayHtml": "짐 II 세미 스트라이커", "series": "MG", "date": "", "defaultMemo": "2019 / 4,200엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG094", "name": "제간 D타입", "displayHtml": "제간 D타입", "series": "MG", "date": "", "defaultMemo": "2019 / 4,200엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG095", "name": "제스타 (셰자르부대 사양 B&C반 장비)", "displayHtml": "제스타 (셰자르부대<br>사양 B&amp;C반 장비)", "series": "MG", "date": "", "defaultMemo": "2019 / 4,800엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG096", "name": "리가지 (유니콘 Ver.)", "displayHtml": "리가지 (유니콘 Ver.)", "series": "MG", "date": "", "defaultMemo": "2020 / 4,200엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG097", "name": "제간 D형 (선행배치기)", "displayHtml": "제간 D형 (선행배치기)", "series": "MG", "date": "", "defaultMemo": "2020 / 4,200엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG098", "name": "MGEX 유니콘 건담 Ver.Ka [프리미엄 '유니콘모드' 박스]", "displayHtml": "MGEX 유니콘 건담<br>Ver.Ka [프리미엄<br>'유니콘모드' 박스]", "series": "MG", "date": "", "defaultMemo": "2020 / 23,000엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG099", "name": "스타크 제간", "displayHtml": "스타크 제간", "series": "MG", "date": "", "defaultMemo": "2023 / 6,800엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG100", "name": "내러티브 건담 B팩 Ver.Ka", "displayHtml": "내러티브 건담 B팩<br>Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2024 / 9,500엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG101", "name": "내러티브 건담 C팩 Ver.Ka 전용 B팩 확장 세트", "displayHtml": "내러티브 건담 C팩<br>Ver.Ka 전용<br>B팩 확장 세트", "series": "MG", "date": "", "defaultMemo": "2024 / 2,600엔", "category": "MG : 유니콘 / 내러티브"}, {"code": "CG102", "name": "건담 TR-1 [헤이즐 카이]", "displayHtml": "건담 TR-1<br>[헤이즐 카이]", "series": "MG", "date": "", "defaultMemo": "2017 / 4,500엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG103", "name": "건담 TR-1 [헤이즐 카이] (실전배치컬러)", "displayHtml": "건담 TR-1<br>[헤이즐 카이]<br>(실전배치컬러)", "series": "MG", "date": "", "defaultMemo": "2018 / 4,500엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG104", "name": "건담 TR-1 [어드밴스드 헤이즐]", "displayHtml": "건담 TR-1<br>[어드밴스드 헤이즐]", "series": "MG", "date": "", "defaultMemo": "2018 / 5,500엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG105", "name": "G파츠 [흐루두두]", "displayHtml": "G파츠 [흐루두두]", "series": "MG", "date": "", "defaultMemo": "2018 / 2,200엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG106", "name": "G파츠 [흐루두두] (실전배치 컬러)", "displayHtml": "G파츠 [흐루두두]<br>(실전배치 컬러)", "series": "MG", "date": "", "defaultMemo": "2018 / 2,200엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG107", "name": "건담 TR-1 [헤이즐 카이]용 실드 부스터 확장세트", "displayHtml": "건담 TR-1<br>[헤이즐 카이]용<br>실드 부스터 확장세트", "series": "MG", "date": "", "defaultMemo": "2018 / 1,500엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG108", "name": "건담 TR-1 [헤이즐 2호기] 얼리타입 /헤이즐 예비기/짐쿠엘", "displayHtml": "건담 TR-1<br>[헤이즐 2호기] 얼리타입<br>/헤이즐 예비기/짐쿠엘", "series": "MG", "date": "", "defaultMemo": "2018 / 4,500엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG109", "name": "건담 TR-1 [헤이즐 우슬라]", "displayHtml": "건담 TR-1<br>[헤이즐 우슬라]", "series": "MG", "date": "", "defaultMemo": "2019 / 8,000엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG110", "name": "긴급탈출포드 [프림로즈] 확장세트", "displayHtml": "긴급탈출포드<br>[프림로즈] 확장세트", "series": "MG", "date": "", "defaultMemo": "2019 / 2,500엔", "category": "MG : Advance of Z (티탄즈의 깃발 아래)"}, {"code": "CG111", "name": "크로스본 건담 X2 Ver.Ka", "displayHtml": "크로스본 건담 X2<br>Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2013 / 4,400엔", "category": "MG : 크로스본 건담"}, {"code": "CG112", "name": "크로스본 건담 X3 Ver.Ka", "displayHtml": "크로스본 건담 X3<br>Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2014 / 4,400엔", "category": "MG : 크로스본 건담"}, {"code": "CG113", "name": "크로스본 건담 X2 카이 Ver.Ka", "displayHtml": "크로스본 건담 X2 카이<br>Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2017 / 4,500엔", "category": "MG : 크로스본 건담"}, {"code": "CG114", "name": "크로스본 건담 X0 Ver.Ka", "displayHtml": "크로스본 건담 X0<br>Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2018 / 4,400엔", "category": "MG : 크로스본 건담"}, {"code": "CG115", "name": "크로스본 건담 X1 (패치워크) Ver.Ka", "displayHtml": "크로스본 건담 X1<br>(패치워크) Ver.Ka", "series": "MG", "date": "", "defaultMemo": "2019 / 4,500엔", "category": "MG : 크로스본 건담"}, {"code": "CG116", "name": "건담 F91 Ver.2.0 백캐논 장착형 & 트윈 베스버 장착형", "displayHtml": "건담 F91 Ver.2.0<br>백캐논 장착형 &amp;<br>트윈 베스버 장착형", "series": "MG", "date": "", "defaultMemo": "2018 / 5,800엔", "category": "MG : 건담 F90/F91"}, {"code": "CG117", "name": "건담 F91 Ver.2.0 (잔상 이미지 컬러)", "displayHtml": "건담 F91 Ver.2.0<br>(잔상 이미지 컬러)", "series": "MG", "date": "", "defaultMemo": "2018 / 4,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG118", "name": "건담 F90", "displayHtml": "건담 F90", "series": "MG", "date": "", "defaultMemo": "2019 / 4,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG119", "name": "건담 F90용 미션팩 E타입 & S타입", "displayHtml": "건담 F90용 미션팩<br>E타입 &amp; S타입", "series": "MG", "date": "", "defaultMemo": "2019 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG120", "name": "건담 F91 Ver.2.0 (해리슨 마딘 전용기)", "displayHtml": "건담 F91 Ver.2.0<br>(해리슨 마딘 전용기)", "series": "MG", "date": "", "defaultMemo": "2019 / 4,200엔", "category": "MG : 건담 F90/F91"}, {"code": "CG121", "name": "건담 F90용 미션팩 F타입 & M타입", "displayHtml": "건담 F90용 미션팩<br>F타입 &amp; M타입", "series": "MG", "date": "", "defaultMemo": "2019 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG122", "name": "건담 F90용 미션팩 B타입 & K타입", "displayHtml": "건담 F90용 미션팩<br>B타입 &amp; K타입", "series": "MG", "date": "", "defaultMemo": "2020 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG123", "name": "건담 F90 II I타입", "displayHtml": "건담 F90 II I타입", "series": "MG", "date": "", "defaultMemo": "2020 / 6,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG124", "name": "건담 F90용 미션팩 O타입 & U타입", "displayHtml": "건담 F90용 미션팩<br>O타입 &amp; U타입", "series": "MG", "date": "", "defaultMemo": "2020 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG125", "name": "건담 F90용 미션팩 D타입 & G타입", "displayHtml": "건담 F90용 미션팩<br>D타입 &amp; G타입", "series": "MG", "date": "", "defaultMemo": "2020 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG126", "name": "F90 2호기", "displayHtml": "F90 2호기", "series": "MG", "date": "", "defaultMemo": "2020 / 4,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG127", "name": "건담 F90용 미션팩 I타입 (목성결전사양)", "displayHtml": "건담 F90용 미션팩 I타입<br>(목성결전사양)", "series": "MG", "date": "", "defaultMemo": "2021 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG128", "name": "건담 F90용 미션팩 R타입 & V타입", "displayHtml": "건담 F90용 미션팩<br>R타입 &amp; V타입", "series": "MG", "date": "", "defaultMemo": "2021 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG129", "name": "건담 F91 Ver.2.0 [티타늄 피니시]", "displayHtml": "건담 F91 Ver.2.0<br>[티타늄 피니시]", "series": "MG", "date": "", "defaultMemo": "2021 / 8,800엔", "category": "MG : 건담 F90/F91"}, {"code": "CG130", "name": "건담 F90용 미션팩 W타입", "displayHtml": "건담 F90용 미션팩<br>W타입", "series": "MG", "date": "", "defaultMemo": "2021 / 2,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG131", "name": "건담 F90 화성 독립 지온군 사양", "displayHtml": "건담 F90<br>화성 독립 지온군 사양", "series": "MG", "date": "", "defaultMemo": "2021 / 4,500엔", "category": "MG : 건담 F90/F91"}, {"code": "CG132", "name": "건담 F90용 미션팩 H 타입", "displayHtml": "건담 F90용 미션팩<br>H 타입", "series": "MG", "date": "", "defaultMemo": "2022 / 1,800엔", "category": "MG : 건담 F90/F91"}, {"code": "CG133", "name": "건담 F90용 미션팩 C타입 & T타입", "displayHtml": "건담 F90용 미션팩<br>C타입 &amp; T타입", "series": "MG", "date": "", "defaultMemo": "2022 / 2,400엔", "category": "MG : 건담 F90/F91"}, {"code": "CG134", "name": "건담 F90용 미션팩 전용 행거 2개 세트", "displayHtml": "건담 F90용 미션팩<br>전용 행거 2개 세트", "series": "MG", "date": "", "defaultMemo": "2022 / 1,800엔", "category": "MG : 건담 F90/F91"}, {"code": "CG135", "name": "건담 F90용 미션팩 P타입", "displayHtml": "건담 F90용 미션팩<br>P타입", "series": "MG", "date": "", "defaultMemo": "2022 / 2,200엔", "category": "MG : 건담 F90/F91"}, {"code": "CG136", "name": "건담 F90용 미션팩 J 타입 & Q 타입", "displayHtml": "건담 F90용 미션팩<br>J 타입 &amp; Q 타입", "series": "MG", "date": "", "defaultMemo": "2023 / 2,200엔", "category": "MG : 건담 F90/F91"}, {"code": "CG137", "name": "건담 F90용 미션팩 A 타입 & L 타입", "displayHtml": "건담 F90용 미션팩<br>A 타입 &amp; L 타입", "series": "MG", "date": "", "defaultMemo": "2024 / 2,500엔", "category": "MG : 건담 F90/F91"}, {"code": "CG138", "name": "건담 F90 N 타입", "displayHtml": "건담 F90 N 타입", "series": "MG", "date": "", "defaultMemo": "2024 / 4,500엔", "category": "MG : 건담 F90/F91"}, {"code": "CG139", "name": "F90 III 클러스터 건담", "displayHtml": "F90 III 클러스터 건담", "series": "MG", "date": "", "defaultMemo": "2024 / 6,000엔", "category": "MG : 건담 F90/F91"}, {"code": "CG140", "name": "F80 건레이드", "displayHtml": "F80 건레이드", "series": "MG", "date": "", "defaultMemo": "2025 / 4,800엔", "category": "MG : 건담 F90/F91"}, {"code": "CG141", "name": "F90 III Y 클러스터 건담용 미션팩 X 타입", "displayHtml": "F90 III Y 클러스터<br>건담용 미션팩 X 타입", "series": "MG", "date": "", "defaultMemo": "2025 / 3,200엔", "category": "MG : 건담 F90/F91"}, {"code": "CG142", "name": "톨기스 II", "displayHtml": "톨기스 II", "series": "MG", "date": "", "defaultMemo": "2013 / 3,800엔", "category": "MG : 건담 W"}, {"code": "CG143", "name": "톨기스 III", "displayHtml": "톨기스 III", "series": "MG", "date": "", "defaultMemo": "2015 / 4,500엔", "category": "MG : 건담 W"}, {"code": "CG144", "name": "알트론건담", "displayHtml": "알트론건담", "series": "MG", "date": "", "defaultMemo": "2015 / 4,500엔", "category": "MG : 건담 W"}, {"code": "CG145", "name": "건담 헤비 암즈 카이 EW", "displayHtml": "건담 헤비 암즈 카이 EW", "series": "MG", "date": "", "defaultMemo": "2016 / 4,800엔", "category": "MG : 건담 W"}, {"code": "CG146", "name": "건담 샌드록 카이", "displayHtml": "건담 샌드록 카이", "series": "MG", "date": "", "defaultMemo": "2017 / 4,800엔", "category": "MG : 건담 W"}, {"code": "CG147", "name": "윙건담 제로 EW & 드라이 츠베르크 [스페셜코팅]", "displayHtml": "윙건담 제로 EW<br>&amp; 드라이 츠베르크<br>[스페셜코팅]", "series": "MG", "date": "", "defaultMemo": "2018 / 10,000엔", "category": "MG : 건담 W"}, {"code": "CG148", "name": "셴롱건담 EW (랴오 야 장비)", "displayHtml": "셴롱건담 EW<br>(랴오 야 장비)", "series": "MG", "date": "", "defaultMemo": "2019 / 4,500엔", "category": "MG : 건담 W"}, {"code": "CG149", "name": "건담 헤비암즈 EW (이겔장비)", "displayHtml": "건담 헤비암즈 EW<br>(이겔장비)", "series": "MG", "date": "", "defaultMemo": "2019 / 5,500엔", "category": "MG : 건담 W"}, {"code": "CG150", "name": "건담 데스사이즈 EW (루세트 장비)", "displayHtml": "건담 데스사이즈 EW<br>(루세트 장비)", "series": "MG", "date": "", "defaultMemo": "2020 / 4,500엔", "category": "MG : 건담 W"}, {"code": "CG151", "name": "건담 샌드록 EW (아르마딜로 장비)", "displayHtml": "건담 샌드록 EW<br>(아르마딜로 장비)", "series": "MG", "date": "", "defaultMemo": "2020 / 5,800엔", "category": "MG : 건담 W"}, {"code": "CG152", "name": "건담 W EW시리즈 확장파츠세트 (패자들의 영광)", "displayHtml": "건담 W EW시리즈<br>확장파츠세트<br>(패자들의 영광)", "series": "MG", "date": "", "defaultMemo": "2020 / 3,200엔", "category": "MG : 건담 W"}, {"code": "CG153", "name": "톨기스 F EW", "displayHtml": "톨기스 F EW", "series": "MG", "date": "", "defaultMemo": "2021 / 6,000엔", "category": "MG : 건담 W"}, {"code": "CG154", "name": "건담 에피온 (슈트룸 운트 드랑 유닛)", "displayHtml": "건담 에피온<br>(슈트룸 운트 드랑 유닛)", "series": "MG", "date": "", "defaultMemo": "2022 / 6,800엔", "category": "MG : 건담 W"}, {"code": "CG155", "name": "건담 샌드록 EW (아르마딜로 리자드 장비)", "displayHtml": "건담 샌드록 EW<br>(아르마딜로 리자드<br>장비)", "series": "MG", "date": "", "defaultMemo": "2024 / 6,500엔", "category": "MG : 건담 W"}, {"code": "CG156", "name": "에일스트라이크 건담 Ver.RM용 런쳐스트라이 커/소드스트라이커 팩", "displayHtml": "에일스트라이크 건담<br>Ver.RM용 런쳐스트라이<br>커/소드스트라이커 팩", "series": "MG", "date": "", "defaultMemo": "2013 / 2,200엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG157", "name": "건담 아스트레이 느와르", "displayHtml": "건담 아스트레이 느와르", "series": "MG", "date": "", "defaultMemo": "2013 / 5,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG158", "name": "건담 아스트레이 레드프레임", "displayHtml": "건담 아스트레이<br>레드프레임", "series": "MG", "date": "", "defaultMemo": "2014 / 4,500엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG159", "name": "데스티니 임펄스 건담 R", "displayHtml": "데스티니 임펄스 건담 R", "series": "MG", "date": "", "defaultMemo": "2014 / 5,200엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG160", "name": "건담 아스트레이 블루프레임 D용 드라군 포메이션 베이스", "displayHtml": "건담 아스트레이<br>블루프레임 D용<br>드라군 포메이션 베이스", "series": "MG", "date": "", "defaultMemo": "2014 / 1,800엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG161", "name": "프리덤 건담 Ver.2.0 풀버스트모드 스페셜 코팅 Ver.", "displayHtml": "프리덤 건담 Ver.2.0<br>풀버스트모드<br>스페셜 코팅 Ver.", "series": "MG", "date": "", "defaultMemo": "2016 / 10,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG162", "name": "프리덤 건담 Ver.2.0용 확장 이펙트 세트", "displayHtml": "프리덤 건담 Ver.2.0용<br>확장 이펙트 세트", "series": "MG", "date": "", "defaultMemo": "2016 / 2,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG163", "name": "임펄스 건담 블랑쉬", "displayHtml": "임펄스 건담 블랑쉬", "series": "MG", "date": "", "defaultMemo": "2016 / 5,200엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG164", "name": "퍼펙트 스트라이크 건담 스페셜 코팅 Ver.", "displayHtml": "퍼펙트 스트라이크 건담<br>스페셜 코팅 Ver.", "series": "MG", "date": "", "defaultMemo": "2017 / 12,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG165", "name": "프로비던스건담용 드라군 디스플레이 이펙트", "displayHtml": "프로비던스건담용<br>드라군 디스플레이<br>이펙트", "series": "MG", "date": "", "defaultMemo": "2017 / 2,200엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG166", "name": "저스티스 건담 [스페셜 코팅]", "displayHtml": "저스티스 건담<br>[스페셜 코팅]", "series": "MG", "date": "", "defaultMemo": "2017 / 9,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG167", "name": "프로비던스 건담 [스페셜 코팅]", "displayHtml": "프로비던스 건담<br>[스페셜 코팅]", "series": "MG", "date": "", "defaultMemo": "2017 / 12,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG168", "name": "건담 아스트레이 턴레드", "displayHtml": "건담 아스트레이 턴레드", "series": "MG", "date": "", "defaultMemo": "2018 / 7,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG169", "name": "건담 아스트레이 레드 드래곤", "displayHtml": "건담 아스트레이<br>레드 드래곤", "series": "MG", "date": "", "defaultMemo": "2019 / 7,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG170", "name": "블래스트 임펄스건담", "displayHtml": "블래스트 임펄스건담", "series": "MG", "date": "", "defaultMemo": "2019 / 5,000엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG171", "name": "슬래쉬 자쿠 팬텀 (이자크 줄 전용기)", "displayHtml": "슬래쉬 자쿠 팬텀<br>(이자크 줄 전용기)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG172", "name": "건담 아스트레이 레드프레임 플라이트유닛", "displayHtml": "건담 아스트레이<br>레드프레임<br>플라이트유닛", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG173", "name": "건담 아스트레이 레드프레임용 플라이트유닛 확장 세트", "displayHtml": "건담 아스트레이<br>레드프레임용<br>플라이트유닛 확장 세트", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG174", "name": "테스타먼트 건담", "displayHtml": "테스타먼트 건담", "series": "MG", "date": "", "defaultMemo": "2020 / 6,250엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG175", "name": "블레이즈 자쿠팬텀 / 블레이즈 자쿠워리어", "displayHtml": "블레이즈 자쿠팬텀 /<br>블레이즈 자쿠워리어", "series": "MG", "date": "", "defaultMemo": "2020 / 4,500엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG176", "name": "블레이즈 자쿠팬텀 (레이 자 바렐 전용기)", "displayHtml": "블레이즈 자쿠팬텀<br>(레이 자 바렐 전용기)", "series": "MG", "date": "", "defaultMemo": "2020 / 4,500엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG177", "name": "라이트닝 스트라이크 건담Ver.RM", "displayHtml": "라이트닝 스트라이크<br>건담Ver.RM", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG178", "name": "에일 스트라이크 건담 Ver.RM 용 라이트닝 스트라이커팩", "displayHtml": "에일 스트라이크 건담<br>Ver.RM 용<br>라이트닝 스트라이커팩", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG179", "name": "이클립스 건담 용 매뉴버 스트라이커", "displayHtml": "이클립스 건담 용<br>매뉴버 스트라이커", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG180", "name": "진 글래디에이터", "displayHtml": "진 글래디에이터", "series": "MG", "date": "", "defaultMemo": "2022 / 4,800엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG181", "name": "이클립스 건담 라이진 장비", "displayHtml": "이클립스 건담<br>라이진 장비", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG182", "name": "이클립스 건담용 라이진 스트라이커 팩", "displayHtml": "이클립스 건담용<br>라이진 스트라이커 팩", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG183", "name": "건담 아스트레이 아웃프레임 D", "displayHtml": "건담 아스트레이<br>아웃프레임 D", "series": "MG", "date": "", "defaultMemo": "2023 / 5,800엔", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG184", "name": "건너 위저드 / 슬래시 위저드 / 블레이즈 위저드 세트", "displayHtml": "건너 위저드 /<br>슬래시 위저드 /<br>블레이즈 위저드 세트", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG185", "name": "이클립스 건담 2호기", "displayHtml": "이클립스 건담 2호기", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG186", "name": "모빌 진 (미겔 아이만 전용기)", "displayHtml": "모빌 진<br>(미겔 아이만 전용기)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG187", "name": "블레이즈 자쿠 팬텀 (디아카 엘스만 전용기)", "displayHtml": "블레이즈 자쿠 팬텀<br>(디아카 엘스만 전용기)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG188", "name": "건담 아스트레이 미라지 프레임 세컨드 이슈", "displayHtml": "건담 아스트레이<br>미라지 프레임<br>세컨드 이슈", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG189", "name": "MGEX 스트라이크 프리덤 건담 [메카니컬 클리어]", "displayHtml": "MGEX<br>스트라이크 프리덤 건담<br>[메카니컬 클리어]", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG190", "name": "블레이즈 자쿠 팬텀 (하이네 베스텐 플루트 전용기)", "displayHtml": "블레이즈 자쿠 팬텀<br>(하이네 베스텐 플루트 전용기)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 시드 / 데스티니 / 아스트레이"}, {"code": "CG191", "name": "트랜스암 라이저", "displayHtml": "트랜스암 라이저", "series": "MG", "date": "", "defaultMemo": "2017 / 27,500엔", "category": "MG : 건담 OO"}, {"code": "CG192", "name": "건담 엑시아 리페어 II", "displayHtml": "건담 엑시아 리페어 II", "series": "MG", "date": "", "defaultMemo": "2010 / 4,200엔", "category": "MG : 건담 OO"}, {"code": "CG193", "name": "더블오건담 세븐소드/G 인스펙션", "displayHtml": "더블오건담 세븐소드/G<br>인스펙션", "series": "MG", "date": "", "defaultMemo": "2020 / 23,000엔", "category": "MG : 건담 OO"}, {"code": "CG194", "name": "어드밴스드 징크스", "displayHtml": "어드밴스드 징크스", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG195", "name": "더블오 잔라이저", "displayHtml": "더블오 잔라이저", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG196", "name": "어드밴스드 징크스 (데보라기)", "displayHtml": "어드밴스드 징크스<br>(데보라기)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG197", "name": "더블오건담 세븐소드/G (트랜잠모드) [스페셜 코팅]", "displayHtml": "더블오건담 세븐소드/G<br>(트랜잠모드)<br>[스페셜 코팅]", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG198", "name": "더블오 퀀터 (트랜잠모드) [스페셜 코팅]", "displayHtml": "더블오 퀀터<br>(트랜잠모드)<br>[스페셜 코팅]", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG199", "name": "징크스 III (어로우즈 형태)", "displayHtml": "징크스 III<br>(어로우즈 형태)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG200", "name": "건담 아발란체 엑시아 대시", "displayHtml": "건담 아발란체<br>엑시아 대시", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG201", "name": "징크스 III (연방 컬러)", "displayHtml": "징크스 III (연방 컬러)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG202", "name": "더블오 퀀터 풀 세이버 [스페셜코팅]", "displayHtml": "더블오 퀀터 풀 세이버<br>[스페셜코팅]", "series": "MG", "date": "", "defaultMemo": "2019 / 11,000엔", "category": "MG : 건담 OO"}, {"code": "CG203", "name": "건담 듀나메스 (트랜스암모드) [메탈릭 글로스 인젝션]", "displayHtml": "건담 듀나메스<br>(트랜스암모드)<br>[메탈릭 글로스 인젝션]", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG204", "name": "건담 엑시아 리페어 III", "displayHtml": "건담 엑시아 리페어 III", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG205", "name": "건담 아스트레아 F형 (풀웨폰 세트)", "displayHtml": "건담 아스트레아 F형<br>(풀웨폰 세트)", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG206", "name": "건담 아스트레아 F형용 아발란치 대시 유닛", "displayHtml": "건담 아스트레아 F형용<br>아발란치 대시 유닛", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 건담 OO"}, {"code": "CG207", "name": "건담 아스트레아 + 프로토 GN 트윈 브로드 블레이드", "displayHtml": "건담 아스트레아<br>+ 프로토 GN<br>트윈 브로드 블레이드", "series": "MG", "date": "", "defaultMemo": "2021 / 6,500엔", "category": "MG : 건담 OO"}, {"code": "CG208", "name": "건담 페니체 리나시타 알바", "displayHtml": "건담 페니체<br>리나시타 알바", "series": "MG", "date": "", "defaultMemo": "2016 / 4,800엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG209", "name": "건담 어메이징 엑시아", "displayHtml": "건담 어메이징 엑시아", "series": "MG", "date": "", "defaultMemo": "2018 / 5,000엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG210", "name": "스타 빌드 스트라이크 건담 Ver. RG 시스템", "displayHtml": "스타 빌드 스트라이크<br>건담 Ver. RG 시스템", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG211", "name": "폴리포드 볼", "displayHtml": "폴리포드 볼", "series": "MG", "date": "", "defaultMemo": "2018 / 3,000엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG212", "name": "건담 스톰브링거", "displayHtml": "건담 스톰브링거", "series": "MG", "date": "", "defaultMemo": "2019 / 5,000엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG213", "name": "큐베레이 담드", "displayHtml": "큐베레이 담드", "series": "MG", "date": "", "defaultMemo": "2018 / 5,000엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG214", "name": "백식 크래쉬", "displayHtml": "백식 크래쉬", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG215", "name": "큐베레이 앙벨리르", "displayHtml": "큐베레이 앙벨리르", "series": "MG", "date": "", "defaultMemo": "2020 / 5,400엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG216", "name": "건담 스톰브링거 F.A. (페이탈 애시) /짐 터뷸런스", "displayHtml": "건담 스톰브링거 F.A.<br>(페이탈 애시)<br>/짐 터뷸런스", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG217", "name": "백식 라이즈 카인", "displayHtml": "백식 라이즈 카인", "series": "MG", "date": "", "defaultMemo": "2019 / 12,000엔", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG218", "name": "건담 엑스 임펄스", "displayHtml": "건담 엑스 임펄스", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG219", "name": "캠퍼 슈베어", "displayHtml": "캠퍼 슈베어", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG220", "name": "건담 스톰브링거 P.F.", "displayHtml": "건담 스톰브링거 P.F.", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 빌드 파이터즈 / 다이버즈"}, {"code": "CG221", "name": "무사건담 Mk-II 도쿠카와 이에야스 Ver.", "displayHtml": "무사건담 Mk-II<br>도쿠카와 이에야스 Ver.", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG222", "name": "건담 AGE-2 노말 특무대사양", "displayHtml": "건담 AGE-2 노말<br>특무대사양", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG223", "name": "건담 AGE-1 2호기", "displayHtml": "건담 AGE-1 2호기", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG224", "name": "건담 X 3호기", "displayHtml": "건담 X 3호기", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG225", "name": "건담 발바토스용 확장부품세트", "displayHtml": "건담 발바토스용<br>확장부품세트", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG226", "name": "진 무사건담 전국의 진 ~ 흑의대개", "displayHtml": "진 무사건담<br>전국의 진 ~ 흑의대개", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG227", "name": "건담 에이지-1 풀 글랜서 [디자이너스 컬러 버전]", "displayHtml": "건담 에이지-1 풀 글랜서<br>[디자이너스 컬러 버전]", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG228", "name": "건담 에이지-1 풀 글랜서용 확장 부품", "displayHtml": "건담 에이지-1<br>풀 글랜서용 확장 부품", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG229", "name": "양산형 리코 전용 자쿠", "displayHtml": "양산형 리코 전용 자쿠", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}, {"code": "CG230", "name": "건담 발바토스 루프스용 확장 부품 세트", "displayHtml": "건담 발바토스 루프스용 확장 부품 세트", "series": "MG", "date": "", "defaultMemo": "", "category": "MG : 기타"}];
+const PG_DEFAULT_KITS = [{"code": "PG001", "name": "건담 RX-78", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "1998 / 12,000엔"}, {"code": "PG002", "name": "자쿠 II (양산형)", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "1999 / 12,000엔"}, {"code": "PG003", "name": "자쿠 II (샤아 전용)", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "1999 / 12,000엔"}, {"code": "PG004", "name": "Z 건담", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2000 / 20,000엔"}, {"code": "PG005", "name": "윙 건담 제로 커스텀", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2000 / 15,000엔"}, {"code": "PG006", "name": "건담 Mk-II (에우고)", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2001 / 15,000엔"}, {"code": "PG007", "name": "건담 Mk-II (티탄즈)", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2002 / 15,000엔"}, {"code": "PG008", "name": "건담 RX-78 GP01 제피랜더스 / GP01FB 풀버니언", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2003 / 20,000엔"}, {"code": "PG009", "name": "스트라이크 건담", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2004 / 14,000엔"}, {"code": "PG010", "name": "스카이 그래스퍼 + 에일 스트라이커", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2005 / 5,000엔"}, {"code": "PG011", "name": "에일 스트라이크 루즈 + 스카이그래스퍼", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2005 / 19,000엔"}, {"code": "PG012", "name": "건담 아스트레이 레드프레임", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2009 / 18,000엔"}, {"code": "PG013", "name": "건담 아스트레이 스페셜 커스텀 셋", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2009 / 3,500엔"}, {"code": "PG014", "name": "더블오라이저", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2009 / 25,000엔"}, {"code": "PG015", "name": "더블오라이저 - 클리어파츠", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2009 / 3,800엔"}, {"code": "PG016", "name": "스트라이크 프리덤 건담", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2010 / 25,000엔"}, {"code": "PG017", "name": "스트라이크 프리덤 건담 - 미러베이스", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2010 / 3,800엔"}, {"code": "PG018", "name": "유니콘 건담", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2014 / 20,000엔"}, {"code": "PG019", "name": "유니콘 건담용 LED 유닛", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2014 / 12,000엔"}, {"code": "PG020", "name": "유니콘 건담 02 밴시 노른", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2015 / 22,000엔"}, {"code": "PG021", "name": "건담 엑시아 [라이팅 모델]", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2017 / 32,000엔"}, {"code": "PG022", "name": "더블오 건담 세븐소드/G", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2018 / 23,000엔"}, {"code": "PG023", "name": "퍼펙트 스트라이크 건담", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2020 / 25,000엔"}, {"code": "PG024", "name": "언리쉬드 RX-78 건담", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2020 / 25,000엔"}, {"code": "PG025", "name": "언리쉬드 뉴 건담", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2026 / 60,000엔"}, {"code": "PG026", "name": "언리쉬드 뉴 건담용 LED 유닛", "series": "PG", "group": "PG : 일반판", "subGroup": "", "folder": "images/pg", "date": "", "defaultMemo": "2026 / 14,000엔"}, {"code": "PG027", "name": "건담 RX-78 커스텀셋 #1", "series": "PG", "group": "PG : 일반판", "subGroup": "PG 커스텀 셋", "folder": "images/pg", "date": "", "defaultMemo": "1999 / 2,000엔"}, {"code": "PG028", "name": "건담 RX-78 커스텀셋 #2", "series": "PG", "group": "PG : 일반판", "subGroup": "PG 커스텀 셋", "folder": "images/pg", "date": "", "defaultMemo": "1999 / 3,500엔"}, {"code": "PG029", "name": "자쿠 II 커스텀셋 #1", "series": "PG", "group": "PG : 일반판", "subGroup": "PG 커스텀 셋", "folder": "images/pg", "date": "", "defaultMemo": "1999 / 2,000엔"}, {"code": "PG030", "name": "자쿠 II 커스텀셋 #2", "series": "PG", "group": "PG : 일반판", "subGroup": "PG 커스텀 셋", "folder": "images/pg", "date": "", "defaultMemo": "1999 / 3,500엔"}, {"code": "CG231", "name": "건담 아스트레이 블루프레임", "displayHtml": "건담 아스트레이<br>블루프레임", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": ""}, {"code": "CG232", "name": "유니콘건담용 FA 확장세트", "displayHtml": "유니콘건담용<br>FA 확장세트", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2015 / 6,500엔"}, {"code": "CG233", "name": "암드아머 VN/BS", "displayHtml": "암드아머 VN/BS", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2015 / 4,000엔"}, {"code": "CG234", "name": "유니콘건담 (최종결전 Ver.)", "displayHtml": "유니콘건담<br>(최종결전 Ver.)", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2016 / 24,000엔"}, {"code": "CG235", "name": "유니콘건담 3호기 페넥스", "displayHtml": "유니콘건담 3호기<br>페넥스", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2017 / 40,000엔"}, {"code": "CG236", "name": "트랜스암 라이저", "displayHtml": "트랜스암 라이저", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2017 / 27,500엔"}, {"code": "CG237", "name": "트랜스암 라이저 클리어 컬러 보디", "displayHtml": "트랜스암 라이저<br>클리어 컬러 보디", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2017 / 3,800엔"}, {"code": "CG238", "name": "유니콘건담 2호기 밴시 노른 (최종결전Ver.)", "displayHtml": "유니콘건담 2호기 밴시<br>노른 (최종결전Ver.)", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2018 / 22,000엔"}, {"code": "CG239", "name": "건담 엑시아 리페어파츠 세트", "displayHtml": "건담 엑시아<br>리페어파츠 세트", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2018 / 4,000엔"}, {"code": "CG240", "name": "건담 아스트레이 레드프레임 카이", "displayHtml": "건담 아스트레이<br>레드프레임 카이", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2018 / 23,000엔"}, {"code": "CG241", "name": "건담 엑시아 클리어 컬러 바디", "displayHtml": "건담 엑시아<br>클리어 컬러 바디", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2018 / 3,500엔"}, {"code": "CG242", "name": "스트라이크건담용 퍼펙트 스트라이크건담 확장파츠", "displayHtml": "스트라이크건담용<br>퍼펙트 스트라이크건담<br>확장파츠", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2020 / 8,000엔"}, {"code": "CG243", "name": "더블오건담 세븐소드/G 인스펙션", "displayHtml": "더블오건담 세븐소드/G<br>인스펙션", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2020 / 23,000엔"}, {"code": "CG244", "name": "유니콘건담 3호기 페넥스 (내러티브 Ver.)", "displayHtml": "유니콘건담 3호기<br>페넥스 (내러티브 Ver.)", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2021 / 48,000엔"}, {"code": "CG245", "name": "유니콘건담 3호기 페넥스용 내러티브 Ver. 확장 세트", "displayHtml": "유니콘건담 3호기<br>페넥스용 내러티브 Ver.<br>확장 세트", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2021 / 8,000엔"}, {"code": "CG246", "name": "언리쉬드 건담 클리어 컬러 바디", "displayHtml": "언리쉬드 건담<br>클리어 컬러 바디", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2021 / 4,500엔"}, {"code": "CG247", "name": "유니콘 건담 퍼펙트빌리티용 디바인 확장세트", "displayHtml": "유니콘 건담<br>퍼펙트빌리티용<br>디바인 확장세트", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2022 / 6,500엔"}, {"code": "CG248", "name": "유니콘 건담 퍼펙티빌리티", "displayHtml": "유니콘 건담<br>퍼펙티빌리티", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": "2022 / 30,000엔"}, {"code": "CG249", "name": "PG 언리시드 뉴건담용 핀 판넬 & 클리어 바디", "displayHtml": "PG 언리시드 뉴건담용 핀 판넬 &amp; 클리어 바디", "series": "PG", "group": "PG : 프리미엄 반다이", "subGroup": "", "folder": "images/pbpg", "date": "", "defaultMemo": ""}];
+const ETC_DEFAULT_KITS = [{"code": "RE001", "name": "나이팅게일", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2014 / 8,000엔"}, {"code": "RE002", "name": "건담 Mk-III", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2015 / 3,500엔"}, {"code": "RE003", "name": "건담 GP04G 가베라", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2015 / 3,500엔"}, {"code": "RE004", "name": "디제", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2015 / 3,500엔"}, {"code": "RE005", "name": "이프리트 [개]", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2016 / 3,500엔"}, {"code": "RE006", "name": "바우", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2016 / 3,500엔"}, {"code": "RE007", "name": "함마함마", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2017 / 4,500엔"}, {"code": "RE008", "name": "건캐논 디텍터", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2018 / 4,000엔"}, {"code": "RE009", "name": "비기나 기나", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2018 / 3,200엔"}, {"code": "RE010", "name": "야크트 도가 규네이기", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2018 / 4,500엔"}, {"code": "RE011", "name": "건이지", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2018 / 3,500엔"}, {"code": "RE012", "name": "비기나 기나 II", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2019 / 3,700엔"}, {"code": "RE013", "name": "자쿠 II FZ", "series": "RE/100", "group": "RE/100 : 일반판", "folder": "images/re100", "date": "", "defaultMemo": "2019 / 3,500엔"}, {"code": "CG250", "name": "이프리트 슈나이드", "displayHtml": "이프리트 슈나이드", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2017 / 3,500엔"}, {"code": "CG251", "name": "리바우", "displayHtml": "리바우", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2017 / 4,200엔"}, {"code": "CG252", "name": "바우 양산형", "displayHtml": "바우 양산형", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2017 / 3,500엔"}, {"code": "CG253", "name": "건캐논 디텍터 (Z-MSV Ver.)", "displayHtml": "건캐논 디텍터<br>(Z-MSV Ver.)", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2018 / 4,000엔"}, {"code": "CG254", "name": "건담 Mk-III 8호기", "displayHtml": "건담 Mk-III 8호기", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2018 / 3,500엔"}, {"code": "CG255", "name": "89식 베이스 자바", "displayHtml": "89식 베이스 자바", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2019 / 3,000엔"}, {"code": "CG256", "name": "비기나 기나 (베라 로나 스페셜)", "displayHtml": "비기나 기나<br>(베라 로나 스페셜)", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2019 / 4,200엔"}, {"code": "CG257", "name": "야크트도가 (퀘스 전용기)", "displayHtml": "야크트도가<br>(퀘스 전용기)", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2019 / 4,500엔"}, {"code": "CG258", "name": "건 블래스터", "displayHtml": "건 블래스터", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2019 / 3,500엔"}, {"code": "CG259", "name": "89식 베이스 자바 (유니콘Ver.)", "displayHtml": "89식 베이스 자바<br>(유니콘Ver.)", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2020 / 3,000엔"}, {"code": "CG260", "name": "건이지 육전형", "displayHtml": "건이지 육전형", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2019 / 3,500엔"}, {"code": "CG261", "name": "비기나 제라", "displayHtml": "비기나 제라", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2019 / 4,000엔"}, {"code": "CG262", "name": "건이지 프로토타입 (롤아웃컬러)", "displayHtml": "건이지 프로토타입<br>(롤아웃컬러)", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2020 / 3,500엔"}, {"code": "CG263", "name": "샷코", "displayHtml": "샷코", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2020 / 3,800엔"}, {"code": "CG264", "name": "건이지 육전형 (블루버드 부대 사양)", "displayHtml": "건이지 육전형<br>(블루버드 부대 사양)", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2021 / 3,500엔"}, {"code": "CG265", "name": "비기나 기나 II (목성결전사양)", "displayHtml": "비기나 기나 II<br>(목성결전사양)", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2021 / 4,200엔"}, {"code": "CG266", "name": "비기나 기나 [엑스트라 피니시]", "displayHtml": "비기나 기나<br>[엑스트라 피니시]", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2018 / 6,400엔"}, {"code": "CG267", "name": "건담 린트브룸", "displayHtml": "건담 린트브룸", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2022 / 5,000엔"}, {"code": "CG268", "name": "데난 게", "displayHtml": "데난 게", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2025 / 3,000엔"}, {"code": "CG269", "name": "데난 존", "displayHtml": "데난 존", "series": "RE/100", "group": "RE/100 : 프리미엄 반다이", "folder": "images/pbre100", "date": "", "defaultMemo": "2025 / 3,200엔"}, {"code": "FM001", "name": "캘러미티 건담", "series": "풀 메카닉스", "group": "풀 메카닉스 : 일반판", "folder": "images/fm", "date": "", "defaultMemo": "2021 / 5,000엔"}, {"code": "FM002", "name": "레이더 건담", "series": "풀 메카닉스", "group": "풀 메카닉스 : 일반판", "folder": "images/fm", "date": "", "defaultMemo": "2022 / 5,000엔"}, {"code": "FM003", "name": "건담 에어리얼", "series": "풀 메카닉스", "group": "풀 메카닉스 : 일반판", "folder": "images/fm", "date": "", "defaultMemo": "2023 / 3,800엔"}, {"code": "FM004", "name": "포비든 건담", "series": "풀 메카닉스", "group": "풀 메카닉스 : 일반판", "folder": "images/fm", "date": "", "defaultMemo": "2023 / 5,800엔"}, {"code": "FM005", "name": "그레이즈 아인", "series": "풀 메카닉스", "group": "풀 메카닉스 : 일반판", "folder": "images/fm", "date": "", "defaultMemo": "2027 / 5,800엔"}, {"code": "PBFM001", "name": "에일 캘러미티 건담", "series": "풀 메카닉스", "group": "풀 메카닉스 : 프리미엄 반다이", "folder": "images/pbfm", "date": "", "defaultMemo": "2022 / 5,000엔"}, {"code": "PBFM002", "name": "건담 에어리얼 퍼멧 스코어 식스", "series": "풀 메카닉스", "group": "풀 메카닉스 : 프리미엄 반다이", "folder": "images/pbfm", "date": "", "defaultMemo": "2024 / 4,200엔"}, {"code": "PBFM003", "name": "소드 캘러미티 건담", "series": "풀 메카닉스", "group": "풀 메카닉스 : 프리미엄 반다이", "folder": "images/pbfm", "date": "", "defaultMemo": "2024 / 5,500엔"}, {"code": "PBFM004", "name": "부스트 레이더 건담", "series": "풀 메카닉스", "group": "풀 메카닉스 : 프리미엄 반다이", "folder": "images/pbfm", "date": "", "defaultMemo": "2024 / 6,200엔"}, {"code": "SRW001", "name": "사이바스터", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 일반판", "folder": "images/srw", "date": "", "defaultMemo": "2021 / 4,000엔"}, {"code": "SRW002", "name": "알트아이젠", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 일반판", "folder": "images/srw", "date": "", "defaultMemo": "2021 / 4,000엔"}, {"code": "SRW003", "name": "게슈펜스트", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 일반판", "folder": "images/srw", "date": "", "defaultMemo": "2022 / 4,000엔"}, {"code": "SRW004", "name": "다이젠가", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 일반판", "folder": "images/srw", "date": "", "defaultMemo": "2023 / 5,200엔"}, {"code": "SRW005", "name": "휘케바인 Mk-II", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 일반판", "folder": "images/srw", "date": "", "defaultMemo": "2023 / 4,500엔"}, {"code": "SRW006", "name": "휘케바인 Mk-III", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 일반판", "folder": "images/srw", "date": "", "defaultMemo": "2024 / 4,500엔"}, {"code": "SRW007", "name": "바이스릿터", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 일반판", "folder": "images/srw", "date": "", "defaultMemo": "2024 / 4,500엔"}, {"code": "SRW008", "name": "건레온", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 일반판", "folder": "images/srw", "date": "", "defaultMemo": "2024 / 5,500엔"}, {"code": "SRW009", "name": "아슈세이버", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 일반판", "folder": "images/srw", "date": "", "defaultMemo": "2025 / 4,500엔"}, {"code": "SRW010", "name": "용호왕", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 일반판", "folder": "images/srw", "date": "", "defaultMemo": "2025 / 7,000엔"}, {"code": "PBSRW001", "name": "사이바스터 [엑스트라 피니시]", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 프리미엄 반다이", "folder": "images/pbsrw", "date": "", "defaultMemo": "2022 / 6,800엔"}, {"code": "PBSRW002", "name": "게슈펜스트 Mk-II", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 프리미엄 반다이", "folder": "images/pbsrw", "date": "", "defaultMemo": "2023 / 4,300엔"}, {"code": "PBSRW003", "name": "휘케바인 Mk-II 트롬베", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 프리미엄 반다이", "folder": "images/pbsrw", "date": "", "defaultMemo": "2023 / 4,700엔"}, {"code": "PBSRW004", "name": "AM 건너", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 프리미엄 반다이", "folder": "images/pbsrw", "date": "", "defaultMemo": "2024 / 7,000엔"}, {"code": "PBSRW005", "name": "알트아이젠 나흐트", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 프리미엄 반다이", "folder": "images/pbsrw", "date": "", "defaultMemo": "2024 / 4,300엔"}, {"code": "PBSRW006", "name": "휘케바인 복서", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 프리미엄 반다이", "folder": "images/pbsrw", "date": "", "defaultMemo": "2024 / 11,000엔"}, {"code": "PBSRW007", "name": "게슈펜스트 Mk-II 카이 (카이 키타무라기)", "series": "슈퍼로봇대전", "group": "슈퍼로봇대전 : 프리미엄 반다이", "folder": "images/pbsrw", "date": "", "defaultMemo": "2025 / 5,500엔"}, {"code": "HIRM001", "name": "건담 발바토스", "series": "하이 레졸루션", "group": "하이 레졸루션", "folder": "images/hirm", "date": "", "defaultMemo": "2016 / 16,000엔"}, {"code": "HIRM002", "name": "윙 건담 제로 EW", "series": "하이 레졸루션", "group": "하이 레졸루션", "folder": "images/hirm", "date": "", "defaultMemo": "2017 / 12,000엔"}, {"code": "HIRM003", "name": "윙 건담 제로 EW [스페셜 코팅]", "series": "하이 레졸루션", "group": "하이 레졸루션", "folder": "images/hirm", "date": "", "defaultMemo": "2018 / 17,000엔"}, {"code": "HIRM004", "name": "건담 아스트레이 레드프레임", "series": "하이 레졸루션", "group": "하이 레졸루션", "folder": "images/hirm", "date": "", "defaultMemo": "2018 / 13,000엔"}, {"code": "HIRM005", "name": "건담 아스트레이 느와르", "series": "하이 레졸루션", "group": "하이 레졸루션", "folder": "images/hirm", "date": "", "defaultMemo": "2019 / 16,000엔"}, {"code": "HIRM006", "name": "갓건담", "series": "하이 레졸루션", "group": "하이 레졸루션", "folder": "images/hirm", "date": "", "defaultMemo": "2019 / 13,000엔"}, {"code": "HIRM007", "name": "건담 아스트레이 레드프레임 파워드 레드", "series": "하이 레졸루션", "group": "하이 레졸루션", "folder": "images/hirm", "date": "", "defaultMemo": "2022 / 16,000엔"}];
 
 const MG_KEYS = {
   state: 'mg_gunpla_dalong_cata1_v1',
@@ -653,9 +799,15 @@ const MG_KEYS = {
   deleted: 'mg_gunpla_dalong_cata1_deleted_v1'
 };
 
+// Preserves existing CG001~CG269 records seamlessly
 const PB_KEYS = {
   state: 'pbandai_mg_pg_re100_v1',
   custom: 'pbandai_mg_pg_re100_custom_v1'
+};
+
+const EXTRA_KEYS = {
+  state: 'gunpla_pg_etc_extra_v1',
+  custom: 'gunpla_pg_etc_custom_v1'
 };
 
 const GH_CFG_KEY = 'gunpla_github_cfg_v1';
@@ -665,8 +817,34 @@ const DEFAULT_GH_PATH = 'data/checklist.json';
 const DEFAULT_GH_BRANCH = 'main';
 
 const MG_SERIES_ORDER = ["퍼스트 건담", "MSV", "Z & ZZ 건담", "건담 센티넬", "역습의 샤아", "0080 : 주머니 속의 전쟁", "건담 F91 / 크로스본", "0083 : 스타더스트 메모리", "V 건담", "기동무투전 G건담", "신기동전기 건담 윙 / EW", "제 08 MS소대", "건담 X", "턴 A 건담", "건담 시드 / 아스트레이", "건담 더블오", "유니콘 / 내러티브", "건담 에이지", "건담 빌드 시리즈", "철혈의 오펀스", "기타", "MGEX"];
-const PB_SERIES_ORDER = ["MG", "PG", "RE/100"];
-const PB_CATEGORY_ORDER = ["MG : 우주세기", "MG : 유니콘 / 내러티브", "MG : Advance of Z (티탄즈의 깃발 아래)", "MG : 크로스본 건담", "MG : 건담 F90/F91", "MG : 건담 W", "MG : 건담 시드 / 데스티니 / 아스트레이", "MG : 건담 OO", "MG : 빌드 파이터즈 / 다이버즈", "MG : 기타", "PG", "RE/100"];
+
+const PBMG_CATEGORY_ORDER = [
+  "MG : 우주세기",
+  "MG : 유니콘 / 내러티브",
+  "MG : Advance of Z (티탄즈의 깃발 아래)",
+  "MG : 크로스본 건담",
+  "MG : 건담 F90/F91",
+  "MG : 건담 W",
+  "MG : 건담 시드 / 데스티니 / 아스트레이",
+  "MG : 건담 OO",
+  "MG : 빌드 파이터즈 / 다이버즈",
+  "MG : 기타"
+];
+
+const PG_GROUP_ORDER = [
+  "PG : 일반판",
+  "PG : 프리미엄 반다이"
+];
+
+const ETC_GROUP_ORDER = [
+  "RE/100 : 일반판",
+  "RE/100 : 프리미엄 반다이",
+  "풀 메카닉스 : 일반판",
+  "풀 메카닉스 : 프리미엄 반다이",
+  "슈퍼로봇대전 : 일반판",
+  "슈퍼로봇대전 : 프리미엄 반다이",
+  "하이 레졸루션"
+];
 
 let mgState = {};
 let mgCustomKits = [];
@@ -676,7 +854,10 @@ let mgDeletedCodes = [];
 let pbState = {};
 let pbCustomKits = [];
 
-let activeTab = 'mg';
+let extraState = {};
+let extraCustomKits = []; // items have targetTab: 'pg' | 'etc'
+
+let activeTab = 'mg'; // 'mg' | 'pbmg' | 'pg' | 'etc'
 let currentView = 'grid';
 let activePhotoTarget = null;
 
@@ -687,14 +868,55 @@ function sanitizeTitleForFilename(name) {
     .trim();
 }
 
-function getKitByCode(tab, code) {
-  const kits = tab === 'mg' ? getMgKits() : getPbKits();
-  return kits.find(item => item.code === code) || null;
+function isLegacyCgCode(code) {
+  return typeof code === 'string' && code.startsWith('CG');
 }
 
-function getKitNameByCode(tab, code) {
-  const found = getKitByCode(tab, code);
-  return found ? found.name : '';
+function getStoreForCode(tab, code) {
+  if (tab === 'mg') return mgState;
+  if (tab === 'pbmg' || isLegacyCgCode(code)) return pbState;
+  return extraState;
+}
+
+function saveStoreForCode(tab, code) {
+  if (tab === 'mg') saveMgData();
+  else if (tab === 'pbmg' || isLegacyCgCode(code)) savePbData();
+  else saveExtraData();
+}
+
+function getKitsForTab(tab) {
+  if (tab === 'mg') {
+    const delSet = new Set(mgDeletedCodes);
+    const base = MG_DEFAULT_KITS
+      .filter(k => !delSet.has(k.code))
+      .map(k => mgOverrides[k.code] ? { ...k, ...mgOverrides[k.code] } : k);
+    const custom = mgCustomKits.filter(k => !delSet.has(k.code));
+    return [...base, ...custom];
+  }
+  if (tab === 'pbmg') {
+    const pbMgCustom = pbCustomKits.filter(k => (k.series || 'MG') === 'MG');
+    return [...PBMG_DEFAULT_KITS, ...pbMgCustom];
+  }
+  if (tab === 'pg') {
+    const legacyPgCustom = pbCustomKits
+      .filter(k => k.series === 'PG')
+      .map(k => ({ ...k, group: 'PG : 프리미엄 반다이', folder: 'images/pbpg' }));
+    const newPgCustom = extraCustomKits.filter(k => k.targetTab === 'pg');
+    return [...PG_DEFAULT_KITS, ...legacyPgCustom, ...newPgCustom];
+  }
+  if (tab === 'etc') {
+    const legacyReCustom = pbCustomKits
+      .filter(k => k.series === 'RE/100')
+      .map(k => ({ ...k, group: 'RE/100 : 프리미엄 반다이', folder: 'images/pbre100' }));
+    const newEtcCustom = extraCustomKits.filter(k => k.targetTab === 'etc');
+    return [...ETC_DEFAULT_KITS, ...legacyReCustom, ...newEtcCustom];
+  }
+  return [];
+}
+
+function getKitByCode(tab, code) {
+  const kits = getKitsForTab(tab);
+  return kits.find(item => item.code === code) || null;
 }
 
 const PHOTO_CANDIDATE_CACHE = new Map();
@@ -703,16 +925,10 @@ function getRepoPhotoCandidates(tab, code) {
   if (!code) return [];
   const kit = getKitByCode(tab, code);
   const rawName = kit ? kit.name : '';
-  const series = kit ? (kit.series || '') : '';
-  const cacheKey = `${tab}|${code}|${series}|${rawName}`;
+  const folder = kit && kit.folder ? kit.folder : (tab === 'pbmg' ? 'images/pbmg' : 'images/mg');
+  const cacheKey = `${tab}|${code}|${folder}|${rawName}`;
   if (PHOTO_CANDIDATE_CACHE.has(cacheKey)) {
     return PHOTO_CANDIDATE_CACHE.get(cacheKey);
-  }
-  let folder = 'images/mg';
-  if (tab === 'pb') {
-    if (series === 'PG') folder = 'images/pbpg';
-    else if (series === 'RE/100') folder = 'images/pbre100';
-    else folder = 'images/pbmg';
   }
   const safeName = sanitizeTitleForFilename(rawName);
   const names = [];
@@ -776,6 +992,11 @@ function loadAllData() {
     if (rawPb) pbState = JSON.parse(rawPb);
     const rawPbCustom = localStorage.getItem(PB_KEYS.custom);
     if (rawPbCustom) pbCustomKits = JSON.parse(rawPbCustom);
+
+    const rawExtra = localStorage.getItem(EXTRA_KEYS.state);
+    if (rawExtra) extraState = JSON.parse(rawExtra);
+    const rawExtraCustom = localStorage.getItem(EXTRA_KEYS.custom);
+    if (rawExtraCustom) extraCustomKits = JSON.parse(rawExtraCustom);
   } catch (e) {
     console.error(e);
   }
@@ -801,24 +1022,21 @@ function savePbData() {
   }
 }
 
-function getMgKits() {
-  const delSet = new Set(mgDeletedCodes);
-  const base = MG_DEFAULT_KITS
-    .filter(k => !delSet.has(k.code))
-    .map(k => mgOverrides[k.code] ? { ...k, ...mgOverrides[k.code] } : k);
-  const custom = mgCustomKits.filter(k => !delSet.has(k.code));
-  return [...base, ...custom];
+function saveExtraData() {
+  try {
+    localStorage.setItem(EXTRA_KEYS.state, JSON.stringify(extraState));
+    localStorage.setItem(EXTRA_KEYS.custom, JSON.stringify(extraCustomKits));
+  } catch (e) {
+    alert('브라우저 저장 용량이 가득 찼습니다. [GitHub 저장] 버튼을 눌러 저장소로 동기화해 주세요.');
+  }
 }
 
-function getPbKits() {
-  return [...PB_DEFAULT_KITS, ...pbCustomKits];
-}
-
-const KIT_DEFAULT_MEMO_MAP = { mg: new Map(), pb: new Map() };
+const KIT_DEFAULT_MEMO_MAP = { mg: new Map(), pbmg: new Map(), pg: new Map(), etc: new Map() };
 function getDefaultMemo(tab, code) {
   let m = KIT_DEFAULT_MEMO_MAP[tab];
+  if (!m) return '';
   if (!m.size) {
-    const kits = tab === 'mg' ? getMgKits() : getPbKits();
+    const kits = getKitsForTab(tab);
     for (let i = 0; i < kits.length; i++) {
       if (kits[i].defaultMemo) m.set(kits[i].code, kits[i].defaultMemo);
     }
@@ -827,7 +1045,7 @@ function getDefaultMemo(tab, code) {
 }
 
 function getKitState(tab, code) {
-  const store = tab === 'mg' ? mgState : pbState;
+  const store = getStoreForCode(tab, code);
   if (!store[code]) {
     const initialNote = getDefaultMemo(tab, code);
     store[code] = { status: 'miss', build: '-', note: initialNote, photo: '' };
@@ -842,7 +1060,7 @@ function getKitState(tab, code) {
 }
 
 function computeStats(tab) {
-  const kits = tab === 'mg' ? getMgKits() : getPbKits();
+  const kits = getKitsForTab(tab);
   let own = 0, miss = 0;
   kits.forEach(k => {
     const st = getKitState(tab, k.code);
@@ -856,12 +1074,17 @@ function computeStats(tab) {
 
 function updateHeaderAndPills() {
   const mgStat = computeStats('mg');
-  const pbStat = computeStats('pb');
+  const pbmgStat = computeStats('pbmg');
+  const pgStat = computeStats('pg');
+  const etcStat = computeStats('etc');
 
   document.getElementById('pillMg').textContent = `${mgStat.own}/${mgStat.total}`;
-  document.getElementById('pillPb').textContent = `${pbStat.own}/${pbStat.total}`;
+  document.getElementById('pillPbmg').textContent = `${pbmgStat.own}/${pbmgStat.total}`;
+  document.getElementById('pillPg').textContent = `${pgStat.own}/${pgStat.total}`;
+  document.getElementById('pillEtc').textContent = `${etcStat.own}/${etcStat.total}`;
 
-  const s = activeTab === 'pb' ? pbStat : mgStat;
+  const statMap = { mg: mgStat, pbmg: pbmgStat, pg: pgStat, etc: etcStat };
+  const s = statMap[activeTab] || mgStat;
 
   document.getElementById('statsBar').innerHTML = `
     <div class="stat-pill">전체 <strong>${s.total}</strong></div>
@@ -872,9 +1095,11 @@ function updateHeaderAndPills() {
 }
 
 function switchTab(tab) {
-  activeTab = tab === 'pb' ? 'pb' : 'mg';
+  activeTab = ['mg', 'pbmg', 'pg', 'etc'].includes(tab) ? tab : 'mg';
   document.getElementById('tabMg').classList.toggle('active', activeTab === 'mg');
-  document.getElementById('tabPb').classList.toggle('active', activeTab === 'pb');
+  document.getElementById('tabPbmg').classList.toggle('active', activeTab === 'pbmg');
+  document.getElementById('tabPg').classList.toggle('active', activeTab === 'pg');
+  document.getElementById('tabEtc').classList.toggle('active', activeTab === 'etc');
 
   const titleEl = document.getElementById('pageMainTitle');
   document.getElementById('searchInput').value = '';
@@ -887,13 +1112,27 @@ function switchTab(tab) {
       <option value="release">발매 순서</option>
       <option value="series">작품별</option>
     `;
-  } else {
-    titleEl.textContent = '프리미엄 반다이 체크리스트';
+  } else if (activeTab === 'pbmg') {
+    titleEl.textContent = '프반 MG 체크리스트';
     sub.innerHTML = `
-      <option value="all">전체 등급</option>
-      <option value="MG">MG</option>
-      <option value="PG">PG</option>
-      <option value="RE/100">RE/100</option>
+      <option value="all">전체 작품군</option>
+      ${PBMG_CATEGORY_ORDER.map(c => `<option value="${c}">${c.replace('MG : ', '')}</option>`).join('')}
+    `;
+  } else if (activeTab === 'pg') {
+    titleEl.textContent = 'PG 체크리스트';
+    sub.innerHTML = `
+      <option value="all">전체 구분</option>
+      <option value="PG : 일반판">PG : 일반판</option>
+      <option value="PG : 프리미엄 반다이">PG : 프리미엄 반다이</option>
+    `;
+  } else {
+    titleEl.textContent = '기타 라인업 체크리스트';
+    sub.innerHTML = `
+      <option value="all">전체 라인업</option>
+      <option value="RE/100">RE/100 (일반/프반)</option>
+      <option value="풀 메카닉스">풀 메카닉스 (일반/프반)</option>
+      <option value="슈퍼로봇대전">슈퍼로봇대전 (일반/프반)</option>
+      <option value="하이 레졸루션">하이 레졸루션</option>
     `;
   }
   render();
@@ -944,7 +1183,7 @@ function applyStatusToElement(el, status, isRow) {
 function updateItemStatusFast(tab, code, nextStatus, triggerBtn) {
   const item = getKitState(tab, code);
   item.status = nextStatus;
-  if (tab === 'mg') saveMgData(); else savePbData();
+  saveStoreForCode(tab, code);
 
   const stFilter = document.getElementById('statusFilter').value;
   if (stFilter !== 'all' || !triggerBtn) {
@@ -978,14 +1217,14 @@ function setBuild(tab, code, val, el) {
   const item = getKitState(tab, code);
   if (item.status !== 'own') return;
   item.build = val;
-  if (tab === 'mg') saveMgData(); else savePbData();
+  saveStoreForCode(tab, code);
   render();
 }
 
 function setNote(tab, code, val) {
   const item = getKitState(tab, code);
   item.note = val;
-  if (tab === 'mg') saveMgData(); else savePbData();
+  saveStoreForCode(tab, code);
 }
 
 function triggerPhotoPick(tab, code) {
@@ -1028,7 +1267,7 @@ function processImageFile(file, tab, code) {
 
       const item = getKitState(tab, code);
       item.photo = compressedDataUrl;
-      if (tab === 'mg') saveMgData(); else savePbData();
+      saveStoreForCode(tab, code);
       render();
     };
     img.src = evt.target.result;
@@ -1040,7 +1279,7 @@ function removePhoto(e, tab, code) {
   e.stopPropagation();
   const item = getKitState(tab, code);
   item.photo = '';
-  if (tab === 'mg') saveMgData(); else savePbData();
+  saveStoreForCode(tab, code);
   render();
 }
 
@@ -1053,7 +1292,6 @@ function handleDrop(e, tab, code) {
 }
 
 function openAddModal() {
-  if (activeTab !== 'mg' && activeTab !== 'pb') return;
   document.getElementById('newKitName').value = '';
   document.getElementById('newKitSeries').value = '';
   document.getElementById('newKitDate').value = '';
@@ -1064,17 +1302,35 @@ function openAddModal() {
     document.getElementById('addModalTitle').textContent = 'MG 일반판 새 제품 추가';
     document.getElementById('newKitSeriesLabel').textContent = '등장 작품';
     document.getElementById('newKitSeries').placeholder = '예: 퍼스트 건담';
-    const set = new Set([...MG_SERIES_ORDER, ...getMgKits().map(k => k.series).filter(Boolean)]);
+    const set = new Set([...MG_SERIES_ORDER, ...getKitsForTab('mg').map(k => k.series).filter(Boolean)]);
     set.forEach(s => {
       const opt = document.createElement('option');
       opt.value = s;
       dl.appendChild(opt);
     });
+  } else if (activeTab === 'pbmg') {
+    document.getElementById('addModalTitle').textContent = '프반 MG 새 제품 추가';
+    document.getElementById('newKitSeriesLabel').textContent = '작품 카테고리';
+    document.getElementById('newKitSeries').placeholder = '예: MG : 우주세기';
+    PBMG_CATEGORY_ORDER.forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s;
+      dl.appendChild(opt);
+    });
+  } else if (activeTab === 'pg') {
+    document.getElementById('addModalTitle').textContent = 'PG 새 제품 추가';
+    document.getElementById('newKitSeriesLabel').textContent = '구분 (PG : 일반판 / PG : 프리미엄 반다이)';
+    document.getElementById('newKitSeries').placeholder = 'PG : 일반판';
+    PG_GROUP_ORDER.forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s;
+      dl.appendChild(opt);
+    });
   } else {
-    document.getElementById('addModalTitle').textContent = '프리미엄 반다이 새 제품 추가';
-    document.getElementById('newKitSeriesLabel').textContent = '등급 (MG / PG / RE/100)';
-    document.getElementById('newKitSeries').placeholder = '예: MG';
-    PB_SERIES_ORDER.forEach(s => {
+    document.getElementById('addModalTitle').textContent = '기타 라인업 새 제품 추가';
+    document.getElementById('newKitSeriesLabel').textContent = '라인업 구분';
+    document.getElementById('newKitSeries').placeholder = '예: 슈퍼로봇대전 : 일반판';
+    ETC_GROUP_ORDER.forEach(s => {
       const opt = document.createElement('option');
       opt.value = s;
       dl.appendChild(opt);
@@ -1086,6 +1342,16 @@ function openAddModal() {
 
 function closeAddModal() {
   document.getElementById('addModal').classList.remove('open');
+}
+
+function resolveFolderForGroup(tab, grp) {
+  if (tab === 'mg') return 'images/mg';
+  if (tab === 'pbmg') return 'images/pbmg';
+  if (tab === 'pg') return grp.includes('프리미엄') ? 'images/pbpg' : 'images/pg';
+  if (grp.startsWith('RE/100')) return grp.includes('프리미엄') ? 'images/pbre100' : 'images/re100';
+  if (grp.startsWith('풀 메카닉스')) return grp.includes('프리미엄') ? 'images/pbfm' : 'images/fm';
+  if (grp.startsWith('슈퍼로봇대전')) return grp.includes('프리미엄') ? 'images/pbsrw' : 'images/srw';
+  return 'images/hirm';
 }
 
 function submitNewKit() {
@@ -1100,13 +1366,23 @@ function submitNewKit() {
 
   if (activeTab === 'mg') {
     const series = document.getElementById('newKitSeries').value.trim() || '기타';
-    mgCustomKits.push({ code, name, series, date: '', defaultMemo: date, isCustom: true });
+    mgCustomKits.push({ code, name, series, folder: 'images/mg', date: '', defaultMemo: date, isCustom: true });
     saveMgData();
-  } else if (activeTab === 'pb') {
-    const series = document.getElementById('newKitSeries').value.trim() || 'MG';
-    const category = series === 'MG' ? 'MG : 기타' : series;
-    pbCustomKits.push({ code, name, series, category, date: '', defaultMemo: date, isCustom: true });
+  } else if (activeTab === 'pbmg') {
+    const category = document.getElementById('newKitSeries').value.trim() || 'MG : 기타';
+    pbCustomKits.push({ code, name, series: 'MG', category, folder: 'images/pbmg', date: '', defaultMemo: date, isCustom: true });
     savePbData();
+  } else if (activeTab === 'pg') {
+    const group = document.getElementById('newKitSeries').value.trim() || 'PG : 일반판';
+    const folder = resolveFolderForGroup('pg', group);
+    extraCustomKits.push({ code, name, series: 'PG', group, folder, targetTab: 'pg', date: '', defaultMemo: date, isCustom: true });
+    saveExtraData();
+  } else {
+    const group = document.getElementById('newKitSeries').value.trim() || '하이 레졸루션';
+    const series = group.split(':')[0].trim();
+    const folder = resolveFolderForGroup('etc', group);
+    extraCustomKits.push({ code, name, series, group, folder, targetTab: 'etc', date: '', defaultMemo: date, isCustom: true });
+    saveExtraData();
   }
   closeAddModal();
   render();
@@ -1120,15 +1396,19 @@ function deleteCustomKit(e, tab, code) {
     mgCustomKits = mgCustomKits.filter(k => k.code !== code);
     delete mgState[code];
     saveMgData();
-  } else {
+  } else if (tab === 'pbmg') {
     pbCustomKits = pbCustomKits.filter(k => k.code !== code);
     delete pbState[code];
     savePbData();
+  } else {
+    extraCustomKits = extraCustomKits.filter(k => k.code !== code);
+    delete extraState[code];
+    saveExtraData();
   }
   render();
 }
 
-function formatPbTitle(kit) {
+function formatKitTitle(tab, kit) {
   if (kit.displayHtml) return kit.displayHtml;
   return kit.name.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -1150,16 +1430,16 @@ function getRowStatusClass(status) {
 function renderCardHtml(tab, k) {
   const st = getKitState(tab, k.code);
   const cardCls = `${getCardStatusClass(st.status)} ${(st.status === 'own' && st.build === '조립') ? 'build-done-photo' : ''}`;
-  const titleHtml = tab === 'pb' ? formatPbTitle(k) : k.name;
-  const nameCls = tab === 'pb' ? 'kit-name pb-name' : 'kit-name';
+  const titleHtml = formatKitTitle(tab, k);
+  const nameCls = (tab === 'pbmg' || kitNeedsThreeLines(k)) ? 'kit-name pb-name' : 'kit-name';
   const candidates = st.photo ? [] : getRepoPhotoCandidates(tab, k.code);
   const imgSrc = st.photo || candidates[0] || '';
   const fallbacksAttr = candidates.slice(1).join('|');
   const expectedPath = candidates[0] || '';
+  const metaLabel = k.group || k.series || '';
   return `
     <div class="kit-card ${cardCls}" data-code="${k.code}">
       <div class="photo-box"
-           
            ondragover="event.preventDefault()"
            ondrop="handleDrop(event, '${tab}', '${k.code}')">
         ${k.isCustom ? `<button class="del-kit-btn" onclick="deleteCustomKit(event, '${tab}', '${k.code}')">카드삭제</button>` : ''}
@@ -1176,7 +1456,7 @@ function renderCardHtml(tab, k) {
       </div>
       <div class="card-body">
         <div class="${nameCls}" title="${k.name}">${titleHtml}</div>
-        <div class="kit-meta" title="${k.series}">${k.series}</div>
+        <div class="kit-meta" title="${metaLabel}">${metaLabel}</div>
         <div class="status-group">
           <button class="st-btn ${st.status==='own'?'active-own':(st.status==='miss'?'active-miss':'')}" onclick="toggleOwnMiss('${tab}','${k.code}', this)">${st.status==='own'?'보유':'미보유'}</button>
           <button class="st-btn ${st.status==='wish'?'active-wish':(st.status==='pass'?'active-pass':'')}" onclick="toggleWishPass('${tab}','${k.code}', this)">${st.status==='pass'?'패쓰':'위시'}</button>
@@ -1194,22 +1474,28 @@ function renderCardHtml(tab, k) {
   `;
 }
 
+function kitNeedsThreeLines(k) {
+  return (k.name && k.name.length > 22) || Boolean(k.displayHtml);
+}
+
 function renderTableRowHtml(tab, k) {
   const st = getKitState(tab, k.code);
   const rowCls = `${getRowStatusClass(st.status)} ${(st.status === 'own' && st.build === '조립') ? 'build-done-photo' : ''}`;
-  const imgSrc = getEffectivePhoto(tab, k.code, st);
+  const candidates = st.photo ? [] : getRepoPhotoCandidates(tab, k.code);
+  const imgSrc = st.photo || candidates[0] || '';
+  const fallbacksAttr = candidates.slice(1).join('|');
+  const col3 = k.group || k.series || '-';
   return `
     <tr class="${rowCls}" data-code="${k.code}">
       <td>
         <div class="tbl-photo"
-             
              ondragover="event.preventDefault()"
              ondrop="handleDrop(event, '${tab}', '${k.code}')">
-          ${imgSrc ? `<img src="${imgSrc}" onerror="this.style.display='none'; this.parentNode.textContent='+ 사진';">` : `+ 사진`}
+          ${imgSrc ? `<img src="${imgSrc}" data-fallbacks="${fallbacksAttr}" onerror="handleImgFallback(this)"><span style="display:none;">사진 없음</span>` : `+ 사진`}
         </div>
       </td>
       <td><strong>${k.name}</strong></td>
-      <td>${k.series}</td>
+      <td>${col3}</td>
       <td>${k.defaultMemo || k.date || '-'}</td>
       <td>
         <div class="status-group" style="width:120px;">
@@ -1234,7 +1520,7 @@ function renderTableRowHtml(tab, k) {
   `;
 }
 
-function renderMgGroupedByMissStatus(tab, list, isTable) {
+function renderGroupedByMissStatus(tab, list, isTable) {
   const groups = [
     { key: 'miss', label: '미보유' },
     { key: 'wish', label: '위시' },
@@ -1257,7 +1543,7 @@ function renderMgGroupedByMissStatus(tab, list, isTable) {
                   <tr>
                     <th>제품 사진</th>
                     <th>모델명</th>
-                    <th>${tab === 'mg' ? '등장 작품' : '등급'}</th>
+                    <th>구분 / 작품</th>
                     <th>발매일 / 가격</th>
                     <th>보유 여부</th>
                     <th>조립 상태</th>
@@ -1292,7 +1578,7 @@ function renderMgList() {
   const stFilter = document.getElementById('statusFilter').value;
   const sortMode = document.getElementById('subFilter').value;
 
-  const filtered = getMgKits().filter(k => {
+  const filtered = getKitsForTab('mg').filter(k => {
     const st = getKitState('mg', k.code);
     if (stFilter !== 'all') {
       if (stFilter === 'miss') {
@@ -1309,7 +1595,7 @@ function renderMgList() {
   });
 
   if (stFilter === 'miss') {
-    return renderMgGroupedByMissStatus('mg', filtered, currentView === 'table');
+    return renderGroupedByMissStatus('mg', filtered, currentView === 'table');
   }
 
   if (currentView === 'grid') {
@@ -1436,13 +1722,13 @@ function renderMgList() {
   }
 }
 
-function renderPbList() {
+function renderPbmgList() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const stFilter = document.getElementById('statusFilter').value;
-  const gradeFilter = document.getElementById('subFilter').value;
+  const catFilter = document.getElementById('subFilter').value;
 
-  const filtered = getPbKits().filter(k => {
-    const st = getKitState('pb', k.code);
+  const filtered = getKitsForTab('pbmg').filter(k => {
+    const st = getKitState('pbmg', k.code);
     if (stFilter !== 'all') {
       if (stFilter === 'miss') {
         if (st.status !== 'miss' && st.status !== 'wish' && st.status !== 'pass') return false;
@@ -1450,31 +1736,31 @@ function renderPbList() {
         return false;
       }
     }
-    if (gradeFilter !== 'all' && k.series !== gradeFilter) return false;
+    if (catFilter !== 'all' && (k.category || 'MG : 기타') !== catFilter) return false;
     if (q) {
-      const hay = `${k.name} ${k.series} ${k.category || ''} ${st.note}`.toLowerCase();
+      const hay = `${k.name} ${k.category || ''} ${st.note}`.toLowerCase();
       if (!hay.includes(q)) return false;
     }
     return true;
   });
 
   if (stFilter === 'miss') {
-    return renderMgGroupedByMissStatus('pb', filtered, currentView === 'table');
+    return renderGroupedByMissStatus('pbmg', filtered, currentView === 'table');
   }
 
   const map = new Map();
-  PB_CATEGORY_ORDER.forEach(c => map.set(c, []));
+  PBMG_CATEGORY_ORDER.forEach(c => map.set(c, []));
   filtered.forEach(k => {
-    const cat = k.category || (k.series === 'MG' ? 'MG : 기타' : (k.series || 'MG : 기타'));
+    const cat = k.category || 'MG : 기타';
     if (!map.has(cat)) map.set(cat, []);
     map.get(cat).push(k);
   });
 
   let html = '';
-  if (currentView === 'grid') {
-    map.forEach((items, catName) => {
-      if (items.length > 0) {
-        const ownCnt = items.filter(item => getKitState('pb', item.code).status === 'own').length;
+  map.forEach((items, catName) => {
+    if (items.length > 0) {
+      const ownCnt = items.filter(item => getKitState('pbmg', item.code).status === 'own').length;
+      if (currentView === 'grid') {
         html += `
           <div class="series-section">
             <div class="series-header">
@@ -1482,16 +1768,11 @@ function renderPbList() {
               <span class="count-badge">보유 ${ownCnt} / ${items.length}</span>
             </div>
             <div class="grid-container">
-              ${items.map(k => renderCardHtml('pb', k)).join('')}
+              ${items.map(k => renderCardHtml('pbmg', k)).join('')}
             </div>
           </div>
         `;
-      }
-    });
-  } else {
-    map.forEach((items, catName) => {
-      if (items.length > 0) {
-        const ownCnt = items.filter(item => getKitState('pb', item.code).status === 'own').length;
+      } else {
         html += `
           <div class="series-section">
             <div class="series-header">
@@ -1504,29 +1785,235 @@ function renderPbList() {
                   <tr>
                     <th>제품 사진</th>
                     <th>모델명</th>
-                    <th>등급</th>
+                    <th>구분</th>
                     <th>발매일 / 가격</th>
                     <th>보유 여부</th>
                     <th>조립 상태</th>
                     <th>메모</th>
                   </tr>
                 </thead>
-                <tbody>${items.map(k => renderTableRowHtml('pb', k)).join('')}</tbody>
+                <tbody>${items.map(k => renderTableRowHtml('pbmg', k)).join('')}</tbody>
               </table>
             </div>
           </div>
         `;
       }
-    });
-  }
+    }
+  });
   return html;
+}
+
+const VISUAL_STYLE = 1;
+
+function renderLineupSectionHtml(lineupTitle, regItems, pbItems, subGroupConfig, themeClass) {
+  const allItems = [...regItems, ...pbItems];
+  if (allItems.length === 0) return '';
+  const totalOwn = allItems.filter(i => getKitState(activeTab, i.code).status === 'own').length;
+
+  const renderGridPart = (items) => {
+    if (subGroupConfig && items.some(i => i.subGroup === subGroupConfig)) {
+      const mainItems = items.filter(i => !i.subGroup);
+      const subItems = items.filter(i => i.subGroup === subGroupConfig);
+      return `
+        <div class="grid-container">
+          ${mainItems.map(k => renderCardHtml(activeTab, k)).join('')}
+        </div>
+        ${subItems.length > 0 ? `
+          <div class="sub-divider-header">
+            <span>${subGroupConfig}</span>
+            <span class="sub-cnt">${subItems.length}종</span>
+          </div>
+          <div class="grid-container">
+            ${subItems.map(k => renderCardHtml(activeTab, k)).join('')}
+          </div>
+        ` : ''}
+      `;
+    }
+    return `
+      <div class="grid-container">
+        ${items.map(k => renderCardHtml(activeTab, k)).join('')}
+      </div>
+    `;
+  };
+
+  const renderTablePart = (items) => `
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>제품 사진</th>
+            <th>모델명</th>
+            <th>구분</th>
+            <th>발매일 / 가격</th>
+            <th>보유 여부</th>
+            <th>조립 상태</th>
+            <th>메모</th>
+          </tr>
+        </thead>
+        <tbody>${items.map(k => renderTableRowHtml(activeTab, k)).join('')}</tbody>
+      </table>
+    </div>
+  `;
+
+  const renderPart = (items) => currentView === 'grid' ? renderGridPart(items) : renderTablePart(items);
+
+  const regOwn = regItems.filter(i => getKitState(activeTab, i.code).status === 'own').length;
+  const pbOwn = pbItems.filter(i => getKitState(activeTab, i.code).status === 'own').length;
+
+  // Style 1: Thin horizontal line + label
+  if (VISUAL_STYLE === 1) {
+    let body = '';
+    if (regItems.length > 0) {
+      if (pbItems.length > 0) {
+        body += `<div class="tier-line-divider"><span>일반판</span><span class="tier-cnt">보유 ${regOwn} / ${regItems.length}</span></div>`;
+      }
+      body += renderPart(regItems);
+    }
+    if (pbItems.length > 0) {
+      body += `<div class="tier-line-divider is-pb"><span>프리미엄 반다이</span><span class="tier-cnt">보유 ${pbOwn} / ${pbItems.length}</span></div>`;
+      body += renderPart(pbItems);
+    }
+    return `
+      <div class="lineup-block">
+        <div class="series-header ${themeClass || ''}">
+          <span>▶ ${lineupTitle}</span>
+          <span class="count-badge">보유 ${totalOwn} / ${allItems.length}</span>
+        </div>
+        ${body}
+      </div>
+    `;
+  }
+
+  // Style 2: Slim sub-bars for Regular & P-Bandai
+  if (VISUAL_STYLE === 2) {
+    let body = '';
+    if (regItems.length > 0) {
+      if (pbItems.length > 0) {
+        body += `<div class="tier-sub-bar"><span>일반판</span><span class="tier-cnt">보유 ${regOwn} / ${regItems.length}</span></div>`;
+      }
+      body += renderPart(regItems);
+    }
+    if (pbItems.length > 0) {
+      body += `<div class="tier-sub-bar is-pb"><span>프리미엄 반다이</span><span class="tier-cnt">보유 ${pbOwn} / ${pbItems.length}</span></div>`;
+      body += renderPart(pbItems);
+    }
+    return `
+      <div class="lineup-block">
+        <div class="series-header ${themeClass || ''}">
+          <span>▶ ${lineupTitle}</span>
+          <span class="count-badge">보유 ${totalOwn} / ${allItems.length}</span>
+        </div>
+        ${body}
+      </div>
+    `;
+  }
+
+  // Style 3: Unified Lineup Container Box
+  let body = '';
+  if (regItems.length > 0) {
+    if (pbItems.length > 0) {
+      body += `<div class="tier-inline-label"><span>일반판</span><span class="tier-cnt">보유 ${regOwn} / ${regItems.length}</span></div>`;
+    }
+    body += renderPart(regItems);
+  }
+  if (pbItems.length > 0) {
+    body += `<div class="tier-inline-label is-pb"><span>프리미엄 반다이</span><span class="tier-cnt">보유 ${pbOwn} / ${pbItems.length}</span></div>`;
+    body += renderPart(pbItems);
+  }
+  return `
+    <div class="lineup-container-box">
+      <div class="series-header ${themeClass || ''}">
+        <span>▶ ${lineupTitle}</span>
+        <span class="count-badge">보유 ${totalOwn} / ${allItems.length}</span>
+      </div>
+      ${body}
+    </div>
+  `;
+}
+
+function renderPgList() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const stFilter = document.getElementById('statusFilter').value;
+  const groupFilter = document.getElementById('subFilter').value;
+
+  const filtered = getKitsForTab('pg').filter(k => {
+    const st = getKitState('pg', k.code);
+    if (stFilter !== 'all') {
+      if (stFilter === 'miss') {
+        if (st.status !== 'miss' && st.status !== 'wish' && st.status !== 'pass') return false;
+      } else if (st.status !== stFilter) {
+        return false;
+      }
+    }
+    if (groupFilter !== 'all' && k.group !== groupFilter) return false;
+    if (q) {
+      const hay = `${k.name} ${k.group || ''} ${k.subGroup || ''} ${st.note}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  if (stFilter === 'miss') {
+    return renderGroupedByMissStatus('pg', filtered, currentView === 'table');
+  }
+
+  const regItems = filtered.filter(k => k.group === 'PG : 일반판');
+  const pbItems = filtered.filter(k => k.group === 'PG : 프리미엄 반다이');
+  return renderLineupSectionHtml('PG', regItems, pbItems, 'PG 커스텀 셋', '');
+}
+
+function renderEtcList() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const stFilter = document.getElementById('statusFilter').value;
+  const lineFilter = document.getElementById('subFilter').value;
+
+  const filtered = getKitsForTab('etc').filter(k => {
+    const st = getKitState('etc', k.code);
+    if (stFilter !== 'all') {
+      if (stFilter === 'miss') {
+        if (st.status !== 'miss' && st.status !== 'wish' && st.status !== 'pass') return false;
+      } else if (st.status !== stFilter) {
+        return false;
+      }
+    }
+    if (lineFilter !== 'all') {
+      const g = k.group || '';
+      if (!g.startsWith(lineFilter)) return false;
+    }
+    if (q) {
+      const hay = `${k.name} ${k.group || ''} ${st.note}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  if (stFilter === 'miss') {
+    return renderGroupedByMissStatus('etc', filtered, currentView === 'table');
+  }
+
+  const lineups = [
+    { title: 'RE/100', theme: 'theme-re100', reg: 'RE/100 : 일반판', pb: 'RE/100 : 프리미엄 반다이' },
+    { title: '풀 메카닉스', theme: 'theme-fm', reg: '풀 메카닉스 : 일반판', pb: '풀 메카닉스 : 프리미엄 반다이' },
+    { title: '슈퍼로봇대전', theme: 'theme-srw', reg: '슈퍼로봇대전 : 일반판', pb: '슈퍼로봇대전 : 프리미엄 반다이' },
+    { title: '하이 레졸루션', theme: 'theme-hirm', reg: '하이 레졸루션', pb: null }
+  ];
+
+  return lineups.map(lu => {
+    const regItems = filtered.filter(k => k.group === lu.reg);
+    const pbItems = lu.pb ? filtered.filter(k => k.group === lu.pb) : [];
+    return renderLineupSectionHtml(lu.title, regItems, pbItems, null, lu.theme);
+  }).join('');
 }
 
 function render() {
   updateHeaderAndPills();
   const area = document.getElementById('contentArea');
-  if (activeTab === 'pb') {
-    area.innerHTML = renderPbList();
+  if (activeTab === 'pbmg') {
+    area.innerHTML = renderPbmgList();
+  } else if (activeTab === 'pg') {
+    area.innerHTML = renderPgList();
+  } else if (activeTab === 'etc') {
+    area.innerHTML = renderEtcList();
   } else {
     area.innerHTML = renderMgList();
   }
@@ -1534,7 +2021,7 @@ function render() {
 
 function buildMgPayloadObj() {
   return {
-    version: 7,
+    version: 8,
     updatedAt: new Date().toISOString(),
     state: mgState,
     customKits: mgCustomKits,
@@ -1545,10 +2032,19 @@ function buildMgPayloadObj() {
 
 function buildPbPayloadObj() {
   return {
-    version: 7,
+    version: 8,
     updatedAt: new Date().toISOString(),
     state: pbState,
     customKits: pbCustomKits
+  };
+}
+
+function buildExtraPayloadObj() {
+  return {
+    version: 8,
+    updatedAt: new Date().toISOString(),
+    state: extraState,
+    customKits: extraCustomKits
   };
 }
 
@@ -1557,7 +2053,8 @@ function buildUnifiedPayloadObj() {
     type: 'gunpla_unified_backup_v1',
     updatedAt: new Date().toISOString(),
     mg: buildMgPayloadObj(),
-    pb: buildPbPayloadObj()
+    pb: buildPbPayloadObj(),
+    extra: buildExtraPayloadObj()
   };
 }
 
@@ -1585,11 +2082,23 @@ function applyPbPayloadObj(parsed) {
   savePbData();
 }
 
+function applyExtraPayloadObj(parsed) {
+  if (!parsed) return;
+  if (parsed.state) {
+    extraState = parsed.state;
+    extraCustomKits = Array.isArray(parsed.customKits) ? parsed.customKits : [];
+  } else {
+    extraState = parsed;
+  }
+  saveExtraData();
+}
+
 function applyUnifiedOrSingle(parsed) {
   if (!parsed) return false;
-  if (parsed.type === 'gunpla_unified_backup_v1' || parsed.mg || parsed.pb) {
+  if (parsed.type === 'gunpla_unified_backup_v1' || parsed.mg || parsed.pb || parsed.extra) {
     if (parsed.mg) applyMgPayloadObj(parsed.mg);
     if (parsed.pb) applyPbPayloadObj(parsed.pb);
+    if (parsed.extra) applyExtraPayloadObj(parsed.extra);
     return true;
   }
   if (parsed.state) {
