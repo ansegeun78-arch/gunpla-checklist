@@ -1,9 +1,9 @@
 {
   "type": "gunpla_unified_backup_v1",
-  "updatedAt": "2026-11-25T05:29:41.191Z",
+  "updatedAt": "2026-11-25T05:47:30.690Z",
   "mg": {
     "version": 7,
-    "updatedAt": "2026-11-25T05:29:41.191Z",
+    "updatedAt": "2026-11-25T05:47:30.690Z",
     "state": {
       "R001": {
         "status": "pass",
@@ -1380,7 +1380,7 @@
   },
   "pb": {
     "version": 7,
-    "updatedAt": "2026-11-25T05:29:41.191Z",
+    "updatedAt": "2026-11-25T05:47:30.690Z",
     "state": {
       "CG001": {
         "status": "wish",
@@ -2211,13 +2211,13 @@
         "photo": ""
       },
       "CG139": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2024 / 6,000엔",
         "photo": ""
       },
       "CG140": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2025 / 4,800엔",
         "photo": ""
@@ -2493,19 +2493,19 @@
         "photo": ""
       },
       "CG186": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "",
         "photo": ""
       },
       "CG187": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "",
         "photo": ""
       },
       "CG188": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "",
         "photo": ""
@@ -2931,7 +2931,7 @@
         "photo": ""
       },
       "CG259": {
-        "status": "own",
+        "status": "wish",
         "build": "-",
         "note": "2020 / 3,000엔",
         "photo": ""
@@ -2950,7 +2950,7 @@
       },
       "CG262": {
         "status": "own",
-        "build": "조립",
+        "build": "-",
         "note": "2020 / 3,500엔",
         "photo": ""
       },
@@ -2985,7 +2985,7 @@
         "photo": ""
       },
       "CG268": {
-        "status": "wish",
+        "status": "own",
         "build": "-",
         "note": "2025 / 3,000엔",
         "photo": ""
