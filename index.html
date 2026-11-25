@@ -655,12 +655,12 @@ const PB_KEYS = {
 };
 
 const GH_CFG_KEY = 'gunpla_github_cfg_v1';
-const DEFAULT_GH_TOKEN = 'github_pat_11CV636TQ04UWZiKafwxgf_'+'yjKpuBj4ALBVw7jlKvGOKcyQGGDFWGmeSdlgbrntKbf6KMM56SNE0anqJq1';
+const DEFAULT_GH_TOKEN = '';
 const DEFAULT_GH_REPO = 'ansegeun78-arch/gunpla-checklist';
 const DEFAULT_GH_PATH = 'data/checklist.json';
 const DEFAULT_GH_BRANCH = 'main';
 
-const MG_SERIES_ORDER = ["MGEX", "퍼스트 건담", "MSV", "Z & ZZ 건담", "건담 센티넬", "역습의 샤아", "0080 : 주머니 속의 전쟁", "건담 F91 / 크로스본", "0083 : 스타더스트 메모리", "V 건담", "기동무투전 G건담", "신기동전기 건담 윙 / EW", "제 08 MS소대", "건담 X", "턴 A 건담", "건담 시드 / 아스트레이", "건담 더블오", "유니콘 / 내러티브", "건담 에이지", "건담 빌드 시리즈", "철혈의 오펀스", "기타"];
+const MG_SERIES_ORDER = ["퍼스트 건담", "MSV", "Z & ZZ 건담", "건담 센티넬", "역습의 샤아", "0080 : 주머니 속의 전쟁", "건담 F91 / 크로스본", "0083 : 스타더스트 메모리", "V 건담", "기동무투전 G건담", "신기동전기 건담 윙 / EW", "제 08 MS소대", "건담 X", "턴 A 건담", "건담 시드 / 아스트레이", "건담 더블오", "유니콘 / 내러티브", "건담 에이지", "건담 빌드 시리즈", "철혈의 오펀스", "기타", "MGEX"];
 const PB_SERIES_ORDER = ["MG", "PG", "RE/100"];
 const PB_CATEGORY_ORDER = ["MG : 우주세기", "MG : 유니콘 / 내러티브", "MG : Advance of Z (티탄즈의 깃발 아래)", "MG : 크로스본 건담", "MG : 건담 F90/F91", "MG : 건담 W", "MG : 건담 시드 / 데스티니 / 아스트레이", "MG : 건담 OO", "MG : 빌드 파이터즈 / 다이버즈", "MG : 기타", "PG", "RE/100"];
 
@@ -1262,7 +1262,38 @@ function renderMgList() {
       });
       return html;
     } else {
-      return `<div class="grid-container">${filtered.map(k => renderCardHtml('mg', k)).join('')}</div>`;
+      const mgItems = filtered.filter(k => (k.series || '') !== 'MGEX');
+      const mgexItems = filtered.filter(k => (k.series || '') === 'MGEX');
+      let html = '';
+      if (mgItems.length > 0) {
+        const ownCnt = mgItems.filter(item => getKitState('mg', item.code).status === 'own').length;
+        html += `
+          <div class="series-section">
+            <div class="series-header">
+              <span>▶ MG 일반판</span>
+              <span class="count-badge">보유 ${ownCnt} / ${mgItems.length}</span>
+            </div>
+            <div class="grid-container">
+              ${mgItems.map(k => renderCardHtml('mg', k)).join('')}
+            </div>
+          </div>
+        `;
+      }
+      if (mgexItems.length > 0) {
+        const ownCnt = mgexItems.filter(item => getKitState('mg', item.code).status === 'own').length;
+        html += `
+          <div class="series-section">
+            <div class="series-header">
+              <span>▶ MGEX</span>
+              <span class="count-badge">보유 ${ownCnt} / ${mgexItems.length}</span>
+            </div>
+            <div class="grid-container">
+              ${mgexItems.map(k => renderCardHtml('mg', k)).join('')}
+            </div>
+          </div>
+        `;
+      }
+      return html;
     }
   } else {
     if (sortMode === 'series') {
