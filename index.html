@@ -683,9 +683,13 @@ function sanitizeTitleForFilename(name) {
     .trim();
 }
 
-function getKitNameByCode(tab, code) {
+function getKitByCode(tab, code) {
   const kits = tab === 'mg' ? getMgKits() : getPbKits();
-  const found = kits.find(item => item.code === code);
+  return kits.find(item => item.code === code) || null;
+}
+
+function getKitNameByCode(tab, code) {
+  const found = getKitByCode(tab, code);
   return found ? found.name : '';
 }
 
@@ -693,12 +697,19 @@ const PHOTO_CANDIDATE_CACHE = new Map();
 
 function getRepoPhotoCandidates(tab, code) {
   if (!code) return [];
-  const rawName = getKitNameByCode(tab, code);
-  const cacheKey = `${tab}|${code}|${rawName}`;
+  const kit = getKitByCode(tab, code);
+  const rawName = kit ? kit.name : '';
+  const series = kit ? (kit.series || '') : '';
+  const cacheKey = `${tab}|${code}|${series}|${rawName}`;
   if (PHOTO_CANDIDATE_CACHE.has(cacheKey)) {
     return PHOTO_CANDIDATE_CACHE.get(cacheKey);
   }
-  const folder = tab === 'mg' ? 'images/mg' : 'images/pb';
+  let folder = 'images/mg';
+  if (tab === 'pb') {
+    if (series === 'PG') folder = 'images/pbpg';
+    else if (series === 'RE/100') folder = 'images/pgre100';
+    else folder = 'images/pbmg';
+  }
   const safeName = sanitizeTitleForFilename(rawName);
   const names = [];
   if (safeName) {
