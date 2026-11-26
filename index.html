@@ -131,45 +131,46 @@
     color: #38bdf8;
   }
 
-  /* 2nd Row: Always-visible Category Tabs + Divider Line Below */
+  /* 2nd Row: Always-visible Category Tabs (Compact Equal Width) + Divider Line Below */
   .main-tabs {
     max-width: 1400px;
     margin: 9px auto 0;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(51, 65, 85, 0.85);
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 6px;
-    align-items: center;
+    grid-template-columns: repeat(4, minmax(0, 112px));
+    justify-content: start;
+    gap: 5px;
+    align-items: stretch;
   }
-  @media (min-width: 768px) {
+  @media (max-width: 500px) {
     .main-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 4px;
     }
   }
   .tab-btn {
+    width: 100%;
     background: #0f172a;
     color: var(--text-muted);
     border: 1.5px solid var(--border);
-    padding: 7px 6px;
+    padding: 6px 4px;
     border-radius: 8px;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.15s;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 4px;
     white-space: nowrap;
   }
   @media (min-width: 768px) {
     .tab-btn {
-      padding: 8px 14px;
-      font-size: 0.88rem;
-      gap: 6px;
+      padding: 7px 6px;
+      font-size: 0.83rem;
+      gap: 5px;
     }
   }
   .tab-btn:hover {
@@ -195,8 +196,8 @@
     max-width: 1400px;
     margin: 0 auto;
     display: none;
-    padding-top: 10px;
-    gap: 8px;
+    padding-top: 8px;
+    gap: 6px;
     flex-wrap: wrap;
     align-items: center;
   }
@@ -207,20 +208,42 @@
     background: #0f172a;
     border: 1px solid var(--border);
     color: var(--text);
-    padding: 7px 10px;
-    border-radius: 7px;
-    font-size: 0.83rem;
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
     outline: none;
   }
   input[type="text"]:focus, input[type="password"]:focus, select:focus {
     border-color: var(--accent);
   }
   .filter-drawer select {
-    flex: 1 1 130px;
+    width: 122px;
+    flex: 0 0 122px;
+    height: 30px;
   }
   .filter-drawer input[type="text"] {
-    flex: 2 1 180px;
-    min-width: 160px;
+    width: 170px;
+    flex: 0 0 170px;
+    min-width: 0;
+    height: 30px;
+  }
+  .filter-drawer-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .filter-drawer .btn {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 0.79rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    flex: 0 0 auto;
   }
   .btn {
     background: #334155;
@@ -412,7 +435,12 @@
     grid-template-columns: repeat(8, minmax(0, 1fr));
     gap: 10px;
   }
-  @media (max-width: 1100px) {
+  @media (max-width: 1280px) {
+    .grid-container {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 960px) {
     .grid-container {
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
@@ -732,80 +760,6 @@
     object-fit: contain;
   }
 
-  /* Bottom-right Floating Action Button (+) */
-  .fab-wrap {
-    position: fixed;
-    right: 20px;
-    bottom: 22px;
-    z-index: 250;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-  }
-  .fab-menu {
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 7px;
-    background: rgba(15, 23, 42, 0.96);
-    border: 1px solid #475569;
-    border-radius: 12px;
-    padding: 8px;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
-    min-width: 152px;
-  }
-  .fab-wrap.open .fab-menu {
-    display: flex;
-  }
-  .fab-item {
-    background: #1e293b;
-    color: #f8fafc;
-    border: 1px solid #334155;
-    border-radius: 8px;
-    padding: 9px 13px;
-    font-size: 0.84rem;
-    font-weight: 700;
-    text-align: left;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.15s;
-  }
-  .fab-item:hover {
-    background: #334155;
-    border-color: #64748b;
-  }
-  .fab-item.is-add {
-    background: #0f766e;
-    border-color: #14b8a6;
-    color: #fff;
-  }
-  .fab-item.is-add:hover {
-    background: #0d9488;
-  }
-  .fab-main-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
-    border: 1.5px solid #38bdf8;
-    color: #fff;
-    font-size: 1.65rem;
-    font-weight: 700;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
-    transition: transform 0.18s ease, background 0.15s;
-  }
-  .fab-wrap.open .fab-main-btn {
-    transform: rotate(45deg);
-    background: #334155;
-    border-color: #94a3b8;
-  }
-
   .modal-backdrop {
     position: fixed;
     inset: 0;
@@ -855,7 +809,7 @@
   }
 
   @media print {
-    header, .photo-actions, .btn, .fab-wrap { display: none !important; }
+    header, .photo-actions, .btn { display: none !important; }
     body { background: #fff; color: #000; }
     .kit-card { border: 1px solid #ccc; break-inside: avoid; background: #fff; }
     .kit-name { color: #000; }
@@ -892,10 +846,10 @@
     </div>
   </div>
 
-  <!-- 2nd Row: Always-visible Category Tabs + Divider Below -->
+  <!-- 2nd Row: Always-visible Category Tabs (Equal Width) + Divider Below -->
   <div class="main-tabs">
     <button class="tab-btn active" id="tabMg" onclick="switchTab('mg')">
-      MG 일반판
+      MG 일반
       <span class="tab-pill-cnt" id="pillMg">0/0</span>
     </button>
     <button class="tab-btn" id="tabPbmg" onclick="switchTab('pbmg')">
@@ -916,32 +870,27 @@
   <div class="filter-drawer" id="filterDrawer">
     <select id="statusFilter" onchange="render()">
       <option value="all">전체 상태 보기</option>
-      <option value="own">✅ 보유 품목</option>
-      <option value="miss">❌ 미보유 품목</option>
-      <option value="wish">💙 위시 품목</option>
-      <option value="pass">⏭️ 패쓰 품목</option>
+      <option value="own">보유 품목</option>
+      <option value="miss">미보유 품목</option>
+      <option value="wish">위시 품목</option>
+      <option value="pass">패쓰 품목</option>
     </select>
     <select id="subFilter" onchange="render()">
       <option value="release">발매 순서</option>
       <option value="series">작품별</option>
     </select>
     <input type="text" id="searchInput" placeholder="모델명, 작품명 검색..." oninput="render()">
+    <div class="filter-drawer-actions">
+      <button class="btn" style="background:#0f766e;border-color:#14b8a6;" onclick="openAddModal()">+ 제품 추가</button>
+      <button class="btn" style="background:#1d4ed8;border-color:#60a5fa;" onclick="githubSaveAll()">GitHub 저장</button>
+      <button class="btn" style="background:#0369a1;border-color:#38bdf8;" onclick="githubLoadAll()">GitHub 불러오기</button>
+    </div>
   </div>
 </header>
 
 <main>
   <div id="contentArea"></div>
 </main>
-
-<!-- Bottom-right Floating Action Button -->
-<div class="fab-wrap" id="fabWrap">
-  <div class="fab-menu">
-    <button class="fab-item is-add" onclick="toggleFabMenu(false); openAddModal();">+ 제품 추가</button>
-    <button class="fab-item" onclick="toggleFabMenu(false); githubSaveAll();">GitHub 저장</button>
-    <button class="fab-item" onclick="toggleFabMenu(false); githubLoadAll();">GitHub 불러오기</button>
-  </div>
-  <button class="fab-main-btn" onclick="toggleFabMenu()" title="메뉴 열기" aria-label="메뉴 열기">+</button>
-</div>
 
 <!-- Add Kit Modal -->
 <div class="modal-backdrop" id="addModal" onclick="if(event.target===this) closeAddModal()">
@@ -2428,22 +2377,7 @@ function toggleFilterPanel() {
   if (btn) btn.classList.toggle('active', isOpen);
 }
 
-function toggleFabMenu(forceState) {
-  const wrap = document.getElementById('fabWrap');
-  if (!wrap) return;
-  if (typeof forceState === 'boolean') {
-    wrap.classList.toggle('open', forceState);
-  } else {
-    wrap.classList.toggle('open');
-  }
-}
 
-document.addEventListener('click', function(e) {
-  const wrap = document.getElementById('fabWrap');
-  if (wrap && wrap.classList.contains('open') && !wrap.contains(e.target)) {
-    wrap.classList.remove('open');
-  }
-});
 
 loadAllData();
 render();
