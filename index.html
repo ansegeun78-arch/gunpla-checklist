@@ -28,60 +28,149 @@
     color: var(--text);
     line-height: 1.4;
   }
+
+  /* Sticky Header */
   header {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     border-bottom: 1px solid var(--border);
-    padding: 14px 20px;
+    padding: 10px 16px 12px;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.45);
   }
+
+  /* 1st Row: Title + % Badge + Symbol View Button + Filter Button */
   .header-top {
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
   }
   .brand-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 8px;
+    min-width: 0;
+    flex-wrap: nowrap;
   }
   h1 {
     margin: 0;
-    font-size: 1.22rem;
+    font-size: 1.12rem;
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .header-pct-badge {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.55);
+    color: #38bdf8;
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .header-top-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    flex-shrink: 0;
   }
+  .icon-btn {
+    background: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #475569;
+    width: 34px;
+    height: 32px;
+    padding: 0;
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .icon-btn:hover {
+    background: #334155;
+    border-color: #64748b;
+    color: #fff;
+  }
+  .icon-btn.active {
+    background: var(--accent);
+    color: #0f172a;
+    border-color: var(--accent);
+  }
+  .filter-toggle-btn {
+    background: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #475569;
+    height: 32px;
+    padding: 0 11px;
+    border-radius: 7px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .filter-toggle-btn:hover {
+    background: #334155;
+    border-color: #64748b;
+  }
+  .filter-toggle-btn.active {
+    background: rgba(56, 189, 248, 0.18);
+    border-color: #38bdf8;
+    color: #38bdf8;
+  }
+
+  /* 2nd Row: Always-visible Category Tabs + Divider Line Below */
   .main-tabs {
     max-width: 1400px;
-    margin: 12px auto 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    margin: 9px auto 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.85);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
     align-items: center;
-    border-top: 1px solid rgba(51, 65, 85, 0.7);
-    padding-top: 12px;
+  }
+  @media (min-width: 768px) {
+    .main-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
   }
   .tab-btn {
     background: #0f172a;
     color: var(--text-muted);
     border: 1.5px solid var(--border);
-    padding: 8px 15px;
+    padding: 7px 6px;
     border-radius: 8px;
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.15s;
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    gap: 5px;
+    white-space: nowrap;
+  }
+  @media (min-width: 768px) {
+    .tab-btn {
+      padding: 8px 14px;
+      font-size: 0.88rem;
+      gap: 6px;
+    }
   }
   .tab-btn:hover {
     border-color: #64748b;
@@ -94,35 +183,25 @@
     box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
   }
   .tab-pill-cnt {
-    font-size: 0.74rem;
+    font-size: 0.7rem;
     background: rgba(15, 23, 42, 0.65);
-    padding: 1px 7px;
+    padding: 1px 6px;
     border-radius: 999px;
     color: #7dd3fc;
   }
-  .stats-bar {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .stat-pill {
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid var(--border);
-    padding: 5px 10px;
-    border-radius: 7px;
-    font-size: 0.82rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .stat-pill strong { font-size: 0.95rem; }
-  .controls {
+
+  /* Collapsible Filter & Search Drawer below the divider */
+  .filter-drawer {
     max-width: 1400px;
-    margin: 12px auto 0;
-    display: flex;
-    flex-wrap: wrap;
+    margin: 0 auto;
+    display: none;
+    padding-top: 10px;
     gap: 8px;
+    flex-wrap: wrap;
     align-items: center;
+  }
+  .filter-drawer.open {
+    display: flex;
   }
   input[type="text"], input[type="password"], select {
     background: #0f172a;
@@ -130,13 +209,19 @@
     color: var(--text);
     padding: 7px 10px;
     border-radius: 7px;
-    font-size: 0.85rem;
+    font-size: 0.83rem;
     outline: none;
   }
   input[type="text"]:focus, input[type="password"]:focus, select:focus {
     border-color: var(--accent);
   }
-  input[type="text"] { flex: 1; min-width: 200px; }
+  .filter-drawer select {
+    flex: 1 1 130px;
+  }
+  .filter-drawer input[type="text"] {
+    flex: 2 1 180px;
+    min-width: 160px;
+  }
   .btn {
     background: #334155;
     color: #fff;
@@ -151,12 +236,11 @@
   .btn:hover { background: #475569; }
   .btn-primary { background: #2563eb; border-color: #3b82f6; }
   .btn-primary:hover { background: #1d4ed8; }
-  .btn-view.active { background: var(--accent); color: #0f172a; border-color: var(--accent); }
 
   main {
     max-width: 1400px;
-    margin: 20px auto 60px;
-    padding: 0 20px;
+    margin: 18px auto 90px;
+    padding: 0 16px;
   }
 
   .series-section {
@@ -185,7 +269,6 @@
     border-radius: 999px;
     border: 1px solid rgba(56, 189, 248, 0.3);
   }
-
 
   /* Distinct color themes per lineup header box in Etc tab */
   .series-header.theme-re100 {
@@ -649,6 +732,80 @@
     object-fit: contain;
   }
 
+  /* Bottom-right Floating Action Button (+) */
+  .fab-wrap {
+    position: fixed;
+    right: 20px;
+    bottom: 22px;
+    z-index: 250;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .fab-menu {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 7px;
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px solid #475569;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+    min-width: 152px;
+  }
+  .fab-wrap.open .fab-menu {
+    display: flex;
+  }
+  .fab-item {
+    background: #1e293b;
+    color: #f8fafc;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 9px 13px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .fab-item:hover {
+    background: #334155;
+    border-color: #64748b;
+  }
+  .fab-item.is-add {
+    background: #0f766e;
+    border-color: #14b8a6;
+    color: #fff;
+  }
+  .fab-item.is-add:hover {
+    background: #0d9488;
+  }
+  .fab-main-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
+    border: 1.5px solid #38bdf8;
+    color: #fff;
+    font-size: 1.65rem;
+    font-weight: 700;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
+    transition: transform 0.18s ease, background 0.15s;
+  }
+  .fab-wrap.open .fab-main-btn {
+    transform: rotate(45deg);
+    background: #334155;
+    border-color: #94a3b8;
+  }
+
   .modal-backdrop {
     position: fixed;
     inset: 0;
@@ -698,7 +855,7 @@
   }
 
   @media print {
-    header, .photo-actions, .btn { display: none !important; }
+    header, .photo-actions, .btn, .fab-wrap { display: none !important; }
     body { background: #fff; color: #000; }
     .kit-card { border: 1px solid #ccc; break-inside: avoid; background: #fff; }
     .kit-name { color: #000; }
@@ -709,13 +866,33 @@
 <body>
 
 <header>
+  <!-- 1st Row: Title + % + List/Grid Symbol Button + Filter Button -->
   <div class="header-top">
     <div class="brand-row">
       <h1 id="pageMainTitle">MG 일반판 체크리스트</h1>
+      <span class="header-pct-badge" id="headerPctBadge">0.0%</span>
     </div>
-    <div class="stats-bar" id="statsBar"></div>
+    <div class="header-top-actions">
+      <button class="icon-btn" id="btnViewToggle" onclick="toggleViewMode()" title="리스트형 보기" aria-label="리스트형 보기">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="8" y1="6" x2="21" y2="6"/>
+          <line x1="8" y1="12" x2="21" y2="12"/>
+          <line x1="8" y1="18" x2="21" y2="18"/>
+          <circle cx="3.5" cy="6" r="1.2" fill="currentColor"/>
+          <circle cx="3.5" cy="12" r="1.2" fill="currentColor"/>
+          <circle cx="3.5" cy="18" r="1.2" fill="currentColor"/>
+        </svg>
+      </button>
+      <button class="filter-toggle-btn" id="btnFilterToggle" onclick="toggleFilterPanel()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+        </svg>
+        필터
+      </button>
+    </div>
   </div>
 
+  <!-- 2nd Row: Always-visible Category Tabs + Divider Below -->
   <div class="main-tabs">
     <button class="tab-btn active" id="tabMg" onclick="switchTab('mg')">
       MG 일반판
@@ -735,9 +912,8 @@
     </button>
   </div>
 
-  <div class="controls" id="listControls">
-    <button class="btn btn-view active" id="btnGrid" onclick="setView('grid')">카드형 보기</button>
-    <button class="btn btn-view" id="btnTable" onclick="setView('table')">리스트형 보기</button>
+  <!-- Filter & Search Drawer (toggled by Filter button) -->
+  <div class="filter-drawer" id="filterDrawer">
     <select id="statusFilter" onchange="render()">
       <option value="all">전체 상태 보기</option>
       <option value="own">✅ 보유 품목</option>
@@ -750,15 +926,22 @@
       <option value="series">작품별</option>
     </select>
     <input type="text" id="searchInput" placeholder="모델명, 작품명 검색..." oninput="render()">
-    <button class="btn" style="background:#0f766e;border-color:#14b8a6;" onclick="openAddModal()">+ 추가</button>
-    <button class="btn" style="background:#1d4ed8;border-color:#60a5fa;" onclick="githubSaveAll()">GitHub 저장</button>
-    <button class="btn" style="background:#0369a1;border-color:#38bdf8;" onclick="githubLoadAll()">GitHub 불러오기</button>
   </div>
 </header>
 
 <main>
   <div id="contentArea"></div>
 </main>
+
+<!-- Bottom-right Floating Action Button -->
+<div class="fab-wrap" id="fabWrap">
+  <div class="fab-menu">
+    <button class="fab-item is-add" onclick="toggleFabMenu(false); openAddModal();">+ 제품 추가</button>
+    <button class="fab-item" onclick="toggleFabMenu(false); githubSaveAll();">GitHub 저장</button>
+    <button class="fab-item" onclick="toggleFabMenu(false); githubLoadAll();">GitHub 불러오기</button>
+  </div>
+  <button class="fab-main-btn" onclick="toggleFabMenu()" title="메뉴 열기" aria-label="메뉴 열기">+</button>
+</div>
 
 <!-- Add Kit Modal -->
 <div class="modal-backdrop" id="addModal" onclick="if(event.target===this) closeAddModal()">
@@ -1085,13 +1268,8 @@ function updateHeaderAndPills() {
 
   const statMap = { mg: mgStat, pbmg: pbmgStat, pg: pgStat, etc: etcStat };
   const s = statMap[activeTab] || mgStat;
-
-  document.getElementById('statsBar').innerHTML = `
-    <div class="stat-pill">전체 <strong>${s.total}</strong></div>
-    <div class="stat-pill" style="border-color:#22c55e;color:#4ade80;">보유 <strong>${s.own}</strong></div>
-    <div class="stat-pill" style="border-color:#ef4444;color:#f87171;">미보유 <strong>${s.miss}</strong></div>
-    <div class="stat-pill" style="border-color:#38bdf8;color:#38bdf8;">달성률 <strong>${s.pct}%</strong></div>
-  `;
+  const pctBadge = document.getElementById('headerPctBadge');
+  if (pctBadge) pctBadge.textContent = `${s.pct}%`;
 }
 
 function switchTab(tab) {
@@ -1141,8 +1319,15 @@ function switchTab(tab) {
 
 function setView(view) {
   currentView = view;
-  document.getElementById('btnGrid').classList.toggle('active', view === 'grid');
-  document.getElementById('btnTable').classList.toggle('active', view === 'table');
+  const btn = document.getElementById('btnViewToggle');
+  if (btn) {
+    btn.classList.toggle('active', view === 'table');
+    btn.title = view === 'grid' ? '리스트형 보기' : '카드형 보기';
+    btn.setAttribute('aria-label', btn.title);
+    btn.innerHTML = view === 'grid'
+      ? '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3.5" cy="6" r="1.2" fill="currentColor"/><circle cx="3.5" cy="12" r="1.2" fill="currentColor"/><circle cx="3.5" cy="18" r="1.2" fill="currentColor"/></svg>'
+      : '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>';
+  }
   render();
 }
 
@@ -2229,6 +2414,36 @@ async function githubLoadAll() {
     alert('GitHub 불러오기 중 오류가 발생했습니다. 토큰 권한과 파일 경로를 확인해 주세요.\n' + err.message);
   }
 }
+
+
+function toggleViewMode() {
+  setView(currentView === 'grid' ? 'table' : 'grid');
+}
+
+function toggleFilterPanel() {
+  const panel = document.getElementById('filterDrawer');
+  const btn = document.getElementById('btnFilterToggle');
+  if (!panel) return;
+  const isOpen = panel.classList.toggle('open');
+  if (btn) btn.classList.toggle('active', isOpen);
+}
+
+function toggleFabMenu(forceState) {
+  const wrap = document.getElementById('fabWrap');
+  if (!wrap) return;
+  if (typeof forceState === 'boolean') {
+    wrap.classList.toggle('open', forceState);
+  } else {
+    wrap.classList.toggle('open');
+  }
+}
+
+document.addEventListener('click', function(e) {
+  const wrap = document.getElementById('fabWrap');
+  if (wrap && wrap.classList.contains('open') && !wrap.contains(e.target)) {
+    wrap.classList.remove('open');
+  }
+});
 
 loadAllData();
 render();
