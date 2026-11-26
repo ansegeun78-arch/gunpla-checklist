@@ -1188,6 +1188,9 @@ function getKitState(tab, code) {
   if (store[code].build !== '조립' && store[code].build !== '미조립' && store[code].build !== '-') {
     store[code].build = '-';
   }
+  if (store[code].status === 'own' && store[code].build === '-') {
+    store[code].build = '미조립';
+  }
   return store[code];
 }
 
@@ -1303,13 +1306,19 @@ function applyStatusToElement(el, status, isRow) {
     const canBuild = (status === 'own');
     buildSel.disabled = !canBuild;
     if (!canBuild) {
+      buildSel.innerHTML = `
+        <option value="-" ${st.build==='-'?'selected':''}>조립상태</option>
+        <option value="조립" ${st.build==='조립'?'selected':''}>조립</option>
+        <option value="미조립" ${st.build==='미조립'?'selected':''}>미조립</option>
+      `;
       buildSel.className = 'build-disabled';
-    } else if (st.build === '-') {
-      buildSel.className = 'is-placeholder';
-    } else if (st.build === '조립') {
-      buildSel.className = 'build-done';
     } else {
-      buildSel.className = 'build-todo';
+      const activeBuild = (st.build === '조립') ? '조립' : '미조립';
+      buildSel.innerHTML = `
+        <option value="조립" ${activeBuild==='조립'?'selected':''}>조립</option>
+        <option value="미조립" ${activeBuild==='미조립'?'selected':''}>미조립</option>
+      `;
+      buildSel.className = activeBuild === '조립' ? 'build-done' : 'build-todo';
     }
   }
 }
@@ -1317,6 +1326,9 @@ function applyStatusToElement(el, status, isRow) {
 function updateItemStatusFast(tab, code, nextStatus, triggerBtn) {
   const item = getKitState(tab, code);
   item.status = nextStatus;
+  if (nextStatus === 'own' && item.build === '-') {
+    item.build = '미조립';
+  }
   saveStoreForCode(tab, code);
 
   const stFilter = document.getElementById('statusFilter').value;
@@ -1596,10 +1608,10 @@ function renderCardHtml(tab, k) {
           <button class="st-btn ${st.status==='wish'?'active-wish':(st.status==='pass'?'active-pass':'')}" onclick="toggleWishPass('${tab}','${k.code}', this)">${st.status==='pass'?'패쓰':'위시'}</button>
         </div>
         <div class="sub-row">
-          <select ${st.status!=='own'?'disabled':''} class="${st.status!=='own'?'build-disabled':(st.build==='-'?'is-placeholder':(st.build==='조립'?'build-done':'build-todo'))}" onchange="setBuild('${tab}','${k.code}', this.value, this)">
-            <option value="-" ${st.build==='-'?'selected':''}>조립상태</option>
+          <select ${st.status!=='own'?'disabled':''} class="${st.status!=='own'?'build-disabled':(st.build==='조립'?'build-done':'build-todo')}" onchange="setBuild('${tab}','${k.code}', this.value, this)">
+            ${st.status!=='own'?`<option value="-" ${st.build==='-'?'selected':''}>조립상태</option>`:''}
             <option value="조립" ${st.build==='조립'?'selected':''}>조립</option>
-            <option value="미조립" ${st.build==='미조립'?'selected':''}>미조립</option>
+            <option value="미조립" ${(st.status==='own'&&st.build!=='조립')||st.build==='미조립'?'selected':''}>미조립</option>
           </select>
           <input type="text" placeholder="메모" value="${st.note.replace(/"/g, '&quot;')}" onchange="setNote('${tab}','${k.code}', this.value)">
         </div>
@@ -1638,10 +1650,10 @@ function renderTableRowHtml(tab, k) {
         </div>
       </td>
       <td>
-        <select ${st.status!=='own'?'disabled':''} class="${st.status!=='own'?'build-disabled':(st.build==='-'?'is-placeholder':(st.build==='조립'?'build-done':'build-todo'))}" onchange="setBuild('${tab}','${k.code}', this.value, this)">
-          <option value="-" ${st.build==='-'?'selected':''}>조립상태</option>
+        <select ${st.status!=='own'?'disabled':''} class="${st.status!=='own'?'build-disabled':(st.build==='조립'?'build-done':'build-todo')}" onchange="setBuild('${tab}','${k.code}', this.value, this)">
+          ${st.status!=='own'?`<option value="-" ${st.build==='-'?'selected':''}>조립상태</option>`:''}
           <option value="조립" ${st.build==='조립'?'selected':''}>조립</option>
-          <option value="미조립" ${st.build==='미조립'?'selected':''}>미조립</option>
+          <option value="미조립" ${(st.status==='own'&&st.build!=='조립')||st.build==='미조립'?'selected':''}>미조립</option>
         </select>
       </td>
       <td>
