@@ -1,9 +1,9 @@
 {
   "type": "gunpla_unified_backup_v1",
-  "updatedAt": "2026-11-25T09:19:11.684Z",
+  "updatedAt": "2026-11-26T12:17:12.611Z",
   "mg": {
     "version": 8,
-    "updatedAt": "2026-11-25T09:19:11.684Z",
+    "updatedAt": "2026-11-26T12:17:12.611Z",
     "state": {
       "R001": {
         "status": "pass",
@@ -1380,7 +1380,7 @@
   },
   "pb": {
     "version": 8,
-    "updatedAt": "2026-11-25T09:19:11.684Z",
+    "updatedAt": "2026-11-26T12:17:12.611Z",
     "state": {
       "CG001": {
         "status": "wish",
@@ -2301,13 +2301,13 @@
         "photo": ""
       },
       "CG154": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2022 / 6,800엔",
         "photo": ""
       },
       "CG155": {
-        "status": "miss",
+        "status": "wish",
         "build": "-",
         "note": "2024 / 6,500엔",
         "photo": ""
@@ -2427,7 +2427,7 @@
         "photo": ""
       },
       "CG175": {
-        "status": "wish",
+        "status": "own",
         "build": "-",
         "note": "2020 / 4,500엔",
         "photo": ""
@@ -2439,7 +2439,7 @@
         "photo": ""
       },
       "CG177": {
-        "status": "wish",
+        "status": "own",
         "build": "-",
         "note": "",
         "photo": ""
@@ -2463,13 +2463,13 @@
         "photo": ""
       },
       "CG181": {
-        "status": "wish",
+        "status": "pass",
         "build": "-",
         "note": "",
         "photo": ""
       },
       "CG182": {
-        "status": "wish",
+        "status": "own",
         "build": "-",
         "note": "",
         "photo": ""
@@ -2481,7 +2481,7 @@
         "photo": ""
       },
       "CG184": {
-        "status": "wish",
+        "status": "pass",
         "build": "-",
         "note": "",
         "photo": ""
@@ -2829,7 +2829,7 @@
         "photo": ""
       },
       "CG242": {
-        "status": "wish",
+        "status": "pass",
         "build": "-",
         "note": "2020 / 8,000엔",
         "photo": ""
@@ -3001,76 +3001,76 @@
   },
   "extra": {
     "version": 8,
-    "updatedAt": "2026-11-25T09:19:11.684Z",
+    "updatedAt": "2026-11-26T12:17:12.611Z",
     "state": {
       "PG001": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "1998 / 12,000엔",
         "photo": ""
       },
       "PG002": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "1999 / 12,000엔",
         "photo": ""
       },
       "PG003": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "1999 / 12,000엔",
         "photo": ""
       },
       "PG004": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2000 / 20,000엔",
         "photo": ""
       },
       "PG005": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2000 / 15,000엔",
         "photo": ""
       },
       "PG006": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2001 / 15,000엔",
         "photo": ""
       },
       "PG007": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2002 / 15,000엔",
         "photo": ""
       },
       "PG008": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2003 / 20,000엔",
         "photo": ""
       },
       "PG009": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2004 / 14,000엔",
         "photo": ""
       },
       "PG010": {
-        "status": "miss",
+        "status": "wish",
         "build": "-",
         "note": "2005 / 5,000엔",
         "photo": ""
       },
       "PG011": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2005 / 19,000엔",
         "photo": ""
       },
       "PG012": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 18,000엔",
         "photo": ""
@@ -3082,7 +3082,7 @@
         "photo": ""
       },
       "PG014": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2009 / 25,000엔",
         "photo": ""
@@ -3094,91 +3094,91 @@
         "photo": ""
       },
       "PG016": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2010 / 25,000엔",
         "photo": ""
       },
       "PG017": {
-        "status": "miss",
+        "status": "pass",
         "build": "-",
         "note": "2010 / 3,800엔",
         "photo": ""
       },
       "PG018": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2014 / 20,000엔",
         "photo": ""
       },
       "PG019": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2014 / 12,000엔",
         "photo": ""
       },
       "PG020": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2015 / 22,000엔",
         "photo": ""
       },
       "PG021": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2017 / 32,000엔",
         "photo": ""
       },
       "PG022": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2018 / 23,000엔",
         "photo": ""
       },
       "PG023": {
-        "status": "miss",
+        "status": "wish",
         "build": "-",
         "note": "2020 / 25,000엔",
         "photo": ""
       },
       "PG024": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2020 / 25,000엔",
         "photo": ""
       },
       "PG025": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2026 / 60,000엔",
         "photo": ""
       },
       "PG026": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2026 / 14,000엔",
         "photo": ""
       },
       "PG027": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "1999 / 2,000엔",
         "photo": ""
       },
       "PG028": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "1999 / 3,500엔",
         "photo": ""
       },
       "PG029": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "1999 / 2,000엔",
         "photo": ""
       },
       "PG030": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "1999 / 3,500엔",
         "photo": ""
@@ -3190,7 +3190,7 @@
         "photo": ""
       },
       "RE002": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2015 / 3,500엔",
         "photo": ""
@@ -3244,13 +3244,13 @@
         "photo": ""
       },
       "RE011": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2018 / 3,500엔",
         "photo": ""
       },
       "RE012": {
-        "status": "miss",
+        "status": "own",
         "build": "-",
         "note": "2019 / 3,700엔",
         "photo": ""
