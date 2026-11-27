@@ -1150,41 +1150,68 @@ function getKitByCode(tab, code) {
 const PHOTO_CANDIDATE_CACHE = new Map();
 const FAILED_PHOTO_URLS = new Set();
 
+function normalizeRepoImgPath(srcOrUrl) {
+  if (!srcOrUrl) return '';
+  try {
+    const u = new URL(srcOrUrl, window.location.href);
+    return decodeURIComponent(u.pathname.replace(/^\//, ''));
+  } catch (_) {
+    try {
+      return decodeURIComponent(String(srcOrUrl).replace(/^\.\//, '').replace(/^\//, ''));
+    } catch (__) {
+      return String(srcOrUrl);
+    }
+  }
+}
+
 function getRepoPhotoCandidates(tab, code) {
   if (!code) return [];
   const kit = getKitByCode(tab, code);
   const rawName = kit ? kit.name : '';
   const folder = kit && kit.folder ? kit.folder : (tab === 'pbmg' ? 'images/pbmg' : 'images/mg');
   const cacheKey = `${tab}|${code}|${folder}|${rawName}`;
+
   if (PHOTO_CANDIDATE_CACHE.has(cacheKey)) {
-    return PHOTO_CANDIDATE_CACHE.get(cacheKey);
+    const cached = PHOTO_CANDIDATE_CACHE.get(cacheKey).filter(p => !FAILED_PHOTO_URLS.has(normalizeRepoImgPath(p)));
+    PHOTO_CANDIDATE_CACHE.set(cacheKey, cached);
+    return cached;
   }
+
   const safeName = sanitizeTitleForFilename(rawName);
   const names = [];
   if (safeName) names.push(safeName);
   if (!code.startsWith('CUSTOM_')) names.push(code);
+
   const list = [];
   for (const n of names) {
     const path = `${folder}/${encodeURIComponent(n)}.jpg`;
-    if (!FAILED_PHOTO_URLS.has(path)) list.push(path);
+    if (!FAILED_PHOTO_URLS.has(normalizeRepoImgPath(path))) {
+      list.push(path);
+    }
   }
   PHOTO_CANDIDATE_CACHE.set(cacheKey, list);
   return list;
 }
 
 function handleImgFallback(imgEl) {
-  if (imgEl && imgEl.currentSrc) {
-    try {
-      const u = new URL(imgEl.currentSrc);
-      const rel = decodeURIComponent(u.pathname.replace(/^\//, ''));
-      FAILED_PHOTO_URLS.add(rel);
-    } catch (_) {}
+  const current = (imgEl && (imgEl.currentSrc || imgEl.getAttribute('src'))) || '';
+  const failedNorm = normalizeRepoImgPath(current);
+  if (failedNorm) {
+    FAILED_PHOTO_URLS.add(failedNorm);
   }
+
+  for (const [key, list] of PHOTO_CANDIDATE_CACHE.entries()) {
+    const filtered = list.filter(item => normalizeRepoImgPath(item) !== failedNorm);
+    if (filtered.length !== list.length) {
+      PHOTO_CANDIDATE_CACHE.set(key, filtered);
+    }
+  }
+
   const rawList = imgEl.dataset.fallbacks || '';
   const list = rawList ? rawList.split('|').filter(Boolean) : [];
   while (list.length > 0) {
     const nextSrc = list.shift();
-    if (!FAILED_PHOTO_URLS.has(nextSrc)) {
+    if (!FAILED_PHOTO_URLS.has(normalizeRepoImgPath(nextSrc))) {
       imgEl.dataset.fallbacks = list.join('|');
       imgEl.src = nextSrc;
       return;
@@ -1474,7 +1501,7 @@ let searchDebounceTimer = null;
 function onSearchInputDebounced() {
   clearTimeout(searchDebounceTimer);
   searchDebounceTimer = setTimeout(() => {
-    if (!applyDomFilterInPlace()) render();
+    render();
   }, 120);
 }
 
@@ -1483,12 +1510,7 @@ function onStatusFilterChange() {
 }
 
 function onSubFilterChange() {
-  const stFilter = document.getElementById('statusFilter').value;
-  if (activeTab === 'mg' || stFilter === 'miss') {
-    render();
-    return;
-  }
-  if (!applyDomFilterInPlace()) render();
+  render();
 }
 
 function matchesKitFilter(tab, k, st, q, stFilter, subVal) {
@@ -1518,34 +1540,6 @@ function getFilteredKits(tab) {
   const stFilter = document.getElementById('statusFilter').value;
   const subVal = document.getElementById('subFilter').value;
   return getKitsForTab(tab).filter(k => matchesKitFilter(tab, k, getKitState(tab, k.code), q, stFilter, subVal));
-}
-
-function applyDomFilterInPlace() {
-  const area = document.getElementById('contentArea');
-  if (!area || !area.firstElementChild) return false;
-
-  const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  const stFilter = document.getElementById('statusFilter').value;
-  const subVal = document.getElementById('subFilter').value;
-
-  const items = area.querySelectorAll('.kit-card[data-code], tbody tr[data-code]');
-  if (!items.length) return false;
-
-  items.forEach(el => {
-    const code = el.dataset.code;
-    const k = getKitByCode(activeTab, code);
-    if (!k) return;
-    const st = getKitState(activeTab, code);
-    el.style.display = matchesKitFilter(activeTab, k, st, q, stFilter, subVal) ? '' : 'none';
-  });
-
-  area.querySelectorAll('.series-section, .lineup-block').forEach(sec => {
-    const visibleCards = Array.from(sec.querySelectorAll('.kit-card[data-code], tbody tr[data-code]'))
-      .filter(el => el.style.display !== 'none');
-    sec.style.display = visibleCards.length > 0 ? '' : 'none';
-  });
-
-  return true;
 }
 
 /* ================= Photo Pick & Drop ================= */
@@ -1591,7 +1585,9 @@ function processImageFile(file, tab, code) {
       const item = getKitState(tab, code);
       item.photo = '';
       saveStoreForCode(tab, code);
-      render();
+      if (!updatePhotoElementInPlace(tab, code)) {
+        render();
+      }
     };
     img.src = evt.target.result;
   };
@@ -1604,7 +1600,9 @@ async function removePhoto(e, tab, code) {
   const item = getKitState(tab, code);
   item.photo = '';
   saveStoreForCode(tab, code);
-  render();
+  if (!updatePhotoElementInPlace(tab, code)) {
+    render();
+  }
 }
 
 function handleDrop(e, tab, code) {
@@ -1764,16 +1762,64 @@ function kitNeedsThreeLines(k) {
   return (k.name && k.name.length > 22) || Boolean(k.displayHtml);
 }
 
-function renderCardHtml(tab, k) {
-  const st = getKitState(tab, k.code);
+function buildPhotoBoxInnerHtml(tab, k, st) {
   const customPhoto = getCustomPhoto(k.code, st);
-  const cardCls = `${getCardStatusClass(st.status)} ${(st.status === 'own' && st.build === '조립') ? 'build-done-photo' : ''}`;
-  const titleHtml = formatKitTitle(k);
-  const nameCls = (tab === 'pbmg' || kitNeedsThreeLines(k)) ? 'kit-name pb-name' : 'kit-name';
   const candidates = customPhoto ? [] : getRepoPhotoCandidates(tab, k.code);
   const imgSrc = customPhoto || candidates[0] || '';
   const fallbacksAttr = candidates.slice(1).join('|');
   const expectedPath = candidates[0] || '';
+  return `
+    ${k.isCustom ? `<button class="del-kit-btn" onclick="deleteCustomKit(event, '${tab}', '${k.code}')">카드삭제</button>` : ''}
+    ${imgSrc ? `
+      <img src="${imgSrc}" data-fallbacks="${fallbacksAttr}" alt="${escapeHtml(k.name)}" loading="lazy" decoding="async" onerror="handleImgFallback(this)">
+      <div class="photo-placeholder is-hidden"><span class="icon">📷</span>사진 없음<br><span class="expected-path">${expectedPath}</span></div>
+      ${customPhoto ? `<div class="photo-actions"><button class="mini-btn" onclick="removePhoto(event, '${tab}', '${k.code}')">삭제</button></div>` : ''}
+    ` : `
+      <div class="photo-placeholder">
+        <span class="icon">📷</span>
+        사진 추가
+      </div>
+    `}
+  `;
+}
+
+function buildTablePhotoInnerHtml(tab, k, st) {
+  const customPhoto = getCustomPhoto(k.code, st);
+  const candidates = customPhoto ? [] : getRepoPhotoCandidates(tab, k.code);
+  const imgSrc = customPhoto || candidates[0] || '';
+  const fallbacksAttr = candidates.slice(1).join('|');
+  return imgSrc
+    ? `<img src="${imgSrc}" data-fallbacks="${fallbacksAttr}" loading="lazy" decoding="async" onerror="handleImgFallback(this)"><span class="is-hidden">사진 없음</span>`
+    : `+ 사진`;
+}
+
+function updatePhotoElementInPlace(tab, code) {
+  const kit = getKitByCode(tab, code);
+  if (!kit) return false;
+  const st = getKitState(tab, code);
+  const target = document.querySelector(`[data-code="${code}"]`);
+  if (!target) return false;
+
+  const photoBox = target.querySelector('.photo-box');
+  if (photoBox) {
+    photoBox.innerHTML = buildPhotoBoxInnerHtml(tab, kit, st);
+    return true;
+  }
+
+  const tblPhoto = target.querySelector('.tbl-photo');
+  if (tblPhoto) {
+    tblPhoto.innerHTML = buildTablePhotoInnerHtml(tab, kit, st);
+    return true;
+  }
+
+  return false;
+}
+
+function renderCardHtml(tab, k) {
+  const st = getKitState(tab, k.code);
+  const cardCls = `${getCardStatusClass(st.status)} ${(st.status === 'own' && st.build === '조립') ? 'build-done-photo' : ''}`;
+  const titleHtml = formatKitTitle(k);
+  const nameCls = (tab === 'pbmg' || kitNeedsThreeLines(k)) ? 'kit-name pb-name' : 'kit-name';
   const metaLabel = k.group || k.series || '';
   return `
     <div class="kit-card ${cardCls}" data-code="${k.code}">
@@ -1782,17 +1828,7 @@ function renderCardHtml(tab, k) {
            onclick="triggerPhotoPick('${tab}', '${k.code}')"
            ondragover="event.preventDefault()"
            ondrop="handleDrop(event, '${tab}', '${k.code}')">
-        ${k.isCustom ? `<button class="del-kit-btn" onclick="deleteCustomKit(event, '${tab}', '${k.code}')">카드삭제</button>` : ''}
-        ${imgSrc ? `
-          <img src="${imgSrc}" data-fallbacks="${fallbacksAttr}" alt="${escapeHtml(k.name)}" onerror="handleImgFallback(this)">
-          <div class="photo-placeholder is-hidden"><span class="icon">📷</span>사진 없음<br><span class="expected-path">${expectedPath}</span></div>
-          ${customPhoto ? `<div class="photo-actions"><button class="mini-btn" onclick="removePhoto(event, '${tab}', '${k.code}')">삭제</button></div>` : ''}
-        ` : `
-          <div class="photo-placeholder">
-            <span class="icon">📷</span>
-            사진 추가
-          </div>
-        `}
+        ${buildPhotoBoxInnerHtml(tab, k, st)}
       </div>
       <div class="card-body">
         <div class="${nameCls}" title="${escapeHtml(k.name)}">${titleHtml}</div>
@@ -1816,11 +1852,7 @@ function renderCardHtml(tab, k) {
 
 function renderTableRowHtml(tab, k) {
   const st = getKitState(tab, k.code);
-  const customPhoto = getCustomPhoto(k.code, st);
   const rowCls = `${getRowStatusClass(st.status)} ${(st.status === 'own' && st.build === '조립') ? 'build-done-photo' : ''}`;
-  const candidates = customPhoto ? [] : getRepoPhotoCandidates(tab, k.code);
-  const imgSrc = customPhoto || candidates[0] || '';
-  const fallbacksAttr = candidates.slice(1).join('|');
   const col3 = k.group || k.series || '-';
   return `
     <tr class="${rowCls}" data-code="${k.code}">
@@ -1830,7 +1862,7 @@ function renderTableRowHtml(tab, k) {
              onclick="triggerPhotoPick('${tab}', '${k.code}')"
              ondragover="event.preventDefault()"
              ondrop="handleDrop(event, '${tab}', '${k.code}')">
-          ${imgSrc ? `<img src="${imgSrc}" data-fallbacks="${fallbacksAttr}" onerror="handleImgFallback(this)"><span class="is-hidden">사진 없음</span>` : `+ 사진`}
+          ${buildTablePhotoInnerHtml(tab, k, st)}
         </div>
       </td>
       <td><strong>${escapeHtml(k.name)}</strong></td>
