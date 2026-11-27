@@ -1,9 +1,9 @@
 {
   "type": "gunpla_unified_backup_v1",
-  "updatedAt": "2026-11-26T17:21:03.853Z",
+  "updatedAt": "2026-11-27T01:00:12.821Z",
   "mg": {
     "version": 8,
-    "updatedAt": "2026-11-26T17:21:03.853Z",
+    "updatedAt": "2026-11-27T01:00:12.822Z",
     "state": {
       "R001": {
         "status": "pass",
@@ -1380,7 +1380,7 @@
   },
   "pb": {
     "version": 8,
-    "updatedAt": "2026-11-26T17:21:03.853Z",
+    "updatedAt": "2026-11-27T01:00:12.822Z",
     "state": {
       "CG001": {
         "status": "wish",
@@ -2878,7 +2878,7 @@
       },
       "CG250": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2017 / 3,500엔",
         "photo": ""
       },
@@ -3001,7 +3001,7 @@
   },
   "extra": {
     "version": 8,
-    "updatedAt": "2026-11-26T17:21:03.853Z",
+    "updatedAt": "2026-11-27T01:00:12.822Z",
     "state": {
       "PG001": {
         "status": "own",
@@ -3197,7 +3197,7 @@
       },
       "RE003": {
         "status": "own",
-        "build": "조립",
+        "build": "미조립",
         "note": "2015 / 3,500엔",
         "photo": ""
       },
@@ -3209,7 +3209,7 @@
       },
       "RE005": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2016 / 3,500엔",
         "photo": ""
       },
@@ -3221,19 +3221,19 @@
       },
       "RE007": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2017 / 4,500엔",
         "photo": ""
       },
       "RE008": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2018 / 4,000엔",
         "photo": ""
       },
       "RE009": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2018 / 3,200엔",
         "photo": ""
       },
@@ -3245,12 +3245,12 @@
       },
       "RE011": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2018 / 3,500엔",
         "photo": ""
       },
       "RE012": {
-        "status": "own",
+        "status": "wish",
         "build": "미조립",
         "note": "2019 / 3,700엔",
         "photo": ""
@@ -3275,7 +3275,7 @@
       },
       "FM003": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2023 / 3,800엔",
         "photo": ""
       },
@@ -3299,7 +3299,7 @@
       },
       "PBFM002": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2024 / 4,200엔",
         "photo": ""
       },
@@ -3323,7 +3323,7 @@
       },
       "SRW002": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2021 / 4,000엔",
         "photo": ""
       },
@@ -3335,37 +3335,37 @@
       },
       "SRW004": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2023 / 5,200엔",
         "photo": ""
       },
       "SRW005": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2023 / 4,500엔",
         "photo": ""
       },
       "SRW006": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2024 / 4,500엔",
         "photo": ""
       },
       "SRW007": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2024 / 4,500엔",
         "photo": ""
       },
       "SRW008": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2024 / 5,500엔",
         "photo": ""
       },
       "SRW009": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2025 / 4,500엔",
         "photo": ""
       },
@@ -3383,19 +3383,19 @@
       },
       "PBSRW002": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2023 / 4,300엔",
         "photo": ""
       },
       "PBSRW003": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2023 / 4,700엔",
         "photo": ""
       },
       "PBSRW004": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2024 / 7,000엔",
         "photo": ""
       },
@@ -3407,7 +3407,7 @@
       },
       "PBSRW006": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2024 / 11,000엔",
         "photo": ""
       },
@@ -3425,19 +3425,19 @@
       },
       "HIRM002": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2017 / 12,000엔",
         "photo": ""
       },
       "HIRM003": {
-        "status": "own",
+        "status": "pass",
         "build": "미조립",
         "note": "2018 / 17,000엔",
         "photo": ""
       },
       "HIRM004": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2018 / 13,000엔",
         "photo": ""
       },
@@ -3449,13 +3449,13 @@
       },
       "HIRM006": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2019 / 13,000엔",
         "photo": ""
       },
       "HIRM007": {
         "status": "own",
-        "build": "미조립",
+        "build": "조립",
         "note": "2022 / 16,000엔",
         "photo": ""
       }
