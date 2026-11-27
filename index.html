@@ -614,15 +614,13 @@
   /* Card & table row states */
   .kit-card.status-own.build-done-photo .photo-box img {
     opacity: 0.35;
-    filter: grayscale(32%);
   }
   tr.row-own.build-done-photo .tbl-photo img {
     opacity: 0.35;
-    filter: grayscale(32%);
   }
   .kit-card.status-own {
     border: 2.4px solid var(--own-border);
-    box-shadow: 0 0 12px rgba(34, 197, 94, 0.45), inset 0 0 0 1px rgba(34, 197, 94, 0.25);
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.30);
   }
   .kit-card.status-miss {
     border: 1.6px solid var(--border);
@@ -632,7 +630,7 @@
   .kit-card.status-wish {
     border: 2.2px solid #eab308;
     background: rgba(250, 204, 21, 0.10);
-    box-shadow: 0 0 12px rgba(250, 204, 21, 0.30);
+    box-shadow: none;
   }
   .kit-card.status-wish .kit-name {
     font-weight: 900;
@@ -648,7 +646,6 @@
   .kit-card.status-pass .sub-row,
   .kit-card.status-pass .st-btn:not(.active-pass) {
     opacity: 0.20;
-    filter: grayscale(65%);
   }
   .kit-card.status-pass .st-btn.active-pass {
     opacity: 1;
@@ -680,6 +677,23 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+  }
+  .kit-memo-info {
+    width: 100%;
+    padding: 1px 2px;
+    font-size: 0.70rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.35;
+  }
+  .kit-memo-info.is-empty {
+    color: #475569;
+  }
+  .tbl-memo-info {
+    font-size: 0.8rem;
+    color: var(--text-muted);
   }
   .sub-row select, .sub-row input {
     width: 100%;
@@ -868,18 +882,18 @@
 
   <!-- Filter & Search Drawer (toggled by Filter button) -->
   <div class="filter-drawer" id="filterDrawer">
-    <select id="statusFilter" onchange="render()">
+    <select id="statusFilter" onchange="onStatusFilterChange()">
       <option value="all">전체 상태 보기</option>
       <option value="own">보유 품목</option>
       <option value="miss">미보유 품목</option>
       <option value="wish">위시 품목</option>
       <option value="pass">패쓰 품목</option>
     </select>
-    <select id="subFilter" onchange="render()">
+    <select id="subFilter" onchange="onSubFilterChange()">
       <option value="release">발매 순서</option>
       <option value="series">작품별</option>
     </select>
-    <input type="text" id="searchInput" placeholder="모델명, 작품명 검색..." oninput="render()">
+    <input type="text" id="searchInput" placeholder="모델명, 작품명 검색..." oninput="onSearchInputDebounced()">
     <div class="filter-drawer-actions">
       <button class="btn" style="background:#0f766e;border-color:#14b8a6;" onclick="openAddModal()">+ 제품 추가</button>
       <button class="btn" style="background:#1d4ed8;border-color:#60a5fa;" onclick="githubSaveAll()">GitHub 저장</button>
@@ -1052,6 +1066,7 @@ function getKitByCode(tab, code) {
 }
 
 const PHOTO_CANDIDATE_CACHE = new Map();
+const FAILED_PHOTO_URLS = new Set();
 
 function getRepoPhotoCandidates(tab, code) {
   if (!code) return [];
@@ -1066,18 +1081,15 @@ function getRepoPhotoCandidates(tab, code) {
   const names = [];
   if (safeName) {
     names.push(safeName);
-    const collapsed = safeName.replace(/\s+/g, ' ');
-    if (collapsed !== safeName) names.push(collapsed);
   }
   if (!code.startsWith('CUSTOM_')) {
     names.push(code);
   }
-  const exts = ['jpg', 'png', 'webp', 'JPG', 'PNG'];
   const list = [];
   for (const n of names) {
-    const enc = encodeURIComponent(n);
-    for (const ext of exts) {
-      list.push(`${folder}/${enc}.${ext}`);
+    const path = `${folder}/${encodeURIComponent(n)}.jpg`;
+    if (!FAILED_PHOTO_URLS.has(path)) {
+      list.push(path);
     }
   }
   PHOTO_CANDIDATE_CACHE.set(cacheKey, list);
@@ -1090,13 +1102,22 @@ function getDefaultRepoPhotoPath(tab, code) {
 }
 
 function handleImgFallback(imgEl) {
+  if (imgEl && imgEl.currentSrc) {
+    try {
+      const u = new URL(imgEl.currentSrc);
+      const rel = decodeURIComponent(u.pathname.replace(/^\//, ''));
+      FAILED_PHOTO_URLS.add(rel);
+    } catch (_) {}
+  }
   const rawList = imgEl.dataset.fallbacks || '';
   const list = rawList ? rawList.split('|').filter(Boolean) : [];
-  if (list.length > 0) {
+  while (list.length > 0) {
     const nextSrc = list.shift();
-    imgEl.dataset.fallbacks = list.join('|');
-    imgEl.src = nextSrc;
-    return;
+    if (!FAILED_PHOTO_URLS.has(nextSrc)) {
+      imgEl.dataset.fallbacks = list.join('|');
+      imgEl.src = nextSrc;
+      return;
+    }
   }
   imgEl.style.display = 'none';
   if (imgEl.nextElementSibling) {
@@ -1132,6 +1153,7 @@ function loadAllData() {
   } catch (e) {
     console.error(e);
   }
+  invalidateStatsCache();
 }
 
 function saveMgData() {
@@ -1194,34 +1216,51 @@ function getKitState(tab, code) {
   return store[code];
 }
 
-function computeStats(tab) {
-  const kits = getKitsForTab(tab);
-  let own = 0, miss = 0;
-  kits.forEach(k => {
-    const st = getKitState(tab, k.code);
-    if (st.status === 'own') own++;
-    else miss++;
-  });
-  const total = kits.length;
-  const pct = total > 0 ? ((own / total) * 100).toFixed(1) : '0.0';
-  return { total, own, miss, pct };
+const STATS_CACHE = { mg: null, pbmg: null, pg: null, etc: null };
+
+function invalidateStatsCache(tab) {
+  if (tab && STATS_CACHE.hasOwnProperty(tab)) {
+    STATS_CACHE[tab] = null;
+  } else {
+    STATS_CACHE.mg = null;
+    STATS_CACHE.pbmg = null;
+    STATS_CACHE.pg = null;
+    STATS_CACHE.etc = null;
+  }
 }
 
-function updateHeaderAndPills() {
-  const mgStat = computeStats('mg');
-  const pbmgStat = computeStats('pbmg');
-  const pgStat = computeStats('pg');
-  const etcStat = computeStats('etc');
+function computeStats(tab) {
+  if (STATS_CACHE[tab]) return STATS_CACHE[tab];
+  const kits = getKitsForTab(tab);
+  let own = 0, miss = 0;
+  for (let i = 0; i < kits.length; i++) {
+    const st = getKitState(tab, kits[i].code);
+    if (st.status === 'own') own++;
+    else miss++;
+  }
+  const total = kits.length;
+  const pct = total > 0 ? ((own / total) * 100).toFixed(1) : '0.0';
+  const res = { total, own, miss, pct };
+  STATS_CACHE[tab] = res;
+  return res;
+}
 
-  document.getElementById('pillMg').textContent = `${mgStat.own}/${mgStat.total}`;
-  document.getElementById('pillPbmg').textContent = `${pbmgStat.own}/${pbmgStat.total}`;
-  document.getElementById('pillPg').textContent = `${pgStat.own}/${pgStat.total}`;
-  document.getElementById('pillEtc').textContent = `${etcStat.own}/${etcStat.total}`;
+function updateHeaderAndPills(dirtyTabs) {
+  const tabsToCalc = Array.isArray(dirtyTabs) && dirtyTabs.length
+    ? dirtyTabs
+    : ['mg', 'pbmg', 'pg', 'etc'];
 
-  const statMap = { mg: mgStat, pbmg: pbmgStat, pg: pgStat, etc: etcStat };
-  const s = statMap[activeTab] || mgStat;
+  for (let i = 0; i < tabsToCalc.length; i++) {
+    const t = tabsToCalc[i];
+    const st = computeStats(t);
+    const pillId = t === 'mg' ? 'pillMg' : (t === 'pbmg' ? 'pillPbmg' : (t === 'pg' ? 'pillPg' : 'pillEtc'));
+    const pillEl = document.getElementById(pillId);
+    if (pillEl) pillEl.textContent = `${st.own}/${st.total}`;
+  }
+
+  const activeStat = computeStats(activeTab);
   const pctBadge = document.getElementById('headerPctBadge');
-  if (pctBadge) pctBadge.textContent = `${s.pct}%`;
+  if (pctBadge) pctBadge.textContent = `${activeStat.pct}%`;
 }
 
 function switchTab(tab) {
@@ -1330,6 +1369,7 @@ function updateItemStatusFast(tab, code, nextStatus, triggerBtn) {
     item.build = '미조립';
   }
   saveStoreForCode(tab, code);
+  invalidateStatsCache(tab);
 
   const stFilter = document.getElementById('statusFilter').value;
   if (stFilter !== 'all' || !triggerBtn) {
@@ -1344,7 +1384,7 @@ function updateItemStatusFast(tab, code, nextStatus, triggerBtn) {
     const row = triggerBtn.closest('tr');
     if (row) applyStatusToElement(row, nextStatus, true);
   }
-  updateHeaderAndPills();
+  updateHeaderAndPills([tab]);
 }
 
 function toggleOwnMiss(tab, code, btnEl) {
@@ -1364,13 +1404,107 @@ function setBuild(tab, code, val, el) {
   if (item.status !== 'own') return;
   item.build = val;
   saveStoreForCode(tab, code);
+
+  if (el) {
+    el.className = val === '조립' ? 'build-done' : 'build-todo';
+    const card = el.closest('.kit-card');
+    if (card) {
+      card.classList.toggle('build-done-photo', val === '조립');
+      return;
+    }
+    const row = el.closest('tr');
+    if (row) {
+      row.classList.toggle('build-done-photo', val === '조립');
+      return;
+    }
+  }
   render();
 }
 
-function setNote(tab, code, val) {
-  const item = getKitState(tab, code);
-  item.note = val;
-  saveStoreForCode(tab, code);
+let searchDebounceTimer = null;
+function onSearchInputDebounced() {
+  clearTimeout(searchDebounceTimer);
+  searchDebounceTimer = setTimeout(() => {
+    applyDomFilterOrRender();
+  }, 120);
+}
+
+function onStatusFilterChange() {
+  render();
+}
+
+function onSubFilterChange() {
+  const stFilter = document.getElementById('statusFilter').value;
+  if (activeTab === 'mg' || stFilter === 'miss') {
+    render();
+    return;
+  }
+  if (!applyDomFilterInPlace()) {
+    render();
+  }
+}
+
+function applyDomFilterOrRender() {
+  if (!applyDomFilterInPlace()) {
+    render();
+  }
+}
+
+function applyDomFilterInPlace() {
+  const area = document.getElementById('contentArea');
+  if (!area || !area.firstElementChild) return false;
+
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const stFilter = document.getElementById('statusFilter').value;
+  const subVal = document.getElementById('subFilter').value;
+
+  const items = area.querySelectorAll('.kit-card[data-code], tbody tr[data-code]');
+  if (!items.length) return false;
+
+  items.forEach(el => {
+    const code = el.dataset.code;
+    const k = getKitByCode(activeTab, code);
+    if (!k) return;
+    const st = getKitState(activeTab, code);
+
+    let visible = true;
+    if (stFilter !== 'all') {
+      if (stFilter === 'miss') {
+        if (st.status !== 'miss' && st.status !== 'wish' && st.status !== 'pass') visible = false;
+      } else if (st.status !== stFilter) {
+        visible = false;
+      }
+    }
+    if (visible && activeTab === 'pbmg' && subVal !== 'all') {
+      if ((k.category || 'MG : 기타') !== subVal) visible = false;
+    } else if (visible && activeTab === 'pg' && subVal !== 'all') {
+      if (k.group !== subVal) visible = false;
+    } else if (visible && activeTab === 'etc' && subVal !== 'all') {
+      if (!(k.group || '').startsWith(subVal)) visible = false;
+    }
+
+    if (visible && q) {
+      const hay = `${k.name} ${k.series || ''} ${k.category || ''} ${k.group || ''} ${st.note || ''}`.toLowerCase();
+      if (!hay.includes(q)) visible = false;
+    }
+
+    el.style.display = visible ? '' : 'none';
+  });
+
+  // Hide empty sections/blocks cleanly
+  area.querySelectorAll('.series-section').forEach(sec => {
+    const visibleCards = Array.from(sec.querySelectorAll('.kit-card[data-code], tbody tr[data-code]'))
+      .filter(el => el.style.display !== 'none');
+    sec.style.display = visibleCards.length > 0 ? '' : 'none';
+  });
+
+  area.querySelectorAll('.lineup-block, .lineup-container-box').forEach(blk => {
+    const visibleCards = Array.from(blk.querySelectorAll('.kit-card[data-code], tbody tr[data-code]'))
+      .filter(el => el.style.display !== 'none');
+    blk.style.display = visibleCards.length > 0 ? '' : 'none';
+  });
+
+  return true;
 }
 
 function triggerPhotoPick(tab, code) {
@@ -1530,6 +1664,7 @@ function submitNewKit() {
     extraCustomKits.push({ code, name, series, group, folder, targetTab: 'etc', date: '', defaultMemo: date, isCustom: true });
     saveExtraData();
   }
+  invalidateStatsCache(activeTab);
   closeAddModal();
   render();
   setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }), 80);
@@ -1551,6 +1686,7 @@ function deleteCustomKit(e, tab, code) {
     delete extraState[code];
     saveExtraData();
   }
+  invalidateStatsCache(tab);
   render();
 }
 
@@ -1602,7 +1738,6 @@ function renderCardHtml(tab, k) {
       </div>
       <div class="card-body">
         <div class="${nameCls}" title="${k.name}">${titleHtml}</div>
-        <div class="kit-meta" title="${metaLabel}">${metaLabel}</div>
         <div class="status-group">
           <button class="st-btn ${st.status==='own'?'active-own':(st.status==='miss'?'active-miss':'')}" onclick="toggleOwnMiss('${tab}','${k.code}', this)">${st.status==='own'?'보유':'미보유'}</button>
           <button class="st-btn ${st.status==='wish'?'active-wish':(st.status==='pass'?'active-pass':'')}" onclick="toggleWishPass('${tab}','${k.code}', this)">${st.status==='pass'?'패쓰':'위시'}</button>
@@ -1613,7 +1748,8 @@ function renderCardHtml(tab, k) {
             <option value="조립" ${st.build==='조립'?'selected':''}>조립</option>
             <option value="미조립" ${(st.status==='own'&&st.build!=='조립')||st.build==='미조립'?'selected':''}>미조립</option>
           </select>
-          <input type="text" placeholder="메모" value="${st.note.replace(/"/g, '&quot;')}" onchange="setNote('${tab}','${k.code}', this.value)">
+          <div class="kit-meta" title="${metaLabel}">${metaLabel}</div>
+          <div class="kit-memo-info ${st.note ? '' : 'is-empty'}" title="${(st.note || '').replace(/"/g, '&quot;')}">${st.note ? st.note.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') : '-'}</div>
         </div>
       </div>
     </div>
@@ -1641,8 +1777,6 @@ function renderTableRowHtml(tab, k) {
         </div>
       </td>
       <td><strong>${k.name}</strong></td>
-      <td>${col3}</td>
-      <td>${k.defaultMemo || k.date || '-'}</td>
       <td>
         <div class="status-group" style="width:120px;">
           <button class="st-btn ${st.status==='own'?'active-own':(st.status==='miss'?'active-miss':'')}" onclick="toggleOwnMiss('${tab}','${k.code}', this)">${st.status==='own'?'보유':'미보유'}</button>
@@ -1656,9 +1790,10 @@ function renderTableRowHtml(tab, k) {
           <option value="미조립" ${(st.status==='own'&&st.build!=='조립')||st.build==='미조립'?'selected':''}>미조립</option>
         </select>
       </td>
+      <td>${col3}</td>
       <td>
         <div style="display:flex;gap:6px;align-items:center;">
-          <input type="text" placeholder="메모" value="${st.note.replace(/"/g, '&quot;')}" onchange="setNote('${tab}','${k.code}', this.value)" style="width:140px;">
+          <span class="tbl-memo-info">${st.note ? st.note.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') : '-'}</span>
           ${k.isCustom ? `<button class="mini-btn" style="color:#fca5a5;" onclick="deleteCustomKit(event, '${tab}', '${k.code}')">삭제</button>` : ''}
         </div>
       </td>
@@ -1687,12 +1822,11 @@ function renderGroupedByMissStatus(tab, list, isTable) {
               <table>
                 <thead>
                   <tr>
-                    <th>제품 사진</th>
-                    <th>모델명</th>
-                    <th>구분 / 작품</th>
-                    <th>발매일 / 가격</th>
-                    <th>보유 여부</th>
-                    <th>조립 상태</th>
+                    <th>사진</th>
+                    <th>제품명</th>
+                    <th>보유/위시</th>
+                    <th>미조립</th>
+                    <th>등장작품</th>
                     <th>메모</th>
                   </tr>
                 </thead>
@@ -1851,12 +1985,11 @@ function renderMgList() {
           <table>
             <thead>
               <tr>
-                <th>제품 사진</th>
-                <th>모델명</th>
-                <th>등장 작품</th>
-                <th>발매일 / 가격</th>
-                <th>보유 여부</th>
-                <th>조립 상태</th>
+                <th>사진</th>
+                <th>제품명</th>
+                <th>보유/위시</th>
+                <th>미조립</th>
+                <th>등장작품</th>
                 <th>메모</th>
               </tr>
             </thead>
@@ -2240,6 +2373,7 @@ function applyExtraPayloadObj(parsed) {
 }
 
 function applyUnifiedOrSingle(parsed) {
+  invalidateStatsCache();
   if (!parsed) return false;
   if (parsed.type === 'gunpla_unified_backup_v1' || parsed.mg || parsed.pb || parsed.extra) {
     if (parsed.mg) applyMgPayloadObj(parsed.mg);
