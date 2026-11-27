@@ -1030,7 +1030,22 @@ function saveStoreForCode(tab, code) {
   else saveExtraData();
 }
 
-function getKitsForTab(tab) {
+const TAB_KITS_CACHE = { mg: null, pbmg: null, pg: null, etc: null };
+const KIT_BY_CODE_CACHE = { mg: null, pbmg: null, pg: null, etc: null };
+
+function invalidateKitsCache(tab) {
+  const targets = tab && TAB_KITS_CACHE.hasOwnProperty(tab)
+    ? [tab]
+    : ['mg', 'pbmg', 'pg', 'etc'];
+  for (let i = 0; i < targets.length; i++) {
+    const t = targets[i];
+    TAB_KITS_CACHE[t] = null;
+    KIT_BY_CODE_CACHE[t] = null;
+    if (KIT_DEFAULT_MEMO_MAP[t]) KIT_DEFAULT_MEMO_MAP[t].clear();
+  }
+}
+
+function buildKitsForTabUncached(tab) {
   if (tab === 'mg') {
     const delSet = new Set(mgDeletedCodes);
     const base = MG_DEFAULT_KITS
@@ -1060,9 +1075,26 @@ function getKitsForTab(tab) {
   return [];
 }
 
+function getKitsForTab(tab) {
+  if (!TAB_KITS_CACHE.hasOwnProperty(tab)) return [];
+  if (!TAB_KITS_CACHE[tab]) {
+    const list = buildKitsForTabUncached(tab);
+    TAB_KITS_CACHE[tab] = list;
+    const map = new Map();
+    for (let i = 0; i < list.length; i++) {
+      map.set(list[i].code, list[i]);
+    }
+    KIT_BY_CODE_CACHE[tab] = map;
+  }
+  return TAB_KITS_CACHE[tab];
+}
+
 function getKitByCode(tab, code) {
-  const kits = getKitsForTab(tab);
-  return kits.find(item => item.code === code) || null;
+  if (!KIT_BY_CODE_CACHE.hasOwnProperty(tab) || !code) return null;
+  if (!KIT_BY_CODE_CACHE[tab]) {
+    getKitsForTab(tab);
+  }
+  return KIT_BY_CODE_CACHE[tab].get(code) || null;
 }
 
 const PHOTO_CANDIDATE_CACHE = new Map();
@@ -1154,6 +1186,7 @@ function loadAllData() {
     console.error(e);
   }
   invalidateStatsCache();
+  invalidateKitsCache();
 }
 
 function saveMgData() {
@@ -1664,6 +1697,7 @@ function submitNewKit() {
     extraCustomKits.push({ code, name, series, group, folder, targetTab: 'etc', date: '', defaultMemo: date, isCustom: true });
     saveExtraData();
   }
+  invalidateKitsCache(activeTab);
   invalidateStatsCache(activeTab);
   closeAddModal();
   render();
@@ -1686,6 +1720,7 @@ function deleteCustomKit(e, tab, code) {
     delete extraState[code];
     saveExtraData();
   }
+  invalidateKitsCache(tab);
   invalidateStatsCache(tab);
   render();
 }
@@ -2373,6 +2408,7 @@ function applyExtraPayloadObj(parsed) {
 }
 
 function applyUnifiedOrSingle(parsed) {
+  invalidateKitsCache();
   invalidateStatsCache();
   if (!parsed) return false;
   if (parsed.type === 'gunpla_unified_backup_v1' || parsed.mg || parsed.pb || parsed.extra) {
