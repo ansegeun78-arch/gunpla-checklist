@@ -1,9 +1,9 @@
 {
   "type": "gunpla_unified_backup_v1",
-  "updatedAt": "2026-11-27T02:15:32.606Z",
+  "updatedAt": "2026-11-27T02:17:02.726Z",
   "mg": {
     "version": 8,
-    "updatedAt": "2026-11-27T02:15:32.606Z",
+    "updatedAt": "2026-11-27T02:17:02.726Z",
     "state": {
       "R001": {
         "status": "pass",
@@ -1380,7 +1380,7 @@
   },
   "pb": {
     "version": 8,
-    "updatedAt": "2026-11-27T02:15:32.606Z",
+    "updatedAt": "2026-11-27T02:17:02.726Z",
     "state": {
       "CG001": {
         "status": "wish",
@@ -3001,7 +3001,7 @@
   },
   "extra": {
     "version": 8,
-    "updatedAt": "2026-11-27T02:15:32.606Z",
+    "updatedAt": "2026-11-27T02:17:02.726Z",
     "state": {
       "PG001": {
         "status": "own",
